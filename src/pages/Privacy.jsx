@@ -16,7 +16,7 @@ export default function Privacy() {
         </motion.div>
         <h1 className="h2-classic md:text-6xl max-w-4xl mx-auto">Privacy & Data <span className="text-indigo-600">Protection Strategy</span></h1>
         <p className="p-classic max-w-2xl mx-auto text-[15px] md:text-lg">
-          At PDFTool Professional, we implement a zero-trust model where your documents 
+          At iFlexPDF Professional, we implement a zero-trust model where your documents 
           belong exclusively to you. Our architecture ensures complete local isolation.
         </p>
       </div>
@@ -36,7 +36,7 @@ export default function Privacy() {
               significant vulnerabilities for enterprise-grade security protocols.
             </p>
             <div className="p-8 bg-indigo-50/50 border border-indigo-100 rounded-3xl text-indigo-950 font-black">
-              PDFTool utilizes an isolated execution environment. By leveraging WebAssembly, 
+              iFlexPDF utilizes an isolated execution environment. By leveraging WebAssembly, 
               we process documents directly within your browser's allocated memory.
             </div>
             <ul className="grid grid-cols-1 md:grid-cols-2 gap-6 list-none p-0 m-0">

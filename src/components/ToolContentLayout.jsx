@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ChevronDown, ArrowRight, ShieldCheck, Zap, Sparkles, BookOpen, Star, RefreshCcw } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "../lib/utils";
+import { toolGuides } from "../data/toolGuides";
 
 export default function ToolContentLayout({
   toolName,
@@ -17,6 +18,8 @@ export default function ToolContentLayout({
   const toggleFaq = (index) => {
     setOpenFaqIndex(openFaqIndex === index ? null : index);
   };
+
+  const guide = toolGuides[toolName];
 
   return (
     <div className="w-full mt-24 border-t border-slate-100 pt-20 space-y-24 bg-slate-50/30 -mx-6 sm:-mx-8 px-6 sm:px-8 pb-20">
@@ -139,7 +142,35 @@ export default function ToolContentLayout({
           </section>
         )}
 
-        {/* Section 4: Related Tools (Internal Linking) */}
+        {/* Section 4: Handbook & Deep Guides (AdSense Dense Content) */}
+        {guide && (
+          <section className="space-y-12 max-w-4xl mx-auto border-t border-slate-100/80 pt-16">
+            <div className="text-center space-y-4">
+              <h2 className="text-3xl md:text-4xl font-black text-slate-900 tracking-tight">
+                {guide.title}
+              </h2>
+              <p className="text-slate-500 font-medium">
+                Comprehensive Professional Handbook & User Manual
+              </p>
+            </div>
+
+            <div className="space-y-10 bg-white border border-slate-100 rounded-[2.5rem] p-10 md:p-16 shadow-sm">
+              {guide.sections.map((section, sIdx) => (
+                <div key={sIdx} className="space-y-4">
+                  <h3 className="text-2xl font-black text-slate-900 tracking-tight flex items-center gap-3">
+                    <span className="w-1.5 h-6 bg-[#0047AB] rounded-full shrink-0"></span>
+                    {section.heading}
+                  </h3>
+                  <div className="text-slate-500 text-sm md:text-[15px] leading-relaxed font-semibold whitespace-pre-wrap pl-4 border-l border-slate-100 text-left">
+                    {section.content}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* Section 5: Related Tools (Internal Linking) */}
         {relatedTools.length > 0 && (
           <section className="space-y-12 border-t border-slate-100/80 pt-16">
             <div className="text-center space-y-4">

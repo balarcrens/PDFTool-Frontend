@@ -195,7 +195,7 @@ export default function PDFToText() {
             { icon: Zap, title: "Unlimited Plaintext Extraction", description: "Extract millions of characters and multi-chapter documents in seconds with zero fees, caps, or accounts." }
           ]}
           faqs={[
-            { question: "Is my document secure when I parse PDF to text?", answer: "Absolutely. PDFTool processes documents purely client-side using JavaScript. No external requests are made, keeping corporate records, academic articles, and lists 100% confidential." },
+            { question: "Is my document secure when I parse PDF to text?", answer: "Absolutely. iFlexPDF processes documents purely client-side using JavaScript. No external requests are made, keeping corporate records, academic articles, and lists 100% confidential." },
             { question: "Does it support image-only or scanned PDFs?", answer: "This tool parses the built-in digital text layers of PDFs. For scanned documents or images that do not have text metadata, an OCR (Optical Character Recognition) engine is needed, which is not supported in this client-side plaintext parser." },
             { question: "How are multi-page documents formatted in the output?", answer: "To maintain perfect readability and structure, each page's extracted text is prefixed with a clear page delimiter (e.g. --- Page 1 ---), making it easy to identify chapters or sources." }
           ]}

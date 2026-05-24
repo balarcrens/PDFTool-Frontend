@@ -42,7 +42,7 @@ export default function Contact() {
             <ContactInfo
               icon={<Mail className="w-6 h-6" />}
               title="Official Communications"
-              detail="support@pdftool.pro"
+              detail="support@iFlexPDF.pro"
               description="Enterprise-grade support"
             />
             <ContactInfo

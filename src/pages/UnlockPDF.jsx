@@ -245,8 +245,8 @@ export default function UnlockPDF() {
             { icon: Zap, title: "Uncapped Batch Accessibility", description: "Unlock unlimited protected PDFs on demand. No accounts, fees, or daily processing limitations." }
           ]}
           faqs={[
-            { question: "Can PDFTool unlock any PDF without knowing the password?", answer: "No. This tool respects copyright and privacy boundaries. It operates as an authorized decrypter. To successfully strip security layers and unlock a document, you must possess and enter its original valid password." },
-            { question: "Is my password or file metadata logged?", answer: "Never. All parsing and decryption are executed on your client device inside your browser sandbox. PDFTool does not maintain database records, telemetry tracking, or external logging systems." },
+            { question: "Can iFlexPDF unlock any PDF without knowing the password?", answer: "No. This tool respects copyright and privacy boundaries. It operates as an authorized decrypter. To successfully strip security layers and unlock a document, you must possess and enter its original valid password." },
+            { question: "Is my password or file metadata logged?", answer: "Never. All parsing and decryption are executed on your client device inside your browser sandbox. iFlexPDF does not maintain database records, telemetry tracking, or external logging systems." },
             { question: "Does unlocking a PDF preserve the formatting and text?", answer: "Absolutely. Unlocking does not modify layout nodes, fonts, or image data. It simply updates the security metadata dictionaries of the PDF structure to make the page contents fully accessible." }
           ]}
           relatedTools={[

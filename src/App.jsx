@@ -13,6 +13,10 @@ import WordToPDF from "./pages/WordToPDF";
 import PDFToWord from "./pages/PDFToWord";
 import ProtectPDF from "./pages/ProtectPDF";
 import UnlockPDF from "./pages/UnlockPDF";
+import RotatePDF from "./pages/RotatePDF";
+import WatermarkPDF from "./pages/WatermarkPDF";
+import PageNumbersPDF from "./pages/PageNumbersPDF";
+import DeletePagesPDF from "./pages/DeletePagesPDF";
 
 import BlogList from "./pages/BlogList";
 import BlogPost from "./pages/BlogPost";
@@ -21,8 +25,12 @@ import About from "./pages/About";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import Contact from "./pages/Contact";
-import Pricing from "./pages/Pricing";
 import Security from "./pages/Security";
+import Cookies from "./pages/Cookies";
+import Disclaimer from "./pages/Disclaimer";
+import FAQPage from "./pages/FAQPage";
+import Sitemap from "./pages/Sitemap";
+
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
 import Breadcrumbs from "./components/Breadcrumbs";
@@ -48,15 +56,22 @@ function App() {
             <Route path="/pdf-to-word" element={<PDFToWord />} />
             <Route path="/protect" element={<ProtectPDF />} />
             <Route path="/unlock" element={<UnlockPDF />} />
+            <Route path="/rotate" element={<RotatePDF />} />
+            <Route path="/watermark" element={<WatermarkPDF />} />
+            <Route path="/page-numbers" element={<PageNumbersPDF />} />
+            <Route path="/delete-pages" element={<DeletePagesPDF />} />
 
             <Route path="/blog" element={<BlogList />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
 
             <Route path="/about" element={<About />} />
-            <Route path="/pricing" element={<Pricing />} />
             <Route path="/security" element={<Security />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />
+            <Route path="/cookies" element={<Cookies />} />
+            <Route path="/disclaimer" element={<Disclaimer />} />
+            <Route path="/faq" element={<FAQPage />} />
+            <Route path="/sitemap" element={<Sitemap />} />
             <Route path="/contact" element={<Contact />} />
 
             <Route path="*" element={<NotFound />} />

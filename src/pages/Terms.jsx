@@ -16,7 +16,7 @@ export default function Terms() {
         </motion.div>
         <h1 className="h2-classic md:text-6xl max-w-4xl mx-auto">Terms of <span className="text-indigo-600">Service</span></h1>
         <p className="p-classic max-w-2xl mx-auto text-[15px] md:text-lg">
-          The transparent legal framework governing your utilization of the PDFTool 
+          The transparent legal framework governing your utilization of the iFlexPDF 
           Professional ecosystem.
         </p>
       </div>
@@ -25,7 +25,7 @@ export default function Terms() {
         <section className="space-y-6">
           <h2 className="text-3xl font-black text-indigo-950 tracking-tight">1. Acceptable Utilization</h2>
           <p className="text-slate-500 leading-relaxed font-semibold text-[17px]">
-            By accessing PDFTool Professional, you agree to utilize the platform exclusively 
+            By accessing iFlexPDF Professional, you agree to utilize the platform exclusively 
             for legitimate purposes. Users maintain total sovereignty and responsibility 
             for processed content. Unauthorized distribution of restricted assets or 
             malicious code is strictly prohibited.
@@ -47,7 +47,7 @@ export default function Terms() {
           <div className="p-10 bg-indigo-50/50 border border-indigo-100 rounded-[2.5rem] flex items-start gap-6 shadow-inner">
             <AlertCircle className="w-10 h-10 text-indigo-600 flex-shrink-0 mt-1" />
             <p className="text-indigo-950 font-black leading-relaxed">
-              PDFTool Professional and its contributors assume zero liability for direct, 
+              iFlexPDF Professional and its contributors assume zero liability for direct, 
               indirect, or consequential damages resulting from document processing 
               errors or temporary service interruptions.
             </p>

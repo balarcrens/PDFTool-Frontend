@@ -23,11 +23,11 @@ export default function BlogList() {
   const listSchema = {
     "@context": "https://schema.org",
     "@type": "Blog",
-    "name": "PDFTool Insights Blog",
+    "name": "iFlexPDF Insights Blog",
     "description": "Guides, tutorials, and expert analyses concerning document layouts, PDF compressions, and study hacks.",
     "publisher": {
       "@type": "Organization",
-      "name": "PDFTool"
+      "name": "iFlexPDF"
     }
   };
 

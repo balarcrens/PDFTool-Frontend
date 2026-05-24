@@ -299,7 +299,7 @@ export default function CompressPDF() {
           ]}
           faqs={[
             { question: "How does in-browser PDF compression work?", answer: "Our local-first utility runs client-side JS libraries to parse your PDF, recompress and downsample heavy embedded images, and recompile standard document elements without uploading anything." },
-            { question: "Will my PDF layout or text formatting break?", answer: "No. PDFTool compresses files by optimizing images and metadata structures. Your text remains original, selectable vector layers that look completely identical on high-DPI screens." },
+            { question: "Will my PDF layout or text formatting break?", answer: "No. iFlexPDF compresses files by optimizing images and metadata structures. Your text remains original, selectable vector layers that look completely identical on high-DPI screens." },
             { question: "Is there a maximum limit to PDF sizes?", answer: "We enforce no daily or size limits. Since processing runs locally inside your browser, extremely large files (e.g. over 500MB) will depend on your computer's RAM capacity." }
           ]}
           relatedTools={[

@@ -73,7 +73,7 @@ export default function BlogPost() {
     "genre": article.category,
     "publisher": {
       "@type": "Organization",
-      "name": "PDFTool"
+      "name": "iFlexPDF"
     }
   };
 

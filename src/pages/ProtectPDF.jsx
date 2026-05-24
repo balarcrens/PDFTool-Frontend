@@ -271,7 +271,7 @@ export default function ProtectPDF() {
             { icon: Zap, title: "Instant Dynamic Security", description: "Locks down files in seconds with absolute privacy, zero queues, and no limits on file size." }
           ]}
           faqs={[
-            { question: "Is my document secure when I add a password?", answer: "Yes, 100%. Unlike online services that upload your PDFs to remote cloud servers where they can be stored or read, PDFTool executes all AES cryptography locally in your browser memory (RAM)." },
+            { question: "Is my document secure when I add a password?", answer: "Yes, 100%. Unlike online services that upload your PDFs to remote cloud servers where they can be stored or read, iFlexPDF executes all AES cryptography locally in your browser memory (RAM)." },
             { question: "What happens if I lose my PDF password?", answer: "Because we prioritize maximum privacy, we do not store, track, or possess your passwords. If you lose the password, there is no way for us to recover it. Please store your passwords securely." },
             { question: "Can anyone open my encrypted PDF without a password?", answer: "No. Standard PDF readers will immediately prompt the user for the password before rendering any pages. This prevents unauthorized viewing, printing, or copying." }
           ]}

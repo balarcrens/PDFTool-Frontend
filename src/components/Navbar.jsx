@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { FileText, Globe, Menu, X, ChevronDown, Combine, Scissors, FileDown, Layout, ClipboardList, ImageIcon, FileCode, Lock, Unlock } from "lucide-react";
+import { FileText, Globe, Menu, X, ChevronDown, Combine, Scissors, FileDown, Layout, ClipboardList, ImageIcon, FileCode, Lock, Unlock, RotateCw, Type, Hash, Trash2 } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
@@ -17,6 +17,10 @@ const toolsLinks = [
   { name: "PDF to Text", path: "/pdf-to-text", icon: ClipboardList },
   { name: "Protect PDF", path: "/protect", icon: Lock },
   { name: "Unlock PDF", path: "/unlock", icon: Unlock },
+  { name: "Rotate PDF", path: "/rotate", icon: RotateCw },
+  { name: "Add Watermark", path: "/watermark", icon: Type },
+  { name: "Add Page Numbers", path: "/page-numbers", icon: Hash },
+  { name: "Delete Pages", path: "/delete-pages", icon: Trash2 },
 ];
 
 export default function Navbar() {
@@ -41,9 +45,9 @@ export default function Navbar() {
         <div className="container-professional flex items-center justify-between w-full">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
-            <img src="/icon.png" alt="PDFTool" className="w-10 h-10 " />
+            <img src="/icon.png" alt="iFlexPDF" className="w-10 h-10 " />
             <span className="text-xl font-black tracking-tight text-slate-900">
-              PDFTool<span className="text-[#0047AB]">.</span>
+              iFlexPDF<span className="text-[#0047AB]">.</span>
             </span>
           </Link>
 
@@ -68,7 +72,7 @@ export default function Navbar() {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 15, scale: 0.98 }}
                     transition={{ duration: 0.2, ease: "easeOut" }}
-                    className="absolute top-full left-0 mt-4 w-[560px] bg-white border border-slate-100 rounded-2xl shadow-2xl p-5 grid grid-cols-2 gap-2 z-50"
+                    className="absolute top-full left-0 mt-4 w-[580px] bg-white border border-slate-100 rounded-2xl shadow-2xl p-5 grid grid-cols-2 gap-2 z-50 max-h-[480px] overflow-y-auto custom-scrollbar"
                   >
                     <div className="col-span-2 px-3 pb-3 border-b border-slate-50 mb-2">
                       <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Enterprise Toolbox</p>
@@ -95,18 +99,15 @@ export default function Navbar() {
             </div>
 
             <NavLink to="/blog" active={location.pathname.startsWith("/blog")}>Blog</NavLink>
-            <NavLink to="/pricing" active={location.pathname === "/pricing"}>Pricing</NavLink>
             <NavLink to="/security" active={location.pathname === "/security"}>Security</NavLink>
           </div>
 
-          {/* Actions */}
+          {/* Actions - Clean Local UI */}
           <div className="hidden lg:flex items-center gap-3">
-            <button className="px-5 py-2.5 text-slate-500 font-bold text-[14px] hover:text-slate-900 transition-all">
-              Login
-            </button>
-            <button className="px-6 py-2.5 bg-[#0047AB] text-white rounded-xl font-bold text-[14px] hover:bg-[#003580] transition-all shadow-xl shadow-indigo-100">
-              Get Started Free
-            </button>
+            <span className="verified-badge px-4 py-2">
+              <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse mr-1"></span>
+              100% Client-Side Engine Active
+            </span>
           </div>
 
           <button
@@ -144,9 +145,9 @@ export default function Navbar() {
                 {/* Drawer Header */}
                 <div className="flex items-center justify-between mb-6 pb-4 border-b border-slate-50">
                   <Link to="/" onClick={() => setIsMenuOpen(false)} className="flex items-center gap-3">
-                    <img src="/icon.png" alt="PDFTool" className="w-8 h-8" />
+                    <img src="/icon.png" alt="iFlexPDF" className="w-8 h-8" />
                     <span className="text-lg font-black tracking-tight text-slate-900">
-                      PDFTool<span className="text-[#0047AB]">.</span>
+                      iFlexPDF<span className="text-[#0047AB]">.</span>
                     </span>
                   </Link>
                   <button
@@ -162,13 +163,12 @@ export default function Navbar() {
                 <div className="flex-grow overflow-y-auto pr-1 flex flex-col gap-1.5 scrollbar-thin">
                   <MobileNavLink to="/" onClick={() => setIsMenuOpen(false)}>Home</MobileNavLink>
                   <MobileNavLink to="/blog" onClick={() => setIsMenuOpen(false)}>Blog</MobileNavLink>
-                  <MobileNavLink to="/pricing" onClick={() => setIsMenuOpen(false)}>Pricing</MobileNavLink>
                   <MobileNavLink to="/security" onClick={() => setIsMenuOpen(false)}>Security</MobileNavLink>
 
                   <div className="h-px bg-slate-100 my-4"></div>
                   <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest px-4 mb-2">Professional Toolbox</p>
 
-                  <div className="grid grid-cols-1 gap-1 max-h-[calc(100vh-380px)] overflow-y-auto pr-1">
+                  <div className="grid grid-cols-1 gap-1 max-h-[calc(100vh-280px)] overflow-y-auto pr-1">
                     {toolsLinks.map((link) => {
                       const isToolActive = location.pathname === link.path;
                       return (
@@ -198,20 +198,14 @@ export default function Navbar() {
                   </div>
                 </div>
 
-                {/* Pinned Bottom CTA Actions */}
-                <div className="flex flex-col gap-2.5 pt-5 mt-4 border-t border-slate-100 bg-white">
-                  <button
-                    onClick={() => setIsMenuOpen(false)}
-                    className="w-full py-3.5 bg-[#0047AB] text-white rounded-xl font-bold text-[13px] hover:bg-[#003580] transition-all shadow-md shadow-indigo-100"
-                  >
-                    Get Started Free
-                  </button>
-                  <button
-                    onClick={() => setIsMenuOpen(false)}
-                    className="w-full py-3.5 bg-slate-50 text-slate-600 rounded-xl font-bold text-[13px] border border-slate-200/50 hover:bg-slate-100 hover:text-slate-900 transition-all"
-                  >
-                    Login to Account
-                  </button>
+                {/* Pinned Bottom CTA Actions - Updated for Security Banner */}
+                <div className="pt-5 mt-4 border-t border-slate-100 bg-white">
+                  <div className="p-4 bg-emerald-50 border border-emerald-100 rounded-2xl flex items-center gap-3">
+                    <div className="w-2.5 h-2.5 bg-emerald-500 rounded-full animate-pulse shrink-0"></div>
+                    <p className="text-[11px] font-bold text-emerald-800 uppercase tracking-wider">
+                      Fully Secure Client Sandbox
+                    </p>
+                  </div>
                 </div>
               </motion.div>
             </>

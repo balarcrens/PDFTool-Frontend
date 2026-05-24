@@ -18,7 +18,7 @@ export default function About() {
           Defining the Future of <span className="text-indigo-600">Document Productivity</span>
         </h1>
         <p className="p-classic max-w-2xl mx-auto text-[15px] md:text-lg">
-          PDFTool Professional is dedicated to providing high-fidelity, secure, and 
+          iFlexPDF Professional is dedicated to providing high-fidelity, secure, and 
           unrestricted document utilities for the modern enterprise.
         </p>
       </div>

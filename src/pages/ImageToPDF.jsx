@@ -308,7 +308,7 @@ export default function ImageToPDF() {
             { icon: Sparkles, title: "Supports Multiple Formats", description: "Works perfectly with JPG, JPEG, PNG, WebP, and SVG images with high processing speed." }
           ]}
           faqs={[
-            { question: "Are my personal photos sent to any backend servers?", answer: "No. PDFTool processes all images locally using in-browser libraries. Your images are parsed in active RAM and compiled directly to a PDF without contacting external networks." },
+            { question: "Are my personal photos sent to any backend servers?", answer: "No. iFlexPDF processes all images locally using in-browser libraries. Your images are parsed in active RAM and compiled directly to a PDF without contacting external networks." },
             { question: "Is there a restriction on how many images I can convert at once?", answer: "No restrictions. You can combine dozens of images into a single multi-page PDF. Large image groups are processed locally based on your device's speed and memory." },
             { question: "Will my images retain their original quality and resolution?", answer: "Yes, jsPDF embeds raw image bytes inside the document. It scales visual heights and widths to align beautifully on PDF boundaries while preserving maximum pixels." }
           ]}

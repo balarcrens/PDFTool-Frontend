@@ -225,7 +225,7 @@ export default function WordToPDF() {
             { icon: Zap, title: "Free Premium Conversions", description: "No page limitations, email registrations, or watermarks. Convert multi-page Word books instantly." }
           ]}
           faqs={[
-            { question: "Are my enterprise documents secure when converting Word to PDF?", answer: "Yes, entirely. PDFTool runs all document compilation processes inside your web browser sandbox. No file chunks are uploaded, safeguarding legal contracts, invoices, and resumes from cloud leaks." },
+            { question: "Are my enterprise documents secure when converting Word to PDF?", answer: "Yes, entirely. iFlexPDF runs all document compilation processes inside your web browser sandbox. No file chunks are uploaded, safeguarding legal contracts, invoices, and resumes from cloud leaks." },
             { question: "Which Word document extensions are supported?", answer: "We support modern standard Microsoft Word documents with the .docx extension. If you have legacy files with .doc extension, we recommend converting them to .docx first." },
             { question: "Does it support tables, fonts, and inline media?", answer: "Yes. Our local parser parses complex styles, inline images, custom margins, and nested bullet arrays into standard A4 sheets." }
           ]}

@@ -121,7 +121,7 @@ export default function PDFToWord() {
         }
 
         htmlContent += `
-          <div class="page-header">PDFTool Converted | Page ${i} of ${totalPages}</div>
+          <div class="page-header">iFlexPDF Converted | Page ${i} of ${totalPages}</div>
           ${pageHTML || "<p>&nbsp;</p>"}
         `;
       }
