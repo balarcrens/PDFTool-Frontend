@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { Upload, X, FileText, AlertCircle, FileCheck, ShieldCheck } from "lucide-react";
+import { Upload, FileText, AlertCircle, FileCheck, ShieldCheck } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "../lib/utils";
 
