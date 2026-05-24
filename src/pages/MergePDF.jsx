@@ -29,8 +29,8 @@ export default function MergePDF() {
   const fileInputRef = useRef(null);
 
   const handleFilesSelected = (newFiles) => {
-    const formattedFiles = Array.from(newFiles).map(file => ({
-      id: Math.random().toString(36).substr(2, 9),
+    const formattedFiles = Array.from(newFiles).map((file, index) => ({
+      id: `${file.name}-${file.size}-${file.lastModified}-${index}`,
       file,
       name: file.name,
       size: (file.size / (1024 * 1024)).toFixed(2) + " MB"

@@ -29,7 +29,7 @@ export default function ImageToPDF() {
 
   const handleFilesSelected = (newFiles) => {
     const formattedImages = Array.from(newFiles).map(file => ({
-      id: Math.random().toString(36).substr(2, 9),
+      id: `${file.name}-${file.size}-${file.lastModified}`,
       file,
       url: URL.createObjectURL(file),
       name: file.name

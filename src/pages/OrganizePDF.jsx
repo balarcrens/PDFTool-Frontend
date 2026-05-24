@@ -57,7 +57,7 @@ export default function OrganizePDF() {
 
         await page.render({ canvasContext: context, viewport: viewport }).promise;
         newPages.push({
-          id: Math.random().toString(36).substr(2, 9),
+          id: `page-${i}`,
           index: i - 1,
           preview: canvas.toDataURL(),
           rotation: 0
