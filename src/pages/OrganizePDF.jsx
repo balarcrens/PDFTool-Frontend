@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { PDFDocument } from "pdf-lib";
 import * as pdfjsLib from "pdfjs-dist";
 import pdfWorker from "pdfjs-dist/build/pdf.worker.mjs?url";
@@ -12,18 +12,14 @@ import {
   RotateCw,
   Download,
   Loader2,
-  X,
   ArrowRight,
   GripHorizontal,
-  Sparkles,
-  RefreshCcw,
   CheckCircle2,
   Eye,
   FileText,
   ShieldCheck,
   Zap
 } from "lucide-react";
-import { cn } from "../lib/utils";
 import confetti from "canvas-confetti";
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker;
@@ -275,7 +271,7 @@ export default function OrganizePDF() {
               className="card-ref !p-12 md:!p-20 text-center space-y-12"
             >
               <div className="decorative-circle !w-64 !h-64" />
-              
+
               <div className="flex flex-col items-center space-y-6">
                 <div className="w-20 h-20 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 shadow-inner">
                   <CheckCircle2 className="w-10 h-10" />

@@ -15,7 +15,6 @@ import {
   Sliders,
   Sparkles
 } from "lucide-react";
-import { cn } from "../lib/utils";
 import confetti from "canvas-confetti";
 
 export default function PageNumbersPDF() {
@@ -49,7 +48,7 @@ export default function PageNumbersPDF() {
       for (let i = 0; i < totalPages; i++) {
         const page = pages[i];
         const { width, height } = page.getSize();
-        
+
         const activePageNum = i + startNum;
         let text = `${activePageNum}`;
         if (style === "xofv") {
@@ -284,7 +283,7 @@ export default function PageNumbersPDF() {
                 <div className="bg-white aspect-[3/4] w-full max-w-[320px] rounded-2xl shadow-2xl relative flex flex-col p-8 border border-slate-200/50 justify-between">
                   {/* Top Bar for header style */}
                   <div className="w-full flex justify-between items-center select-none pointer-events-none">
-                    <span 
+                    <span
                       className="font-mono text-slate-400 font-bold transition-all"
                       style={{
                         fontSize: `${fontSize * 0.8}px`,
@@ -311,7 +310,7 @@ export default function PageNumbersPDF() {
 
                   {/* Bottom Bar for footer style */}
                   <div className="w-full flex justify-between items-center select-none pointer-events-none mt-4">
-                    <span 
+                    <span
                       className="font-mono text-slate-400 font-bold transition-all"
                       style={{
                         fontSize: `${fontSize * 0.8}px`,
@@ -343,7 +342,7 @@ export default function PageNumbersPDF() {
               className="card-ref !p-12 md:!p-20 text-center space-y-12 max-w-4xl mx-auto"
             >
               <div className="decorative-circle !w-64 !h-64" />
-              
+
               <div className="flex flex-col items-center space-y-6">
                 <div className="w-20 h-20 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 shadow-inner">
                   <CheckCircle2 className="w-10 h-10" />

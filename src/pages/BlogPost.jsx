@@ -1,7 +1,8 @@
+/* eslint-disable no-unused-vars */
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { blogArticles } from "../data/blogArticles";
 import SEO from "../components/SEO";
-import { ArrowLeft, Clock, Calendar, User, ChevronRight, Share2, Award, ShieldCheck, Heart } from "lucide-react";
+import { ArrowLeft, Clock, ChevronRight, Share2, ShieldCheck } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
@@ -33,9 +34,9 @@ export default function BlogPost() {
         text: article.subtitle || article.excerpt,
         url: window.location.href,
       })
-      .catch((error) => {
-        console.warn("Native sharing cancelled or failed:", error);
-      });
+        .catch((error) => {
+          console.warn("Native sharing cancelled or failed:", error);
+        });
     } else {
       navigator.clipboard.writeText(window.location.href);
       setCopied(true);
@@ -79,7 +80,7 @@ export default function BlogPost() {
 
   return (
     <>
-      <SEO 
+      <SEO
         title={article.title}
         description={article.subtitle || article.excerpt}
         keywords={article.tags.join(", ")}
@@ -87,17 +88,17 @@ export default function BlogPost() {
       />
 
       <div className="container-professional py-16 md:py-24">
-        
+
         {/* Back and Share Panel */}
         <div className="max-w-3xl mx-auto flex items-center justify-between mb-12">
-          <button 
+          <button
             onClick={() => navigate("/blog")}
             className="inline-flex items-center gap-2 text-slate-500 hover:text-indigo-600 transition-colors font-bold text-sm"
           >
             <ArrowLeft className="w-4.5 h-4.5" />
             <span>Back to Insights</span>
           </button>
-          
+
           <button
             onClick={handleShare}
             className="inline-flex items-center gap-2 px-4 py-2 border border-slate-100 bg-slate-50/50 hover:bg-slate-50 hover:border-slate-200 text-slate-600 rounded-xl transition-all font-bold text-xs"
@@ -109,7 +110,7 @@ export default function BlogPost() {
 
         {/* Semantic Article */}
         <article className="max-w-3xl mx-auto space-y-12">
-          
+
           {/* Header Block */}
           <header className="space-y-6 border-b border-slate-100 pb-10">
             <div className="flex flex-wrap items-center gap-3">
@@ -126,7 +127,7 @@ export default function BlogPost() {
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 leading-tight tracking-tight">
               {article.title}
             </h1>
-            
+
             <p className="text-lg md:text-xl text-slate-500 font-medium leading-relaxed">
               {article.subtitle}
             </p>
@@ -148,8 +149,8 @@ export default function BlogPost() {
             {article.content.map((block, idx) => {
               if (block.type === "paragraph") {
                 return (
-                  <p 
-                    key={idx} 
+                  <p
+                    key={idx}
                     dangerouslySetInnerHTML={{ __html: block.text }}
                     className="text-slate-600 font-medium leading-relaxed"
                   />
@@ -157,8 +158,8 @@ export default function BlogPost() {
               }
               if (block.type === "heading") {
                 return (
-                  <h2 
-                    key={idx} 
+                  <h2
+                    key={idx}
                     className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight pt-6 pb-2"
                   >
                     {block.text}
@@ -169,8 +170,8 @@ export default function BlogPost() {
                 return (
                   <ul key={idx} className="space-y-4 pl-6 list-disc marker:text-indigo-500">
                     {block.items.map((item, lidx) => (
-                      <li 
-                        key={lidx} 
+                      <li
+                        key={lidx}
                         dangerouslySetInnerHTML={{ __html: item }}
                         className="text-slate-600 font-medium leading-relaxed pl-1"
                       />
@@ -212,15 +213,15 @@ export default function BlogPost() {
           <footer className="pt-10 border-t border-slate-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
             <div className="flex flex-wrap gap-2">
               {article.tags.map(tag => (
-                <span 
-                  key={tag} 
+                <span
+                  key={tag}
                   className="px-3 py-1 bg-slate-50 border border-slate-100 text-slate-500 rounded-lg text-xs font-bold"
                 >
                   #{tag}
                 </span>
               ))}
             </div>
-            
+
             <p className="text-slate-400 text-[11px] font-bold uppercase tracking-wider">
               Secure Sandbox Certified
             </p>

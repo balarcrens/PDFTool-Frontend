@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ShieldCheck, Zap, Heart, Globe, Users, Award } from "lucide-react";
+import { ShieldCheck, Zap, Heart, Globe, Award } from "lucide-react";
 
 export default function About() {
   return (

@@ -11,15 +11,10 @@ import {
   Loader2,
   Plus,
   ArrowRight,
-  Settings,
   Sparkles,
   CheckCircle2,
   Maximize2,
   Eye,
-  FileImage,
-  X,
-  FilePlus,
-  Layout,
   ShieldCheck
 } from "lucide-react";
 import { cn } from "../lib/utils";
@@ -142,7 +137,7 @@ export default function ImageToPDF() {
           </motion.div>
           <h1 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tight">Image to PDF</h1>
           <p className="text-lg text-slate-500 font-medium max-w-2xl mx-auto leading-relaxed">
-            Transform your photographs and digital assets into high-fidelity PDF documents. 
+            Transform your photographs and digital assets into high-fidelity PDF documents.
             Optimized for professional layouts with complete data privacy.
           </p>
         </div>
@@ -250,7 +245,7 @@ export default function ImageToPDF() {
                   className="card-ref !p-12 md:!p-20 text-center space-y-12"
                 >
                   <div className="decorative-circle !w-64 !h-64" />
-                  
+
                   <div className="flex flex-col items-center space-y-6">
                     <div className="w-20 h-20 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 shadow-inner">
                       <CheckCircle2 className="w-10 h-10" />

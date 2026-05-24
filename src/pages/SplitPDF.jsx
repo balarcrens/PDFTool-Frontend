@@ -1,22 +1,17 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { PDFDocument } from "pdf-lib";
 import FileUploader from "../components/FileUploader";
 import SEO from "../components/SEO";
 import ToolContentLayout from "../components/ToolContentLayout";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   FileText,
   Download,
   Loader2,
   Scissors,
-  CheckCircle2,
   Sparkles,
-  ArrowRight,
-  ChevronRight,
   Eye,
-  Plus,
   ArrowLeftRight,
-  X,
   ShieldCheck
 } from "lucide-react";
 import { cn } from "../lib/utils";
@@ -28,8 +23,6 @@ export default function SplitPDF() {
   const [results, setResults] = useState([]);
   const [splitMode, setSplitMode] = useState("all");
   const [range, setRange] = useState("");
-  const [previewUrl, setPreviewUrl] = useState(null);
-  const [previewName, setPreviewName] = useState("");
 
   const handleFileSelected = (files) => {
     if (files.length > 0) {

@@ -5,23 +5,20 @@ import FileUploader from "../components/FileUploader";
 import SEO from "../components/SEO";
 import ToolContentLayout from "../components/ToolContentLayout";
 import { motion, AnimatePresence } from "framer-motion";
-import { 
-  FileText, 
-  Download, 
-  Loader2, 
-  CheckCircle2, 
-  Sparkles, 
-  ArrowRight, 
-  Eye, 
-  FileCode, 
-  RefreshCcw, 
-  ShieldCheck, 
+import {
+  FileText,
+  Download,
+  Loader2,
+  CheckCircle2,
+  Sparkles,
+  ArrowRight,
+  Eye,
+  ShieldCheck,
   Brain,
   Zap,
   Globe,
   FileCheck
 } from "lucide-react";
-import { cn } from "../lib/utils";
 import confetti from "canvas-confetti";
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker;
@@ -88,7 +85,7 @@ export default function PDFToWord() {
       for (let i = 1; i <= totalPages; i++) {
         const page = await pdf.getPage(i);
         const textContent = await page.getTextContent();
-        
+
         // Group items that are close vertically into paragraphs
         let lines = {};
         textContent.items.forEach(item => {
@@ -105,7 +102,7 @@ export default function PDFToWord() {
           // Sort items in each line horizontally (left to right)
           const lineItems = lines[y].sort((a, b) => a.transform[4] - b.transform[4]);
           const lineText = lineItems.map(item => item.str).join(" ");
-          
+
           if (lineText.trim().length > 0) {
             // Check if it looks like a heading (short text, uppercase or strong text)
             if (lineText.trim().length < 50 && (lineText === lineText.toUpperCase() || lineItems[0].height > 12)) {
@@ -251,8 +248,8 @@ export default function PDFToWord() {
 
   return (
     <>
-      <SEO 
-        title="Convert PDF to Word Online (100% Local & Secure)" 
+      <SEO
+        title="Convert PDF to Word Online (100% Local & Secure)"
         description="Convert PDF files to editable Microsoft Word files instantly. 100% browser-based processing keeps your documents private and fully secure. Try now!"
         keywords="pdf to word, convert pdf to doc, secure pdf to word, local pdf converter, docx converter"
         schemaData={webAppSchema}
@@ -271,15 +268,15 @@ export default function PDFToWord() {
           </motion.div>
           <h1 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tight">PDF to Word</h1>
           <p className="text-lg text-slate-500 font-medium max-w-2xl mx-auto leading-relaxed">
-            Extract vector text fields and compile them into editable Microsoft Word documents. 
+            Extract vector text fields and compile them into editable Microsoft Word documents.
             Runs 100% locally inside your browser for maximum privacy.
           </p>
         </div>
 
         {!file ? (
-          <FileUploader 
-            onFilesSelected={handleFileSelected} 
-            multiple={false} 
+          <FileUploader
+            onFilesSelected={handleFileSelected}
+            multiple={false}
             title="Import PDF File"
             description="Drag and drop your PDF document here"
           />
@@ -336,7 +333,7 @@ export default function PDFToWord() {
                   className="card-ref !p-12 md:!p-20 text-center space-y-12"
                 >
                   <div className="decorative-circle !w-64 !h-64" />
-                  
+
                   <div className="flex flex-col items-center space-y-6">
                     <div className="w-20 h-20 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 shadow-inner">
                       <CheckCircle2 className="w-10 h-10" />
@@ -365,7 +362,7 @@ export default function PDFToWord() {
                         <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">In-Browser Markup</p>
                       </div>
                     </button>
-                    
+
                     <a
                       href={docUrl}
                       download={stats.fileName}

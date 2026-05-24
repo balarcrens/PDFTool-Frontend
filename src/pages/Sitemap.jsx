@@ -38,7 +38,7 @@ export default function Sitemap() {
 
   return (
     <>
-      <SEO 
+      <SEO
         title="Sitemap"
         description="Browse all available tools, articles, and documentation pages on our interactive XML sitemap index."
         keywords="sitemap, site index, pdf tools directory, privacy links, support desk"
@@ -110,8 +110,8 @@ function SitemapColumn({ icon: Icon, title, children }) {
 
 function SitemapLink({ to, label }) {
   return (
-    <Link 
-      to={to} 
+    <Link
+      to={to}
       className="flex items-center justify-between p-3.5 rounded-xl text-slate-500 hover:text-indigo-600 hover:bg-slate-50 font-semibold text-[13px] border border-transparent hover:border-slate-100/50 group transition-all"
     >
       <span>{label}</span>

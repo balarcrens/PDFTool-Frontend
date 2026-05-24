@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Mail, MessageSquare, Send, MapPin, Phone } from "lucide-react";
+import { Mail, MessageSquare, Send, MapPin } from "lucide-react";
 import { useState } from "react";
 import confetti from "canvas-confetti";
 
@@ -42,7 +42,7 @@ export default function Contact() {
             <ContactInfo
               icon={<Mail className="w-6 h-6" />}
               title="Official Communications"
-              detail="support@iFlexPDF.pro"
+              detail="iflexpdf@gmail.com"
               description="Enterprise-grade support"
             />
             <ContactInfo

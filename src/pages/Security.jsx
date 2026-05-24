@@ -1,13 +1,11 @@
-import React from "react";
 import { motion } from "framer-motion";
-import { 
-  Lock, 
-  ShieldCheck, 
-  Cpu, 
-  Trash2, 
-  ShieldAlert, 
-  CheckCircle2, 
-  Fingerprint,
+import {
+  Lock,
+  ShieldCheck,
+  Cpu,
+  Trash2,
+  ShieldAlert,
+  CheckCircle2,
   Activity
 } from "lucide-react";
 
@@ -55,7 +53,7 @@ export default function Security() {
     <div className="py-20 space-y-32">
       {/* Hero Section */}
       <section className="container-professional text-center space-y-8">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-50 text-slate-500 font-bold text-[11px] uppercase tracking-widest border border-slate-100"
@@ -64,7 +62,7 @@ export default function Security() {
           Enterprise-Grade Security
         </motion.div>
 
-        <motion.h1 
+        <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
@@ -73,7 +71,7 @@ export default function Security() {
           Your Documents, Secured.
         </motion.h1>
 
-        <motion.p 
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
@@ -98,7 +96,7 @@ export default function Security() {
             >
               {/* Ghost Icon Background */}
               <feature.ghostIcon className="absolute -top-4 -right-4 w-32 h-32 text-slate-50 opacity-[0.03] group-hover:opacity-[0.07] transition-opacity duration-500" />
-              
+
               <div className="relative z-10 space-y-6">
                 <div className="w-12 h-12 bg-slate-50 rounded-xl flex items-center justify-center text-indigo-600 border border-slate-100">
                   <feature.icon className="w-6 h-6" />
@@ -120,7 +118,7 @@ export default function Security() {
             {/* Left Content */}
             <div className="p-12 md:p-20 space-y-12 bg-white">
               <h2 className="text-3xl md:text-4xl font-black text-slate-900">Why Professionals Trust Us</h2>
-              
+
               <div className="space-y-10">
                 {trustPoints.map((point) => (
                   <div key={point.title} className="flex items-start gap-5">
@@ -147,7 +145,7 @@ export default function Security() {
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="w-[300px] h-[300px] border-2 border-indigo-100/50 rounded-full" />
               </div>
-              
+
               <motion.div
                 initial={{ scale: 0.8, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
@@ -155,7 +153,7 @@ export default function Security() {
               >
                 <div className="relative">
                   <ShieldCheck className="w-16 h-16 text-indigo-600" />
-                  <motion.div 
+                  <motion.div
                     animate={{ opacity: [1, 0.5, 1] }}
                     transition={{ duration: 2, repeat: Infinity }}
                     className="absolute -bottom-1 -right-1 w-6 h-6 bg-[#0047AB] rounded-full border-4 border-white flex items-center justify-center"

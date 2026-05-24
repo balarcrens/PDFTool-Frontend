@@ -28,20 +28,20 @@ export default function NotFound() {
       <div className="space-y-6 relative z-10 max-w-lg">
         <h1 className="h2-classic">Resource Not Found</h1>
         <p className="p-classic text-lg">
-          The document or utility you are searching for does not exist in our current 
+          The document or utility you are searching for does not exist in our current
           directory. It may have been moved or the URL might be incorrect.
         </p>
       </div>
 
       <div className="flex flex-col sm:flex-row items-center gap-4 relative z-10">
-        <Link 
-          to="/" 
+        <Link
+          to="/"
           className="btn-primary py-4 px-10 flex items-center gap-3 shadow-indigo-100 group"
         >
           <Home className="w-5 h-5" />
           Return to Dashboard
         </Link>
-        <button 
+        <button
           onClick={() => window.history.back()}
           className="btn-secondary py-4 px-10 flex items-center gap-3"
         >

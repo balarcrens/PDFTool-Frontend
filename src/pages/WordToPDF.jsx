@@ -5,23 +5,18 @@ import FileUploader from "../components/FileUploader";
 import SEO from "../components/SEO";
 import ToolContentLayout from "../components/ToolContentLayout";
 import { motion, AnimatePresence } from "framer-motion";
-import { 
-  FileText, 
-  Download, 
-  Loader2, 
+import {
+  FileText,
+  Download,
+  Loader2,
   CheckCircle2,
   Sparkles,
   ArrowRight,
   Eye,
   FileCode,
-  FilePlus,
-  RefreshCcw,
-  Layout,
   ShieldCheck,
   Zap,
-  X
 } from "lucide-react";
-import { cn } from "../lib/utils";
 import confetti from "canvas-confetti";
 
 export default function WordToPDF() {
@@ -39,23 +34,23 @@ export default function WordToPDF() {
 
   const convertToPdf = async () => {
     if (!file) return;
-    
+
     setIsProcessing(true);
     try {
       const arrayBuffer = await file.arrayBuffer();
-      
+
       // Convert .docx to HTML with better options
-      const result = await mammoth.convertToHtml({ 
+      const result = await mammoth.convertToHtml({
         arrayBuffer: arrayBuffer,
         includeDefaultStyleMap: true,
       });
-      
+
       const html = result.value;
-      
+
       // Inject HTML into a hidden div for rendering
       if (hiddenContentRef.current) {
         hiddenContentRef.current.innerHTML = html;
-        
+
         // Use html2pdf for high-fidelity conversion
         const opt = {
           margin: [15, 15, 15, 15],
@@ -69,7 +64,7 @@ export default function WordToPDF() {
         const pdfBlob = await html2pdf().from(hiddenContentRef.current).set(opt).output('blob');
         const url = URL.createObjectURL(pdfBlob);
         setPdfUrl(url);
-        
+
         confetti({
           particleCount: 150,
           spread: 100,
@@ -104,7 +99,7 @@ export default function WordToPDF() {
           </motion.div>
           <h1 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tight">Word to PDF</h1>
           <p className="text-lg text-slate-500 font-medium max-w-2xl mx-auto leading-relaxed">
-            Convert Microsoft Word documents into high-fidelity PDF files while preserving complex layouts, 
+            Convert Microsoft Word documents into high-fidelity PDF files while preserving complex layouts,
             fonts, and digital assets. Enterprise-grade local rendering.
           </p>
         </div>
@@ -167,7 +162,7 @@ export default function WordToPDF() {
                   className="card-ref !p-12 md:!p-20 text-center space-y-12"
                 >
                   <div className="decorative-circle !w-64 !h-64" />
-                  
+
                   <div className="flex flex-col items-center space-y-6">
                     <div className="w-20 h-20 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 shadow-inner">
                       <CheckCircle2 className="w-10 h-10" />
@@ -191,7 +186,7 @@ export default function WordToPDF() {
                         <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">In-Browser Preview</p>
                       </div>
                     </button>
-                    
+
                     <a
                       href={pdfUrl}
                       download={file.name.replace(".docx", ".pdf")}
@@ -243,12 +238,12 @@ export default function WordToPDF() {
 
       {/* Hidden container for PDF rendering - Styled to mimic Word */}
       <div style={{ position: "absolute", left: "-9999px", top: 0, zIndex: -100 }}>
-        <div 
-          ref={hiddenContentRef} 
-          style={{ 
+        <div
+          ref={hiddenContentRef}
+          style={{
             width: "794px", // A4 width in pixels at 96dpi
-            padding: "40px", 
-            background: "white", 
+            padding: "40px",
+            background: "white",
             color: "black",
             fontFamily: "'Times New Roman', Times, serif",
             lineHeight: "1.5"

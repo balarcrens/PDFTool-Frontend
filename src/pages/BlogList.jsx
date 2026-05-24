@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { blogArticles } from "../data/blogArticles";
 import SEO from "../components/SEO";
-import { Search, Calendar, User, Clock, ArrowRight, BookOpen, Hash } from "lucide-react";
+import { Search, Clock, ArrowRight, BookOpen } from "lucide-react";
 import { motion } from "framer-motion";
 import { cn } from "../lib/utils";
 
@@ -13,9 +13,9 @@ export default function BlogList() {
   const categories = ["All", "Tutorials", "Deep Dives", "Education"];
 
   const filteredArticles = blogArticles.filter(art => {
-    const matchesSearch = art.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                          art.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          art.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
+    const matchesSearch = art.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      art.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      art.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
     const matchesCategory = activeCategory === "All" || art.category === activeCategory;
     return matchesSearch && matchesCategory;
   });
@@ -33,15 +33,15 @@ export default function BlogList() {
 
   return (
     <>
-      <SEO 
-        title="Insights Blog & PDF Productivity Guides" 
+      <SEO
+        title="Insights Blog & PDF Productivity Guides"
         description="Access professional tutorials and comparisons to master your PDF workflow. Learn how to compress, split, and secure files locally."
         keywords="pdf tips, office hacks, compress pdf guides, study tutorials, docx vs pdf"
         schemaData={listSchema}
       />
 
       <div className="container-professional py-16 md:py-24 space-y-16">
-        
+
         {/* Blog Hero section */}
         <div className="text-center max-w-3xl mx-auto space-y-6">
           <motion.div
@@ -70,8 +70,8 @@ export default function BlogList() {
                 onClick={() => setActiveCategory(cat)}
                 className={cn(
                   "px-5 py-2.5 rounded-xl font-bold text-sm transition-all focus:outline-none",
-                  activeCategory === cat 
-                    ? "bg-[#0047AB] text-white shadow-lg shadow-indigo-100" 
+                  activeCategory === cat
+                    ? "bg-[#0047AB] text-white shadow-lg shadow-indigo-100"
                     : "text-slate-500 hover:text-slate-900 hover:bg-slate-100/50"
                 )}
               >

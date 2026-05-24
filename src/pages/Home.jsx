@@ -11,14 +11,12 @@ import {
   ShieldCheck,
   Zap,
   RotateCw,
-  Sparkles,
   FileDown,
   ClipboardList,
   Unlock,
   Shield,
   FileCode,
   CheckCircle2,
-  Lock,
   ChevronDown,
   BookOpen,
   Clock,
@@ -121,24 +119,6 @@ const tools = [
     description: "Remove pages from your PDF documents visually and compile optimized files in-memory.",
     icon: Trash2,
     path: "/delete-pages",
-  },
-];
-
-const features = [
-  {
-    title: "Privacy First",
-    description: "All document processing happens locally in your browser. Files never leave your machine.",
-    icon: ShieldCheck,
-  },
-  {
-    title: "Instant Execution",
-    description: "No queues, no uploads, no downloads. Get results in milliseconds with browser-side logic.",
-    icon: Zap,
-  },
-  {
-    title: "Enterprise Grade",
-    description: "Output quality optimized for professional standards and business-critical documents.",
-    icon: Sparkles,
   },
 ];
 

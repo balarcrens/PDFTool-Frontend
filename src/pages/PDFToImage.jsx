@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState } from "react";
 import * as pdfjsLib from "pdfjs-dist";
 import pdfWorker from "pdfjs-dist/build/pdf.worker.mjs?url";
@@ -9,13 +10,8 @@ import {
   FileImage,
   Download,
   Loader2,
-  ChevronRight,
   DownloadCloud,
   Sparkles,
-  Settings,
-  CheckCircle2,
-  FileText,
-  X,
   ShieldCheck,
   Zap
 } from "lucide-react";
@@ -108,7 +104,7 @@ export default function PDFToImage() {
           </motion.div>
           <h1 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tight">PDF to Image</h1>
           <p className="text-lg text-slate-500 font-medium max-w-2xl mx-auto leading-relaxed">
-            Transform your PDF pages into high-resolution, professional-grade images. 
+            Transform your PDF pages into high-resolution, professional-grade images.
             Perfect for presentations, web assets, and archival purposes.
           </p>
         </div>

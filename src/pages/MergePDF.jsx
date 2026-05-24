@@ -6,12 +6,10 @@ import ToolContentLayout from "../components/ToolContentLayout";
 import { motion, AnimatePresence, Reorder } from "framer-motion";
 import {
   FileText,
-  Trash2,
   GripVertical,
   Download,
   Loader2,
   Plus,
-  ArrowRight,
   CheckCircle2,
   Sparkles,
   RefreshCcw,
@@ -22,7 +20,6 @@ import {
   Combine,
   ShieldCheck
 } from "lucide-react";
-import { cn } from "../lib/utils";
 import confetti from "canvas-confetti";
 
 export default function MergePDF() {

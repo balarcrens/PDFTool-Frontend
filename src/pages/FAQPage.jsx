@@ -56,7 +56,7 @@ export default function FAQPage() {
 
   return (
     <>
-      <SEO 
+      <SEO
         title="Frequently Asked Questions (FAQ)"
         description="Find comprehensive answers about our browser-local PDF processing pipeline, security protocols, file limits, and privacy guarantees."
         keywords="pdf tool faq, secure pdf processing, local pdf editor, free pdf tools online, offline pdf"
@@ -86,8 +86,8 @@ export default function FAQPage() {
           {faqs.map((faq, idx) => {
             const isOpen = openIndex === idx;
             return (
-              <div 
-                key={idx} 
+              <div
+                key={idx}
                 className={cn(
                   "bg-white border rounded-[2rem] overflow-hidden transition-all duration-300",
                   isOpen ? "border-indigo-600 shadow-xl shadow-indigo-100/50" : "border-slate-100 hover:border-slate-200"
@@ -108,11 +108,11 @@ export default function FAQPage() {
                       {faq.question}
                     </span>
                   </div>
-                  <ChevronDown 
+                  <ChevronDown
                     className={cn(
-                      "w-5 h-5 text-slate-400 shrink-0 transition-transform duration-500", 
+                      "w-5 h-5 text-slate-400 shrink-0 transition-transform duration-500",
                       isOpen && "rotate-180 text-indigo-600"
-                    )} 
+                    )}
                   />
                 </button>
                 <AnimatePresence initial={false}>

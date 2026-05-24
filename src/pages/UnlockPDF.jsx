@@ -10,16 +10,13 @@ import {
   Loader2,
   CheckCircle2,
   Lock,
-  ArrowRight,
   Eye,
-  FileText,
   Key,
   ShieldAlert,
   ShieldCheck,
   Zap,
   X
 } from "lucide-react";
-import { cn } from "../lib/utils";
 import confetti from "canvas-confetti";
 
 export default function UnlockPDF() {
@@ -90,7 +87,7 @@ export default function UnlockPDF() {
         keywords="unlock pdf, remove pdf password, decrypt pdf, unlock pdf restrictions, local pdf unlocker"
         schemaData={webAppSchema}
       />
-      
+
       <div className="container-professional space-y-16 py-16 md:py-24">
         {/* Tool Header */}
         <div className="text-center space-y-6">
@@ -187,7 +184,7 @@ export default function UnlockPDF() {
                   className="card-ref !p-12 md:!p-20 text-center space-y-12"
                 >
                   <div className="decorative-circle !w-64 !h-64" />
-                  
+
                   <div className="flex flex-col items-center space-y-6">
                     <div className="w-20 h-20 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 shadow-inner">
                       <CheckCircle2 className="w-10 h-10" />

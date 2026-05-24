@@ -5,7 +5,7 @@ import SEO from "../components/SEO";
 export default function Cookies() {
   return (
     <>
-      <SEO 
+      <SEO
         title="Cookie Policy"
         description="Learn how iFlexPDF uses cookies and local browser storage to manage preferences and process documents securely."
         keywords="cookies policy, local storage, browser sandboxing, privacy compliance, secure document tools"
@@ -38,8 +38,8 @@ export default function Cookies() {
               <h2 className="text-3xl font-black text-indigo-950 tracking-tight">1. What Are Cookies & Local Storage?</h2>
             </div>
             <p className="text-slate-500 leading-relaxed font-semibold text-[17px]">
-              Cookies are small text files stored by your browser when you visit a website. 
-              **Local Storage** is a modern browser technology that allows websites to store larger amounts of data directly on your device, which is never transmitted over the internet to any server. 
+              Cookies are small text files stored by your browser when you visit a website.
+              **Local Storage** is a modern browser technology that allows websites to store larger amounts of data directly on your device, which is never transmitted over the internet to any server.
               Because iFlexPDF is a 100% local-first tool suite, we rely on Local Storage to maintain your options and cache files temporarily within active RAM.
             </p>
           </section>
@@ -55,13 +55,13 @@ export default function Cookies() {
               Unlike other platforms, **we do not use tracking or targeting cookies** for behavioral marketing or advertisement tracking. Any storage is strictly functional:
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
-              <CookieCard 
-                title="Strictly Necessary Storage" 
-                desc="Used to hold temporary file arrays and operational status while you execute PDF operations. Cleared automatically upon closing the tab." 
+              <CookieCard
+                title="Strictly Necessary Storage"
+                desc="Used to hold temporary file arrays and operational status while you execute PDF operations. Cleared automatically upon closing the tab."
               />
-              <CookieCard 
-                title="Preference Storage" 
-                desc="Remembers your preferences, such as selected layout coordinates, custom text watermark options, and tool interface history." 
+              <CookieCard
+                title="Preference Storage"
+                desc="Remembers your preferences, such as selected layout coordinates, custom text watermark options, and tool interface history."
               />
             </div>
           </section>

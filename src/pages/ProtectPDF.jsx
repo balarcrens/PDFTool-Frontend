@@ -12,7 +12,6 @@ import {
   Loader2,
   CheckCircle2,
   ShieldCheck,
-  ArrowRight,
   Eye,
   FileText,
   Key,
@@ -20,7 +19,6 @@ import {
   Zap,
   X
 } from "lucide-react";
-import { cn } from "../lib/utils";
 import confetti from "canvas-confetti";
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker;
@@ -116,7 +114,7 @@ export default function ProtectPDF() {
         keywords="protect pdf, password protect pdf, encrypt pdf, secure pdf, local pdf security, lock pdf"
         schemaData={webAppSchema}
       />
-      
+
       <div className="container-professional space-y-16 py-16 md:py-24">
         {/* Tool Header */}
         <div className="text-center space-y-6">
@@ -130,7 +128,7 @@ export default function ProtectPDF() {
           </motion.div>
           <h1 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tight">Protect PDF Document</h1>
           <p className="text-lg text-slate-500 font-medium max-w-2xl mx-auto leading-relaxed">
-            Implement robust encryption by adding a secure password to your documents. 
+            Implement robust encryption by adding a secure password to your documents.
             Enterprise-grade protection that remains local to your device.
           </p>
         </div>
@@ -157,8 +155,8 @@ export default function ProtectPDF() {
                   </div>
                 </div>
               </div>
-              <button 
-                onClick={() => setFile(null)} 
+              <button
+                onClick={() => setFile(null)}
                 className="p-3 text-slate-300 hover:text-red-500 hover:bg-red-50 rounded-xl transition-all border border-transparent hover:border-red-100"
               >
                 <X className="w-5 h-5" />
@@ -185,7 +183,7 @@ export default function ProtectPDF() {
                 <div className="flex items-start gap-3 p-4 bg-amber-50 rounded-2xl border border-amber-100">
                   <ShieldAlert className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
                   <p className="text-[11px] font-medium text-amber-700 leading-relaxed">
-                    <span className="font-bold uppercase tracking-wider mr-1 text-amber-800">Important:</span> 
+                    <span className="font-bold uppercase tracking-wider mr-1 text-amber-800">Important:</span>
                     This password cannot be recovered if lost. Please store it securely. Encryption happens entirely in your browser.
                   </p>
                 </div>
@@ -213,7 +211,7 @@ export default function ProtectPDF() {
                   className="card-ref !p-12 md:!p-20 text-center space-y-12"
                 >
                   <div className="decorative-circle !w-64 !h-64" />
-                  
+
                   <div className="flex flex-col items-center space-y-6">
                     <div className="w-20 h-20 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 shadow-inner">
                       <CheckCircle2 className="w-10 h-10" />

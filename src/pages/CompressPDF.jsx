@@ -317,7 +317,7 @@ export default function CompressPDF() {
   );
 }
 
-function CompressionCard({ level, active, onClick, title, description, icon }) {
+function CompressionCard({ active, onClick, title, description, icon }) {
   return (
     <div
       onClick={onClick}

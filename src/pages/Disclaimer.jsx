@@ -5,7 +5,7 @@ import SEO from "../components/SEO";
 export default function Disclaimer() {
   return (
     <>
-      <SEO 
+      <SEO
         title="Disclaimer & DMCA Policy"
         description="Review the legal disclaimer, liability boundaries, and DMCA copyright reporting procedures for iFlexPDF."
         keywords="legal disclaimer, DMCA policy, copyright infringement, document liability, client-side tools"
@@ -38,8 +38,8 @@ export default function Disclaimer() {
               <h2 className="text-3xl font-black text-indigo-950 tracking-tight">1. General Disclaimer</h2>
             </div>
             <p className="text-slate-500 leading-relaxed font-semibold text-[17px]">
-              iFlexPDF is a software suite providing file conversion, organization, and encryption features. 
-              **All operations are executed entirely client-side** inside the user's browser via high-performance JavaScript engines. 
+              iFlexPDF is a software suite providing file conversion, organization, and encryption features.
+              **All operations are executed entirely client-side** inside the user's browser via high-performance JavaScript engines.
               We do not possess, store, host, or monitor the documents you process. Consequently, we take zero responsibility for the content of your documents, their confidentiality, or any outcomes stemming from their modification.
             </p>
           </section>
@@ -52,7 +52,7 @@ export default function Disclaimer() {
               <h2 className="text-3xl font-black text-indigo-950 tracking-tight">2. DMCA & Copyright Policy</h2>
             </div>
             <p className="text-slate-500 leading-relaxed font-semibold text-[17px]">
-              Because **our servers do not upload, host, transmit, or cache any user documents**, it is technically impossible for copyright-infringing materials to exist on our servers. 
+              Because **our servers do not upload, host, transmit, or cache any user documents**, it is technically impossible for copyright-infringing materials to exist on our servers.
               However, we highly respect intellectual property rights. If you believe our platform's software or assets infringe upon your copyright, you may submit a formal notification containing:
             </p>
             <ul className="space-y-4 pt-2">
@@ -78,11 +78,11 @@ export default function Disclaimer() {
                 <h4 className="text-xl font-black mb-1">Legal Support Desk</h4>
                 <p className="text-indigo-300 text-xs font-bold uppercase tracking-wider">Average response time: &lt; 24 Hours</p>
               </div>
-              <a 
-                href="mailto:support@iFlexPDF.com" 
+              <a
+                href="mailto:iflexpdf@gmail.com"
                 className="px-8 py-3.5 bg-white text-indigo-950 font-black rounded-xl hover:bg-indigo-50 transition-all text-sm shadow-md"
               >
-                support@iFlexPDF.com
+                iflexpdf@gmail.com
               </a>
             </div>
           </section>
