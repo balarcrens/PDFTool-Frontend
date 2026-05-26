@@ -2,7 +2,6 @@ import { Link, useLocation } from "react-router-dom";
 import { FileText, Menu, X, ChevronDown, Combine, Scissors, FileDown, Layout, ClipboardList, ImageIcon, FileCode, Lock, Unlock, RotateCw, Type, Hash, Trash2 } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
-import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "../lib/utils";
 
 const toolsLinks = [
@@ -81,15 +80,15 @@ export default function Navbar() {
           {/* Logo */}
           <Link
             to="/"
-            className="flex items-center gap-2.5 group focus-visible:ring-2 focus-visible:ring-indigo-600 focus-visible:ring-offset-2 rounded-xl px-1 py-1"
+            className="flex justify-center items-center gap-2.5 group focus-visible:ring-2 focus-visible:ring-indigo-600 focus-visible:ring-offset-2 rounded-xl px-1 py-1"
             aria-label="iFlexPDF Home"
           >
             <img
-              src="/icon.png"
+              src="/icon.webp"
               alt="iFlexPDF Logo"
-              className="w-9 h-9 object-contain select-none transition-transform duration-300 group-hover:scale-105"
-              width="36"
-              height="36"
+              className="object-contain select-none transition-transform duration-300 group-hover:scale-105"
+              width="28"
+              height="28"
               loading="eager"
             />
             <span className="text-xl font-extrabold tracking-tight text-slate-900 leading-none">
@@ -114,38 +113,32 @@ export default function Navbar() {
                 <ChevronDown className={cn("w-3.5 h-3.5 transition-transform duration-300 text-slate-400 group-hover:text-slate-900", isToolsOpen && "rotate-180 text-indigo-600")} />
               </button>
 
-              <AnimatePresence>
-                {isToolsOpen && (
-                  <motion.div
-                    ref={dropdownRef}
-                    initial={{ opacity: 0, y: 10, scale: 0.98 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 10, scale: 0.98 }}
-                    transition={{ duration: 0.15, ease: "easeOut" }}
-                    className="absolute top-full left-0 mt-3 w-[580px] bg-white border border-slate-100 rounded-2xl shadow-premium-xl p-5 grid grid-cols-2 gap-1.5 z-50 max-h-[460px] overflow-y-auto custom-scrollbar"
-                  >
-                    <div className="col-span-2 px-3 pb-2 border-b border-slate-50 mb-2.5">
-                      <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Enterprise Toolbox</p>
-                    </div>
-                    {toolsLinks.map((link) => (
-                      <Link
-                        key={link.path}
-                        to={link.path}
-                        onClick={() => setIsToolsOpen(false)}
-                        className="flex items-center gap-3.5 p-2.5 rounded-xl hover:bg-slate-50/70 transition-all duration-200 group focus-visible:ring-2 focus-visible:ring-indigo-600"
-                      >
-                        <div className="w-10 h-10 bg-slate-50 border border-slate-100 rounded-xl flex items-center justify-center text-slate-500 transition-all duration-200 group-hover:bg-indigo-600 group-hover:text-white group-hover:border-indigo-600 group-hover:shadow-md group-hover:shadow-indigo-100 shrink-0">
-                          <link.icon className="w-4.5 h-4.5" />
-                        </div>
-                        <div className="min-w-0">
-                          <p className="text-[13.5px] font-semibold text-slate-800 leading-tight group-hover:text-indigo-600 transition-colors mb-0.5">{link.name}</p>
-                          <p className="text-[10.5px] font-medium text-slate-400 uppercase tracking-wide">100% Secure & Local</p>
-                        </div>
-                      </Link>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              {isToolsOpen && (
+                <div
+                  ref={dropdownRef}
+                  className="absolute top-full left-0 mt-3 w-[580px] bg-white border border-slate-100 rounded-2xl shadow-premium-xl p-5 grid grid-cols-2 gap-1.5 z-50 max-h-[460px] overflow-y-auto custom-scrollbar animate-dropdown"
+                >
+                  <div className="col-span-2 px-3 pb-2 border-b border-slate-50 mb-2.5">
+                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Enterprise Toolbox</p>
+                  </div>
+                  {toolsLinks.map((link) => (
+                    <Link
+                      key={link.path}
+                      to={link.path}
+                      onClick={() => setIsToolsOpen(false)}
+                      className="flex items-center gap-3.5 p-2.5 rounded-xl hover:bg-slate-50/70 transition-all duration-200 group focus-visible:ring-2 focus-visible:ring-indigo-600"
+                    >
+                      <div className="w-10 h-10 bg-slate-50 border border-slate-100 rounded-xl flex items-center justify-center text-slate-500 transition-all duration-200 group-hover:bg-indigo-600 group-hover:text-white group-hover:border-indigo-600 group-hover:shadow-md group-hover:shadow-indigo-100 shrink-0">
+                        <link.icon className="w-4.5 h-4.5" />
+                      </div>
+                      <div className="min-w-0">
+                        <p className="text-[13.5px] font-semibold text-slate-800 leading-tight group-hover:text-indigo-600 transition-colors mb-0.5">{link.name}</p>
+                        <p className="text-[10.5px] font-medium text-slate-400 uppercase tracking-wide">100% Secure & Local</p>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              )}
             </div>
 
             <NavLink to="/blog" active={location.pathname.startsWith("/blog")}>Blog</NavLink>
@@ -179,104 +172,99 @@ export default function Navbar() {
 
       {/* Mobile Drawer Menu (Rendered at Body root to bypass layout/sticky restrictions) */}
       {typeof document !== "undefined" && createPortal(
-        <AnimatePresence>
-          {isMenuOpen && (
-            <>
-              {/* Backdrop Blur Overlay */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
+        <>
+          {/* Backdrop Blur Overlay */}
+          <div
+            onClick={() => setIsMenuOpen(false)}
+            className={cn(
+              "fixed inset-0 bg-slate-950/20 backdrop-blur-[3px] z-[998] lg:hidden transition-opacity duration-300",
+              isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+            )}
+            aria-hidden="true"
+          />
+
+          {/* Sidebar Slide-out Panel */}
+          <div
+            id="mobile-drawer"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Navigation menu drawer"
+            className={cn(
+              "fixed top-0 right-0 h-full w-[320px] max-w-[85vw] bg-white shadow-premium-xl z-[999] flex flex-col p-6 border-l border-slate-100 lg:hidden transition-transform duration-300 ease-in-out",
+              isMenuOpen ? "translate-x-0" : "translate-x-full"
+            )}
+          >
+            {/* Drawer Header */}
+            <div className="flex items-center justify-between mb-6 pb-4 border-b border-slate-100">
+              <Link to="/" onClick={() => setIsMenuOpen(false)} className="flex items-center gap-2.5 outline-none focus-visible:ring-2 focus-visible:ring-indigo-600 rounded-lg py-0.5 px-0.5">
+                <img src="/icon.png" alt="iFlexPDF" className="w-7 h-7 object-contain select-none" width="28" height="28" loading="lazy" decoding="async" />
+                <span className="text-lg font-extrabold tracking-tight text-slate-900 leading-none">
+                  iFlexPDF<span className="text-indigo-600">.</span>
+                </span>
+              </Link>
+              <button
                 onClick={() => setIsMenuOpen(false)}
-                className="fixed inset-0 bg-slate-950/20 backdrop-blur-[3px] z-[998] lg:hidden"
-                aria-hidden="true"
-              />
-
-              {/* Sidebar Slide-out Panel */}
-              <motion.div
-                id="mobile-drawer"
-                role="dialog"
-                aria-modal="true"
-                aria-label="Navigation menu drawer"
-                initial={{ x: "100%" }}
-                animate={{ x: 0 }}
-                exit={{ x: "100%" }}
-                transition={{ type: "spring", damping: 30, stiffness: 350 }}
-                className="fixed top-0 right-0 h-full w-[320px] max-w-[85vw] bg-white shadow-premium-xl z-[999] flex flex-col p-6 border-l border-slate-100 lg:hidden"
+                className="p-2 text-slate-500 hover:text-slate-900 hover:bg-slate-50 rounded-xl transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-indigo-600"
+                aria-label="Close menu drawer"
               >
-                {/* Drawer Header */}
-                <div className="flex items-center justify-between mb-6 pb-4 border-b border-slate-100">
-                  <Link to="/" onClick={() => setIsMenuOpen(false)} className="flex items-center gap-2.5 outline-none focus-visible:ring-2 focus-visible:ring-indigo-600 rounded-lg py-0.5 px-0.5">
-                    <img src="/icon.png" alt="iFlexPDF" className="w-7 h-7 object-contain select-none" width="28" height="28" />
-                    <span className="text-lg font-extrabold tracking-tight text-slate-900 leading-none">
-                      iFlexPDF<span className="text-indigo-600">.</span>
-                    </span>
-                  </Link>
-                  <button
-                    onClick={() => setIsMenuOpen(false)}
-                    className="p-2 text-slate-500 hover:text-slate-900 hover:bg-slate-50 rounded-xl transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-indigo-600"
-                    aria-label="Close menu drawer"
-                  >
-                    <X className="w-5 h-5" />
-                  </button>
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Scrollable Navigation Area */}
+            <div className="flex-grow overflow-y-auto pr-1 flex flex-col gap-1 custom-scrollbar">
+              <MobileNavLink to="/" onClick={() => setIsMenuOpen(false)}>Home</MobileNavLink>
+              <MobileNavLink to="/blog" onClick={() => setIsMenuOpen(false)}>Blog Guides</MobileNavLink>
+              <MobileNavLink to="/security" onClick={() => setIsMenuOpen(false)}>Security Protocols</MobileNavLink>
+              <MobileNavLink to="/about" onClick={() => setIsMenuOpen(false)}>About Us</MobileNavLink>
+
+              <div className="h-px bg-slate-100 my-4" aria-hidden="true"></div>
+              <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest px-3 mb-2.5 select-none">Professional Toolbox</p>
+
+              <div className="grid grid-cols-1 gap-1 max-h-[calc(100vh-320px)] overflow-y-auto pr-0.5 custom-scrollbar">
+                {toolsLinks.map((link) => {
+                  const isToolActive = location.pathname === link.path;
+                  return (
+                    <Link
+                      key={link.path}
+                      to={link.path}
+                      onClick={() => setIsMenuOpen(false)}
+                      className={cn(
+                        "flex items-center gap-3 px-3 py-2.5 rounded-xl font-semibold transition-all duration-200 text-[13px] border border-transparent outline-none focus-visible:ring-2 focus-visible:ring-indigo-600",
+                        isToolActive
+                          ? "text-indigo-600 bg-indigo-50/40 border-indigo-100/30"
+                          : "text-slate-600 hover:text-slate-900 hover:bg-slate-50/70"
+                      )}
+                    >
+                      <div className={cn(
+                        "w-8 h-8 rounded-lg flex items-center justify-center border shrink-0 transition-colors duration-200",
+                        isToolActive
+                          ? "bg-indigo-600 text-white border-indigo-600"
+                          : "bg-slate-50 text-slate-500 border-slate-100"
+                      )}>
+                        <link.icon className="w-4 h-4" strokeWidth={2} />
+                      </div>
+                      <span>{link.name}</span>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Footer status in mobile */}
+            <div className="pt-4 mt-4 border-t border-slate-100 bg-white">
+              <div className="p-3 bg-emerald-50 border border-emerald-100/60 rounded-2xl flex items-center gap-2.5 select-none">
+                <div className="relative flex h-2 w-2 shrink-0">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                 </div>
-
-                {/* Scrollable Navigation Area */}
-                <div className="flex-grow overflow-y-auto pr-1 flex flex-col gap-1 custom-scrollbar">
-                  <MobileNavLink to="/" onClick={() => setIsMenuOpen(false)}>Home</MobileNavLink>
-                  <MobileNavLink to="/blog" onClick={() => setIsMenuOpen(false)}>Blog Guides</MobileNavLink>
-                  <MobileNavLink to="/security" onClick={() => setIsMenuOpen(false)}>Security Protocols</MobileNavLink>
-                  <MobileNavLink to="/about" onClick={() => setIsMenuOpen(false)}>About Us</MobileNavLink>
-
-                  <div className="h-px bg-slate-100 my-4" aria-hidden="true"></div>
-                  <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest px-3 mb-2.5 select-none">Professional Toolbox</p>
-
-                  <div className="grid grid-cols-1 gap-1 max-h-[calc(100vh-320px)] overflow-y-auto pr-0.5 custom-scrollbar">
-                    {toolsLinks.map((link) => {
-                      const isToolActive = location.pathname === link.path;
-                      return (
-                        <Link
-                          key={link.path}
-                          to={link.path}
-                          onClick={() => setIsMenuOpen(false)}
-                          className={cn(
-                            "flex items-center gap-3 px-3 py-2.5 rounded-xl font-semibold transition-all duration-200 text-[13px] border border-transparent outline-none focus-visible:ring-2 focus-visible:ring-indigo-600",
-                            isToolActive
-                              ? "text-indigo-600 bg-indigo-50/40 border-indigo-100/30"
-                              : "text-slate-600 hover:text-slate-900 hover:bg-slate-50/70"
-                          )}
-                        >
-                          <div className={cn(
-                            "w-8 h-8 rounded-lg flex items-center justify-center border shrink-0 transition-colors duration-200",
-                            isToolActive
-                              ? "bg-indigo-600 text-white border-indigo-600"
-                              : "bg-slate-50 text-slate-500 border-slate-100"
-                          )}>
-                            <link.icon className="w-4 h-4" strokeWidth={2} />
-                          </div>
-                          <span>{link.name}</span>
-                        </Link>
-                      );
-                    })}
-                  </div>
-                </div>
-
-                {/* Footer status in mobile */}
-                <div className="pt-4 mt-4 border-t border-slate-100 bg-white">
-                  <div className="p-3 bg-emerald-50 border border-emerald-100/60 rounded-2xl flex items-center gap-2.5 select-none">
-                    <div className="relative flex h-2 w-2 shrink-0">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                    </div>
-                    <p className="text-[10px] font-bold text-emerald-800 uppercase tracking-wider">
-                      Local Sandboxed Sandbox Active
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            </>
-          )}
-        </AnimatePresence>,
+                <p className="text-[10px] font-bold text-emerald-800 uppercase tracking-wider">
+                  Local Sandboxed Sandbox Active
+                </p>
+              </div>
+            </div>
+          </div>
+        </>,
         document.body
       )}
     </>

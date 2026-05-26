@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
   Combine,
@@ -23,7 +22,8 @@ import {
   FileText,
   Type,
   Hash,
-  Trash2
+  Trash2,
+  Search
 } from "lucide-react";
 import { cn } from "../lib/utils";
 import SEO from "../components/SEO";
@@ -125,6 +125,38 @@ const tools = [
 
 export default function Home() {
   const [openFaqIndex, setOpenFaqIndex] = useState(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("All");
+
+  const categories = ["All", "Convert", "Organize", "Security"];
+
+  // Helper classification logic
+  const getToolCategory = (title) => {
+    const titleLower = title.toLowerCase();
+    if (
+      titleLower.includes("word") || 
+      titleLower.includes("image") || 
+      titleLower.includes("text")
+    ) {
+      return "Convert";
+    }
+    if (
+      titleLower.includes("protect") || 
+      titleLower.includes("unlock")
+    ) {
+      return "Security";
+    }
+    return "Organize";
+  };
+
+  const filteredTools = tools.filter((tool) => {
+    const matchesSearch = 
+      tool.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+      tool.description.toLowerCase().includes(searchQuery.toLowerCase());
+      
+    if (selectedCategory === "All") return matchesSearch;
+    return matchesSearch && getToolCategory(tool.title) === selectedCategory;
+  });
 
   const faqs = [
     {
@@ -161,55 +193,43 @@ export default function Home() {
         description="Professional-grade, local-first browser PDF utilities. Process your PDFs entirely in your browser with zero server uploads for 100% security."
         keywords="pdf, compress pdf, merge pdf, split pdf, word to pdf, local pdf tools, secure pdf converter, free online pdf tools, organize pdf, protect pdf, unlock pdf, watermark pdf, add page numbers, delete pages, extract text pdf, pdf to image, pdf to word, word to pdf"
       />
-      <div className="space-y-24 md:space-y-36 py-12 md:py-20 relative bg-grid-pattern">
+      <div className="space-y-24 md:space-y-32 py-12 md:py-20 relative bg-grid-pattern overflow-hidden">
         
         {/* Glow Radial Accents */}
         <div className="absolute top-[10%] left-1/2 -translate-x-1/2 w-full max-w-[800px] h-[500px] bg-radial-glow -z-10 pointer-events-none" aria-hidden="true" />
 
         {/* Hero Section */}
         <header className="container-professional text-center space-y-8 relative pt-8 md:pt-16">
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200/80 text-slate-500 font-semibold text-xs tracking-wide shadow-sm select-none"
+          <div
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200/80 text-slate-500 font-semibold text-xs tracking-wide shadow-sm select-none animate-fade-in"
           >
             <ShieldCheck className="w-4 h-4 text-indigo-600" />
             <span>100% Local In-Browser Sandbox</span>
-          </motion.div>
+          </div>
 
           <div className="space-y-4 max-w-4xl mx-auto">
-            <motion.h1
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1, duration: 0.5 }}
-              className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-slate-900 leading-[1.08] pr-1"
+            <h1
+              className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-slate-900 leading-[1.08] pr-1 animate-fade-in [animation-delay:100ms]"
             >
               Do anything with PDF. <br />
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 via-indigo-500 to-purple-600">
                 Guaranteed Secure.
               </span>
-            </motion.h1>
+            </h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
-              className="text-base sm:text-lg md:text-xl text-slate-500 max-w-2xl mx-auto font-medium leading-relaxed"
+            <p
+              className="text-base sm:text-lg md:text-xl text-slate-500 max-w-2xl mx-auto font-medium leading-relaxed animate-fade-in [animation-delay:200ms]"
             >
               Enterprise-grade document utilities executed entirely on your CPU. No uploads, no servers, zero bandwidth delays, and complete data privacy.
-            </motion.p>
+            </p>
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.5 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4"
+          <div
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4 animate-fade-in [animation-delay:300ms]"
           >
             <button 
               onClick={handleScrollToToolkit}
-              className="btn-primary-ref px-8 py-3.5 text-[15px]"
+              className="btn-primary-ref px-8 py-3.5 text-[15px] cursor-pointer"
               aria-label="Explore secure PDF tools"
             >
               Explore Tools
@@ -217,13 +237,13 @@ export default function Home() {
             </button>
             <button 
               onClick={handleScrollToToolkit}
-              className="btn-outline-ref px-8 py-3.5 text-[15px]"
+              className="btn-outline-ref px-8 py-3.5 text-[15px] cursor-pointer"
               aria-label="Drop a file inside any specific utility tool"
             >
               <FileDown className="w-4.5 h-4.5 text-indigo-600" />
               Launch Sandbox Engine
             </button>
-          </motion.div>
+          </div>
         </header>
 
         {/* AdSense Slot A - Hero Banner */}
@@ -231,55 +251,159 @@ export default function Home() {
           <AdSense adSlot="8116403558" adFormat="horizontal" />
         </div>
 
-        {/* Tools Grid */}
+        {/* Tools Grid Section */}
         <section 
           id="toolkit" 
           className="container-professional pt-4 scroll-mt-24"
           aria-label="PDF Toolbox"
         >
-          <div className="mb-10 text-left border-b border-slate-100 pb-5">
-            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 mb-2">
-              Essential PDF Tools
-            </h2>
-            <p className="text-sm font-medium text-slate-400 uppercase tracking-widest leading-none select-none">Native Browser Processing</p>
+          {/* Live Search & Filter Bar */}
+          <div className="mb-10 flex flex-col md:flex-row items-center justify-between gap-6 pb-6 border-b border-slate-100/80">
+            <div className="text-left space-y-1 shrink-0 w-full md:w-auto">
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
+                Secure Utility Toolbox
+              </h2>
+              <p className="text-xs font-semibold text-slate-400 uppercase tracking-widest leading-none select-none">
+                100% Native Browser Processing
+              </p>
+            </div>
+
+            {/* Interactive Search Controls */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full max-w-xl">
+              {/* Category Pills */}
+              <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 custom-scrollbar select-none shrink-0">
+                {categories.map((cat) => (
+                  <button
+                    key={cat}
+                    onClick={() => setSelectedCategory(cat)}
+                    className={cn(
+                      "px-3.5 py-2 rounded-xl text-[11px] font-bold uppercase tracking-wider transition-all duration-200 border cursor-pointer",
+                      selectedCategory === cat
+                        ? "bg-indigo-600 border-indigo-600 text-white shadow-md shadow-indigo-100"
+                        : "bg-white border-slate-200/70 text-slate-500 hover:text-slate-900 hover:border-slate-300"
+                    )}
+                  >
+                    {cat}
+                  </button>
+                ))}
+              </div>
+
+              {/* Text Search Input */}
+              <div className="relative flex-grow">
+                <input
+                  type="text"
+                  placeholder="Search 15+ secure tools..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full pl-10 pr-10 py-2.5 bg-slate-50 border border-slate-200/80 rounded-xl text-xs sm:text-sm font-semibold text-slate-800 placeholder-slate-400 focus:bg-white focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100/50 transition-all duration-200 animate-pulse-once"
+                />
+                <Search className="w-4.5 h-4.5 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                {searchQuery && (
+                  <button
+                    onClick={() => setSearchQuery("")}
+                    className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 font-bold text-xs cursor-pointer"
+                  >
+                    Clear
+                  </button>
+                )}
+              </div>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {tools.map((tool, index) => (
-              <Link 
-                to={tool.path} 
-                key={index} 
-                className="group outline-none focus-visible:ring-2 focus-visible:ring-indigo-600 rounded-[22px]"
-                aria-label={`Open ${tool.title} tool - ${tool.description}`}
+          {filteredTools.length === 0 ? (
+            <div className="text-center py-16 bg-slate-50/30 border border-dashed border-slate-200 rounded-[2rem] space-y-4">
+              <p className="text-slate-400 font-bold text-sm uppercase tracking-widest select-none">No tools found matching your search</p>
+              <button
+                onClick={() => { setSearchQuery(""); setSelectedCategory("All"); }}
+                className="btn-outline-ref px-6 py-2.5 mx-auto text-xs cursor-pointer"
               >
-                <motion.article
-                  initial={{ opacity: 0, y: 15 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.3, delay: Math.min(index * 0.03, 0.3) }}
-                  className="tool-card"
+                Clear Search Filters
+              </button>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredTools.map((tool, index) => (
+                <Link 
+                  to={tool.path} 
+                  key={index} 
+                  className="group outline-none focus-visible:ring-2 focus-visible:ring-indigo-600 rounded-[22px] hover:scale-[1.015] transition-transform duration-300"
+                  aria-label={`Open ${tool.title} tool - ${tool.description}`}
                 >
-                  <div className="tool-card-shape" aria-hidden="true" />
-                  
-                  <div className="tool-card-icon select-none" aria-hidden="true">
-                    <tool.icon className="w-5 h-5" />
-                  </div>
-
-                  <div className="relative z-10 flex flex-col flex-grow">
-                    <h3 className="tool-card-title">
-                      {tool.title}
-                    </h3>
-                    <p className="tool-card-description flex-grow">
-                      {tool.description}
-                    </p>
-                    <div className="mt-5 pt-3 border-t border-slate-50 flex items-center gap-1.5 text-xs font-bold text-slate-400 group-hover:text-indigo-600 transition-colors uppercase tracking-wider select-none">
-                      <span>Launch Utility</span>
-                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-200" />
+                  <article
+                    className="tool-card transition-all duration-300 hover:border-indigo-200/80 hover:shadow-premium-hover h-full"
+                  >
+                    <div className="tool-card-shape" aria-hidden="true" />
+                    
+                    <div className="tool-card-icon select-none" aria-hidden="true">
+                      <tool.icon className="w-5 h-5" />
                     </div>
-                  </div>
-                </motion.article>
-              </Link>
-            ))}
+
+                    <div className="relative z-10 flex flex-col flex-grow text-left">
+                      <h3 className="tool-card-title">
+                        {tool.title}
+                      </h3>
+                      <p className="tool-card-description flex-grow">
+                        {tool.description}
+                      </p>
+                      <div className="mt-5 pt-3 border-t border-slate-50 flex items-center gap-1.5 text-xs font-bold text-slate-400 group-hover:text-indigo-600 transition-colors uppercase tracking-wider select-none">
+                        <span>Launch Utility</span>
+                        <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-200" />
+                      </div>
+                    </div>
+                  </article>
+                </Link>
+              ))}
+            </div>
+          )}
+        </section>
+
+        {/* Step-by-Step Visual Timeline Guide */}
+        <section className="container-professional pt-8 text-center space-y-12" aria-label="Processing Timeline">
+          <div className="space-y-3">
+            <span className="badge-professional select-none">
+              Client-Side Processing Lifecycle
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">
+              Processing PDFs locally in 3 simple steps.
+            </h2>
+            <p className="text-slate-500 font-medium max-w-xl mx-auto text-sm sm:text-base">
+              A quick guide on how our local sandbox isolation operates natively on your computer's CPU.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative select-none">
+            {/* Step 1 */}
+            <div className="space-y-4 text-left p-8 bg-white border border-slate-100 rounded-2xl shadow-sm relative hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+              <div className="w-10 h-10 bg-indigo-50 border border-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center font-bold text-sm">
+                01
+              </div>
+              <h3 className="text-lg font-bold text-slate-900">Select & Load Files</h3>
+              <p className="text-slate-500 text-xs sm:text-[13.5px] leading-relaxed font-medium">
+                Choose any PDF utility page. Drop your documents or images into the sandboxed uploader. Your files are read into temporary in-browser memory (RAM).
+              </p>
+            </div>
+
+            {/* Step 2 */}
+            <div className="space-y-4 text-left p-8 bg-white border border-slate-100 rounded-2xl shadow-sm relative hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+              <div className="w-10 h-10 bg-indigo-50 border border-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center font-bold text-sm">
+                02
+              </div>
+              <h3 className="text-lg font-bold text-slate-900">In-Browser Compilation</h3>
+              <p className="text-slate-500 text-xs sm:text-[13.5px] leading-relaxed font-medium">
+                Click compile. Our client-side scripts execute the algorithms on your computer's hardware. **No documents are sent over the network**, ensuring 100% privacy.
+              </p>
+            </div>
+
+            {/* Step 3 */}
+            <div className="space-y-4 text-left p-8 bg-white border border-slate-100 rounded-2xl shadow-sm relative hover:shadow-md transition-all duration-300 hover:-translate-y-1">
+              <div className="w-10 h-10 bg-indigo-50 border border-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center font-bold text-sm">
+                03
+              </div>
+              <h3 className="text-lg font-bold text-slate-900">Instant Download</h3>
+              <p className="text-slate-500 text-xs sm:text-[13.5px] leading-relaxed font-medium">
+                The optimized document bytes compile in memory in milliseconds. Save your newly constructed PDF file directly to your downloads directory.
+              </p>
+            </div>
           </div>
         </section>
 
@@ -341,11 +465,9 @@ export default function Home() {
                   </div>
                   <div className="w-full px-8 space-y-3.5">
                     <div className="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: "100%" }}
-                        transition={{ duration: 2, ease: "easeOut" }}
-                        className="h-full bg-indigo-600"
+                      <div
+                        className="h-full bg-indigo-600 animate-progress-grow"
+                        style={{ width: "100%" }}
                         aria-hidden="true"
                       />
                     </div>
@@ -385,15 +507,11 @@ export default function Home() {
               <Link 
                 to={`/blog/${art.slug}`} 
                 key={idx} 
-                className="group flex outline-none focus-visible:ring-2 focus-visible:ring-indigo-600 rounded-[22px]"
+                className="group flex outline-none focus-visible:ring-2 focus-visible:ring-indigo-600 rounded-[22px] hover:scale-[1.015] transition-transform duration-350"
                 aria-label={`Read article: ${art.title}`}
               >
-                <motion.article
-                  initial={{ opacity: 0, y: 15 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.35, delay: idx * 0.05 }}
-                  className="card-ref flex flex-col justify-between h-full w-full"
+                <article
+                  className="card-ref flex flex-col justify-between h-full w-full transition-all duration-300 hover:shadow-premium-hover hover:border-slate-200/90 text-left"
                 >
                   <div className="space-y-4 text-left">
                     <div className="flex items-center gap-2 select-none">
@@ -416,7 +534,7 @@ export default function Home() {
                     <span>Read Article</span>
                     <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1.5 transition-transform duration-200" />
                   </div>
-                </motion.article>
+                </article>
               </Link>
             ))}
           </div>
@@ -462,20 +580,20 @@ export default function Home() {
                       )}
                     />
                   </button>
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.2, ease: "easeInOut" }}
-                      >
-                        <div className="px-6 pb-6 pt-1 text-slate-500 text-[13.5px] sm:text-[14px] leading-relaxed font-medium border-t border-slate-50 text-left">
-                          {faq.answer}
-                        </div>
-                      </motion.div>
+                  
+                  {/* High performance CSS Grid Auto-Height transition - Zero JS overhead! */}
+                  <div
+                    className={cn(
+                      "grid transition-all duration-300 ease-in-out",
+                      isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
                     )}
-                  </AnimatePresence>
+                  >
+                    <div className="overflow-hidden">
+                      <div className="px-6 pb-6 pt-1 text-slate-500 text-[13.5px] sm:text-[14px] leading-relaxed font-medium border-t border-slate-50 text-left">
+                        {faq.answer}
+                      </div>
+                    </div>
+                  </div>
                 </div>
               );
             })}

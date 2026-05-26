@@ -17,7 +17,7 @@ export default function Footer() {
               className="flex items-center gap-2.5 outline-none focus-visible:ring-2 focus-visible:ring-indigo-600 rounded-lg py-0.5 px-0.5 inline-flex"
               aria-label="iFlexPDF Home"
             >
-              <img src="/icon.png" alt="iFlexPDF Logo" className="w-8 h-8 object-contain" width="32" height="32" />
+              <img src="/icon.png" alt="iFlexPDF Logo" className="w-8 h-8 object-contain" width="32" height="32" loading="lazy" decoding="async" />
               <span className="text-lg font-extrabold tracking-tight text-slate-900 leading-none">
                 iFlexPDF<span className="text-indigo-600">.</span>
               </span>
