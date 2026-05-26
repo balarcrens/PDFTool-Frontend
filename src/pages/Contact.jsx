@@ -69,7 +69,7 @@ export default function Contact() {
               className="h-full flex flex-col items-center justify-center text-center space-y-8 py-20"
             >
               <div className="w-24 h-24 bg-emerald-50 rounded-[2.5rem] flex items-center justify-center shadow-inner">
-                <Send className="w-12 h-12 text-emerald-600" />
+                <Send className="w-12 h-12 text-emerald-700" />
               </div>
               <div className="space-y-3">
                 <h2 className="text-3xl font-black text-indigo-950">Protocol Dispatched</h2>
@@ -86,7 +86,7 @@ export default function Contact() {
             <form onSubmit={handleSubmit} className="space-y-10">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-3">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-indigo-300 ml-1">Identity</label>
+                  <label className="text-xs font-black uppercase tracking-widest text-indigo-300 ml-1">Identity</label>
                   <input
                     required
                     type="text"
@@ -95,7 +95,7 @@ export default function Contact() {
                   />
                 </div>
                 <div className="space-y-3">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-indigo-300 ml-1">Corporate Email</label>
+                  <label className="text-xs font-black uppercase tracking-widest text-indigo-300 ml-1">Corporate Email</label>
                   <input
                     required
                     type="email"
@@ -106,7 +106,7 @@ export default function Contact() {
               </div>
 
               <div className="space-y-3">
-                <label className="text-[10px] font-black uppercase tracking-widest text-indigo-300 ml-1">Department</label>
+                <label className="text-xs font-black uppercase tracking-widest text-indigo-300 ml-1">Department</label>
                 <select className="w-full px-8 py-5 rounded-2xl bg-indigo-50/30 border border-indigo-50 focus:bg-white focus:border-indigo-600 focus:ring-4 focus:ring-indigo-50 outline-none transition-all font-black text-indigo-950 shadow-inner appearance-none cursor-pointer">
                   <option>Technical Inquiries</option>
                   <option>Feature Development</option>
@@ -116,7 +116,7 @@ export default function Contact() {
               </div>
 
               <div className="space-y-3">
-                <label className="text-[10px] font-black uppercase tracking-widest text-indigo-300 ml-1">Message Brief</label>
+                <label className="text-xs font-black uppercase tracking-widest text-indigo-300 ml-1">Message Brief</label>
                 <textarea
                   required
                   rows="5"
@@ -149,7 +149,7 @@ function ContactInfo({ icon, title, detail, description }) {
       <div>
         <h4 className="font-black text-lg text-indigo-950 mb-0.5">{title}</h4>
         <p className="text-indigo-600 font-black text-sm mb-1">{detail}</p>
-        <p className="text-indigo-300 text-[10px] font-black uppercase tracking-[0.2em]">{description}</p>
+        <p className="text-indigo-300 text-xs font-black uppercase tracking-[0.2em]">{description}</p>
       </div>
     </div>
   );

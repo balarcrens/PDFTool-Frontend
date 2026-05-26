@@ -58,15 +58,15 @@ export default function About() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-16 text-center relative z-10">
           <div className="space-y-3">
             <div className="text-5xl font-black text-white">100%</div>
-            <div className="font-bold text-indigo-400 uppercase tracking-[0.2em] text-[10px]">Client-Side Engine</div>
+            <div className="font-bold text-indigo-600 uppercase tracking-[0.2em] text-xs">Client-Side Engine</div>
           </div>
           <div className="space-y-3">
             <div className="text-5xl font-black text-white">Pure</div>
-            <div className="font-bold text-indigo-400 uppercase tracking-[0.2em] text-[10px]">Zero Tracking</div>
+            <div className="font-bold text-indigo-600 uppercase tracking-[0.2em] text-xs">Zero Tracking</div>
           </div>
           <div className="space-y-3">
             <div className="text-5xl font-black text-white">Ultra</div>
-            <div className="font-bold text-indigo-400 uppercase tracking-[0.2em] text-[10px]">Fast Rendering</div>
+            <div className="font-bold text-indigo-600 uppercase tracking-[0.2em] text-xs">Fast Rendering</div>
           </div>
         </div>
       </div>
@@ -74,7 +74,7 @@ export default function About() {
       <div className="space-y-16 text-center pb-12">
         <div className="space-y-3">
           <h2 className="text-3xl font-black text-indigo-950 tracking-tight">Our Core Principles</h2>
-          <p className="text-indigo-400 font-black text-[10px] uppercase tracking-widest">The values that drive our engineering</p>
+          <p className="text-indigo-600 font-black text-xs uppercase tracking-widest">The values that drive our engineering</p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
           <ValueCard icon={<Heart className="w-6 h-6" />} title="User-Centric" description="We prioritize the needs of professional users in every feature we build." />

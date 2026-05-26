@@ -28,6 +28,7 @@ import {
 import { cn } from "../lib/utils";
 import SEO from "../components/SEO";
 import { blogArticles } from "../data/blogArticles";
+import AdSense from "../components/AdSense";
 
 const tools = [
   {
@@ -104,19 +105,19 @@ const tools = [
   },
   {
     title: "Add Watermark",
-    description: "Add professional text stamps and watermark layers with custom fonts and transparency.",
+    description: "Add professional text stamps and watermark layers with custom fonts.",
     icon: Type,
     path: "/watermark",
   },
   {
     title: "Add Page Numbers",
-    description: "Number PDF pages visually with options for layout alignments, margin paddings, and font sizes.",
+    description: "Number PDF pages visually with custom alignments and font sizes.",
     icon: Hash,
     path: "/page-numbers",
   },
   {
     title: "Delete Pages",
-    description: "Remove pages from your PDF documents visually and compile optimized files in-memory.",
+    description: "Remove pages from your PDF documents visually and compile optimized files.",
     icon: Trash2,
     path: "/delete-pages",
   },
@@ -136,7 +137,7 @@ export default function Home() {
     },
     {
       question: "What file formats does iFlexPDF support?",
-      answer: "Currently, we support merging, splitting, compressing, organizing, protecting, and unlocking PDF files. We also support conversions: JPG/PNG/WebP images to PDF, PDF pages to JPG images, Microsoft Word (.docx) to PDF, PDF to text extraction, and PDF to Microsoft Word (.doc) conversion."
+      answer: "Currently, we support merging, splitting, compressing, organizing, protecting, and unlocking PDF files. We also support conversions: JPG/PNG/WebP images to PDF, PDF pages to JPG images, Microsoft Word (.docx) to PDF, PDF to text extraction, and PDF to Microsoft Word (.docx) conversion."
     },
     {
       question: "Is there a file size limit for processing?",
@@ -146,6 +147,13 @@ export default function Home() {
 
   const latestArticles = blogArticles.slice(0, 3);
 
+  const handleScrollToToolkit = () => {
+    const toolkitSection = document.getElementById("toolkit");
+    if (toolkitSection) {
+      toolkitSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   return (
     <>
       <SEO
@@ -153,38 +161,45 @@ export default function Home() {
         description="Professional-grade, local-first browser PDF utilities. Process your PDFs entirely in your browser with zero server uploads for 100% security."
         keywords="pdf, compress pdf, merge pdf, split pdf, word to pdf, local pdf tools, secure pdf converter, free online pdf tools, organize pdf, protect pdf, unlock pdf, watermark pdf, add page numbers, delete pages, extract text pdf, pdf to image, pdf to word, word to pdf"
       />
-      <div className="space-y-32 py-16 md:py-24">
-        {/* Hero Section */}
-        <section className="container-professional text-center space-y-10 relative">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[400px] bg-indigo-50/20 blur-[120px] -z-10 rounded-full"></div>
+      <div className="space-y-24 md:space-y-36 py-12 md:py-20 relative bg-grid-pattern">
+        
+        {/* Glow Radial Accents */}
+        <div className="absolute top-[10%] left-1/2 -translate-x-1/2 w-full max-w-[800px] h-[500px] bg-radial-glow -z-10 pointer-events-none" aria-hidden="true" />
 
+        {/* Hero Section */}
+        <header className="container-professional text-center space-y-8 relative pt-8 md:pt-16">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-100 text-slate-600 font-bold text-[13px] border border-slate-200 shadow-sm"
+            transition={{ duration: 0.4 }}
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200/80 text-slate-500 font-semibold text-xs tracking-wide shadow-sm select-none"
           >
             <ShieldCheck className="w-4 h-4 text-indigo-600" />
-            <span>100% Local Processing & Secure</span>
+            <span>100% Local In-Browser Sandbox</span>
           </motion.div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1, duration: 0.5 }}
-            className="text-5xl md:text-7xl font-black tracking-tight text-slate-900 leading-[1.1]"
-          >
-            Do anything with PDF
-          </motion.h1>
+          <div className="space-y-4 max-w-4xl mx-auto">
+            <motion.h1
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.5 }}
+              className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-slate-900 leading-[1.08] pr-1"
+            >
+              Do anything with PDF. <br />
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 via-indigo-500 to-purple-600">
+                Guaranteed Secure.
+              </span>
+            </motion.h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-            className="text-lg md:text-xl text-slate-500 max-w-2xl mx-auto font-medium leading-relaxed"
-          >
-            Professional-grade PDF tools designed for speed, security, and simplicity. <br className="hidden md:block" />
-            Process sensitive documents entirely on your device.
-          </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+              className="text-base sm:text-lg md:text-xl text-slate-500 max-w-2xl mx-auto font-medium leading-relaxed"
+            >
+              Enterprise-grade document utilities executed entirely on your CPU. No uploads, no servers, zero bandwidth delays, and complete data privacy.
+            </motion.p>
+          </div>
 
           <motion.div
             initial={{ opacity: 0, y: 15 }}
@@ -192,123 +207,149 @@ export default function Home() {
             transition={{ delay: 0.3, duration: 0.5 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4"
           >
-            <button className="btn-primary-ref px-10">
+            <button 
+              onClick={handleScrollToToolkit}
+              className="btn-primary-ref px-8 py-3.5 text-[15px]"
+              aria-label="Explore secure PDF tools"
+            >
               Explore Tools
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="w-4.5 h-4.5" />
             </button>
-            <button className="btn-outline-ref px-10">
-              <FileDown className="w-5 h-5 text-indigo-600" />
-              Drop a file here
+            <button 
+              onClick={handleScrollToToolkit}
+              className="btn-outline-ref px-8 py-3.5 text-[15px]"
+              aria-label="Drop a file inside any specific utility tool"
+            >
+              <FileDown className="w-4.5 h-4.5 text-indigo-600" />
+              Launch Sandbox Engine
             </button>
           </motion.div>
-        </section>
+        </header>
+
+        {/* AdSense Slot A - Hero Banner */}
+        <div className="container-professional max-w-[970px] mx-auto select-none">
+          <AdSense adSlot="8116403558" adFormat="horizontal" />
+        </div>
 
         {/* Tools Grid */}
-        <section id="toolkit" className="container-professional pt-4">
-          <div className="mb-8">
-            <h2 className="text-[36px] font-bold tracking-[-0.03em] text-[#111827]">
+        <section 
+          id="toolkit" 
+          className="container-professional pt-4 scroll-mt-24"
+          aria-label="PDF Toolbox"
+        >
+          <div className="mb-10 text-left border-b border-slate-100 pb-5">
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 mb-2">
               Essential PDF Tools
             </h2>
+            <p className="text-sm font-medium text-slate-400 uppercase tracking-widest leading-none select-none">Native Browser Processing</p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {tools.map((tool, index) => (
-              <Link to={tool.path} key={index} className="group">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
+              <Link 
+                to={tool.path} 
+                key={index} 
+                className="group outline-none focus-visible:ring-2 focus-visible:ring-indigo-600 rounded-[22px]"
+                aria-label={`Open ${tool.title} tool - ${tool.description}`}
+              >
+                <motion.article
+                  initial={{ opacity: 0, y: 15 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.35, delay: index * 0.04 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.3, delay: Math.min(index * 0.03, 0.3) }}
                   className="tool-card"
                 >
-                  {/* Decorative Shape */}
-                  <div className="tool-card-shape" />
-
-                  {/* Icon */}
-                  <div className="tool-card-icon">
-                    <tool.icon className="w-[18px] h-[18px]" strokeWidth={2} />
+                  <div className="tool-card-shape" aria-hidden="true" />
+                  
+                  <div className="tool-card-icon select-none" aria-hidden="true">
+                    <tool.icon className="w-5 h-5" />
                   </div>
 
-                  {/* Content */}
-                  <div className="relative z-10">
+                  <div className="relative z-10 flex flex-col flex-grow">
                     <h3 className="tool-card-title">
                       {tool.title}
                     </h3>
-
-                    <p className="tool-card-description">
+                    <p className="tool-card-description flex-grow">
                       {tool.description}
                     </p>
+                    <div className="mt-5 pt-3 border-t border-slate-50 flex items-center gap-1.5 text-xs font-bold text-slate-400 group-hover:text-indigo-600 transition-colors uppercase tracking-wider select-none">
+                      <span>Launch Utility</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-200" />
+                    </div>
                   </div>
-                </motion.div>
+                </motion.article>
               </Link>
             ))}
           </div>
         </section>
 
-        {/* Privacy Section */}
-        <section className="container-professional py-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-            <div className="space-y-10">
-              <div className="space-y-6">
-                <h2 className="text-4xl md:text-5xl font-black text-slate-900 leading-tight">
-                  Your data never leaves your device.
+        {/* Privacy Architecture Section */}
+        <section 
+          className="container-professional py-16 md:py-24 relative overflow-hidden rounded-[2.5rem] bg-white border border-slate-100 shadow-premium"
+          aria-label="Security & Privacy Protocol"
+        >
+          <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-radial-glow -z-10 opacity-60 pointer-events-none" aria-hidden="true" />
+          
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            <div className="lg:col-span-7 space-y-8 text-left">
+              <div className="space-y-4">
+                <span className="badge-professional select-none">
+                  Security Architecture
+                </span>
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 leading-[1.1] tracking-tight">
+                  Your files never touch the cloud.
                 </h2>
-                <p className="text-slate-500 text-lg leading-relaxed font-medium max-w-xl">
-                  Unlike cloud-based solutions, iFlexPDF processes every document locally in your browser. This means absolute privacy, zero upload wait times, and compliance with strict corporate security policies.
+                <p className="text-slate-500 text-sm sm:text-base leading-relaxed font-medium">
+                  Conventional online converters upload your tax forms, corporate contracts, and ID scans to external cloud nodes. iFlexPDF runs on advanced Javascript sandbox engines compiled inside your browser, keeping your critical business layouts entirely localized.
                 </p>
               </div>
 
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-6 h-6 rounded-full bg-indigo-50 flex items-center justify-center text-indigo-600 mt-1">
-                    <CheckCircle2 className="w-4 h-4" />
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4 border-t border-slate-100">
+                <div className="space-y-2">
+                  <div className="w-9 h-9 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-600 select-none" aria-hidden="true">
+                    <ShieldCheck className="w-5 h-5" />
                   </div>
-                  <div>
-                    <h4 className="font-bold text-slate-900">Zero Uploads</h4>
-                    <p className="text-slate-500 text-sm font-medium">Files are never sent to external servers.</p>
-                  </div>
+                  <h3 className="font-bold text-[15px] text-slate-800 leading-none">100% Private</h3>
+                  <p className="text-slate-400 text-xs font-semibold leading-relaxed">No tracking, no logs, zero trace on servers.</p>
                 </div>
-                <div className="flex items-start gap-4">
-                  <div className="w-6 h-6 rounded-full bg-indigo-50 flex items-center justify-center text-indigo-600 mt-1">
-                    <Zap className="w-4 h-4" />
+                <div className="space-y-2">
+                  <div className="w-9 h-9 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-600 select-none" aria-hidden="true">
+                    <Zap className="w-5 h-5" />
                   </div>
-                  <div>
-                    <h4 className="font-bold text-slate-900">Lightning Fast</h4>
-                    <p className="text-slate-500 text-sm font-medium">Instant processing utilizing your device's power.</p>
-                  </div>
+                  <h3 className="font-bold text-[15px] text-slate-800 leading-none">Zero Delay</h3>
+                  <p className="text-slate-400 text-xs font-semibold leading-relaxed">Instant compile speeds powered by your CPU.</p>
                 </div>
-                <div className="flex items-start gap-4">
-                  <div className="w-6 h-6 rounded-full bg-indigo-50 flex items-center justify-center text-indigo-600 mt-1">
-                    <ShieldCheck className="w-4 h-4" />
+                <div className="space-y-2">
+                  <div className="w-9 h-9 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-600 select-none" aria-hidden="true">
+                    <CheckCircle2 className="w-5 h-5" />
                   </div>
-                  <div>
-                    <h4 className="font-bold text-slate-900">Enterprise Ready</h4>
-                    <p className="text-slate-500 text-sm font-medium">Meets stringent data protection requirements.</p>
-                  </div>
+                  <h3 className="font-bold text-[15px] text-slate-800 leading-none">Offline Ready</h3>
+                  <p className="text-slate-400 text-xs font-semibold leading-relaxed">Runs entirely in offline mode after boot.</p>
                 </div>
               </div>
             </div>
 
-            <div className="flex justify-center lg:justify-end">
-              <div className="w-full max-w-md p-1 bg-white border border-slate-100 rounded-[2.5rem] shadow-2xl">
-                <div className="card-dotted h-full flex flex-col items-center justify-center text-center space-y-6 py-16">
-                  <div className="w-16 h-16 bg-indigo-50 rounded-2xl flex items-center justify-center text-indigo-600 shadow-inner">
-                    <ShieldCheck className="w-8 h-8" />
+            <div className="lg:col-span-5 flex justify-center lg:justify-end">
+              <div className="w-full max-w-sm p-1.5 bg-slate-50/50 border border-slate-100 rounded-[2.5rem] shadow-sm select-none">
+                <div className="card-dotted h-full flex flex-col items-center justify-center text-center space-y-6 py-12 md:py-16">
+                  <div className="w-14 h-14 bg-indigo-50 rounded-2xl flex items-center justify-center text-indigo-600 shadow-inner">
+                    <ShieldCheck className="w-7 h-7" />
                   </div>
                   <div className="space-y-2">
-                    <h3 className="text-xl font-black text-slate-900">Local Processing Active</h3>
-                    <p className="text-slate-400 text-sm font-medium px-8">All operations are contained within your current browser session.</p>
+                    <h3 className="text-lg font-bold text-slate-900">Sandbox Isolation Active</h3>
+                    <p className="text-slate-400 text-xs font-semibold px-6 leading-relaxed">All active edits are isolated within your secure browser session RAM.</p>
                   </div>
-                  <div className="w-full px-12 space-y-4">
+                  <div className="w-full px-8 space-y-3.5">
                     <div className="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
                       <motion.div
                         initial={{ width: 0 }}
-                        whileInView={{ width: "75%" }}
-                        transition={{ duration: 1.5, ease: "easeOut" }}
+                        whileInView={{ width: "100%" }}
+                        transition={{ duration: 2, ease: "easeOut" }}
                         className="h-full bg-indigo-600"
+                        aria-hidden="true"
                       />
                     </div>
-                    <p className="text-[10px] font-black text-indigo-400 uppercase tracking-widest">System Status: Secure</p>
+                    <p className="text-[10px] font-bold text-indigo-600 uppercase tracking-widest">Active System: Encrypted Sandbox</p>
                   </div>
                 </div>
               </div>
@@ -316,34 +357,47 @@ export default function Home() {
           </div>
         </section>
 
+        {/* AdSense Slot B - Midsite Banner */}
+        <div className="container-professional max-w-[970px] mx-auto select-none">
+          <AdSense adSlot="6372857492" adFormat="horizontal" />
+        </div>
+
         {/* Blog Articles Section */}
-        <section className="container-professional border-t border-slate-100 pt-20">
-          <div className="text-center space-y-4 mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-50 text-slate-500 font-bold text-[11px] uppercase tracking-widest border border-slate-100">
-              <BookOpen className="w-3.5 h-3.5 text-[#0047AB]" />
-              Latest Blog Articles
-            </div>
-            <h2 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tight">
+        <section 
+          className="container-professional pt-8"
+          aria-label="Insights & Productivity Blog"
+        >
+          <div className="text-center space-y-3 mb-12">
+            <span className="badge-professional select-none">
+              <BookOpen className="w-3.5 h-3.5 text-indigo-600" />
+              Latest Insights
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight leading-tight">
               Guides & Productivity Tips
             </h2>
-            <p className="text-slate-500 font-medium max-w-xl mx-auto">
-              Stay updated with expert advice on PDF optimization, study hacks, and office productivity tips.
+            <p className="text-slate-500 font-medium max-w-xl mx-auto text-sm sm:text-base">
+              Expert-vetted manuals regarding PDF size compressions, legal compliance, and office layouts.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             {latestArticles.map((art, idx) => (
-              <Link to={`/blog/${art.slug}`} key={idx} className="group">
+              <Link 
+                to={`/blog/${art.slug}`} 
+                key={idx} 
+                className="group flex outline-none focus-visible:ring-2 focus-visible:ring-indigo-600 rounded-[22px]"
+                aria-label={`Read article: ${art.title}`}
+              >
                 <motion.article
-                  className="card-ref h-full justify-between hover:scale-[1.01] hover:border-slate-300 transition-all duration-300"
+                  initial={{ opacity: 0, y: 15 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  initial={{ opacity: 0, y: 20 }}
-                  transition={{ duration: 0.4, delay: idx * 0.05 }}
+                  transition={{ duration: 0.35, delay: idx * 0.05 }}
+                  className="card-ref flex flex-col justify-between h-full w-full"
                 >
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-2">
-                      <span className="px-2.5 py-0.5 bg-indigo-50 border border-indigo-100 text-indigo-600 rounded-full font-bold text-[9px] uppercase tracking-wider">
+                  <div className="space-y-4 text-left">
+                    <div className="flex items-center gap-2 select-none">
+                      <span className="px-2.5 py-0.5 bg-indigo-50 border border-indigo-100/50 text-indigo-600 rounded-full font-bold text-[9px] uppercase tracking-wider">
                         {art.category}
                       </span>
                       <span className="text-[10px] font-bold text-slate-400 flex items-center gap-1">
@@ -351,16 +405,16 @@ export default function Home() {
                         {art.readTime}
                       </span>
                     </div>
-                    <h3 className="text-lg font-bold text-slate-900 group-hover:text-indigo-600 transition-colors leading-snug">
+                    <h3 className="text-base sm:text-lg font-bold text-slate-900 group-hover:text-indigo-600 transition-colors leading-snug">
                       {art.title}
                     </h3>
-                    <p className="text-slate-500 text-xs leading-relaxed font-medium line-clamp-3">
+                    <p className="text-slate-400 text-[12.5px] leading-relaxed font-medium line-clamp-3">
                       {art.excerpt}
                     </p>
                   </div>
-                  <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-slate-400 text-xs font-bold uppercase tracking-wider group-hover:text-indigo-600 transition-all">
+                  <div className="mt-6 pt-4 border-t border-slate-50 flex items-center justify-between text-slate-500 text-[11px] font-bold uppercase tracking-wider group-hover:text-indigo-600 transition-colors select-none">
                     <span>Read Article</span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1.5 transition-transform duration-200" />
                   </div>
                 </motion.article>
               </Link>
@@ -369,37 +423,41 @@ export default function Home() {
         </section>
 
         {/* FAQ Section */}
-        <section className="container-professional border-t border-slate-100 pt-20 max-w-4xl mx-auto">
-          <div className="text-center space-y-4 mb-16">
-            <h2 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tight">
+        <section 
+          className="container-professional max-w-4xl mx-auto pt-8"
+          aria-label="Frequently Asked Questions"
+        >
+          <div className="text-center space-y-3 mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight leading-tight">
               Frequently Asked Questions
             </h2>
-            <p className="text-slate-500 font-medium max-w-xl mx-auto">
-              Got questions about our browser-local PDF processing pipeline? We have answers.
+            <p className="text-slate-500 font-medium text-sm sm:text-base max-w-md mx-auto">
+              Clear, transparent answers regarding local data compiles, RAM limitations, and tool frameworks.
             </p>
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-4" role="presentation">
             {faqs.map((faq, idx) => {
               const isOpen = openFaqIndex === idx;
               return (
                 <div
                   key={idx}
                   className={cn(
-                    "bg-white border rounded-2xl md:rounded-[1.5rem] overflow-hidden transition-all duration-300",
-                    isOpen ? "border-indigo-600 shadow-lg shadow-indigo-100/50" : "border-slate-100 hover:border-slate-200"
+                    "bg-white border rounded-2xl overflow-hidden transition-all duration-200",
+                    isOpen ? "border-indigo-600 shadow-md" : "border-slate-100 hover:border-slate-200"
                   )}
                 >
                   <button
                     onClick={() => setOpenFaqIndex(isOpen ? null : idx)}
-                    className="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none"
+                    aria-expanded={isOpen}
+                    className="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-600/30"
                   >
-                    <span className="font-bold text-[15px] md:text-[16px] text-slate-900 pr-4 leading-snug">
+                    <span className="font-bold text-[15px] sm:text-[16px] text-slate-800 pr-4 leading-snug">
                       {faq.question}
                     </span>
                     <ChevronDown
                       className={cn(
-                        "w-5 h-5 text-slate-400 shrink-0 transition-transform duration-300",
+                        "w-4.5 h-4.5 text-slate-400 shrink-0 transition-transform duration-300",
                         isOpen && "rotate-180 text-indigo-600"
                       )}
                     />
@@ -410,9 +468,9 @@ export default function Home() {
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.25, ease: "easeInOut" }}
+                        transition={{ duration: 0.2, ease: "easeInOut" }}
                       >
-                        <div className="px-6 pb-6 pt-1 text-slate-500 text-sm md:text-[14px] leading-relaxed font-medium border-t border-slate-50">
+                        <div className="px-6 pb-6 pt-1 text-slate-500 text-[13.5px] sm:text-[14px] leading-relaxed font-medium border-t border-slate-50 text-left">
                           {faq.answer}
                         </div>
                       </motion.div>
@@ -425,18 +483,27 @@ export default function Home() {
         </section>
 
         {/* Final CTA Section */}
-        <section className="container-professional pb-24">
-          <div className="bg-[#0047AB] rounded-[2.5rem] p-12 md:p-20 text-center text-white relative overflow-hidden shadow-2xl shadow-indigo-100">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.1),transparent)]"></div>
-            <div className="relative z-10 space-y-8">
-              <h2 className="text-4xl md:text-5xl font-black tracking-tight leading-tight">
-                Secure Your Document Workflow Today
+        <section 
+          className="container-professional pb-12"
+          aria-label="Secure Your Workflow CTA"
+        >
+          <div className="bg-[#0f172a] rounded-[2.5rem] p-10 md:p-16 text-center text-white relative overflow-hidden shadow-premium-xl border border-slate-800">
+            {/* CTA Background Radial shape */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(99,102,241,0.12),transparent_60%)] pointer-events-none" aria-hidden="true" />
+            
+            <div className="relative z-10 space-y-6 max-w-2xl mx-auto">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-tight">
+                Secure your document workflow.
               </h2>
-              <p className="text-indigo-100 text-lg max-w-xl mx-auto font-medium">
-                Join thousands of professionals who trust iFlexPDF for their business-critical documents.
+              <p className="text-slate-400 text-sm sm:text-base leading-relaxed font-medium">
+                Eliminate the risk of server breaches. Switch to our 100% in-browser sandbox and process documents with infinite speed and privacy.
               </p>
-              <div className="flex justify-center pt-4">
-                <button className="px-12 py-5 bg-white text-[#0047AB] rounded-xl font-black hover:bg-indigo-50 transition-all shadow-xl shadow-indigo-900/20 hover:-translate-y-1 active:translate-y-0 text-sm uppercase tracking-widest">
+              <div className="flex justify-center pt-2 select-none">
+                <button 
+                  onClick={handleScrollToToolkit}
+                  className="px-8 py-3.5 bg-white text-[#0f172a] hover:bg-slate-50 active:scale-95 rounded-xl font-bold text-xs uppercase tracking-widest shadow-md transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-indigo-600 focus-visible:ring-offset-2"
+                  aria-label="Launch local sandbox toolbox"
+                >
                   Get Started for Free
                 </button>
               </div>

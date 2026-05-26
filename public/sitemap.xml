@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Core Home Page -->
   <url>
-    <loc>https://iflexpdf.com/</loc>
+    <loc>https://iflexpdf.netlify.app/</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
@@ -10,67 +10,67 @@
 
   <!-- PDF Utility Pages -->
   <url>
-    <loc>https://iflexpdf.com/merge</loc>
+    <loc>https://iflexpdf.netlify.app/merge</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://iflexpdf.com/split</loc>
+    <loc>https://iflexpdf.netlify.app/split</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://iflexpdf.com/image-to-pdf</loc>
+    <loc>https://iflexpdf.netlify.app/image-to-pdf</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://iflexpdf.com/pdf-to-image</loc>
+    <loc>https://iflexpdf.netlify.app/pdf-to-image</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://iflexpdf.com/organize</loc>
+    <loc>https://iflexpdf.netlify.app/organize</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://iflexpdf.com/compress</loc>
+    <loc>https://iflexpdf.netlify.app/compress</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://iflexpdf.com/pdf-to-text</loc>
+    <loc>https://iflexpdf.netlify.app/pdf-to-text</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://iflexpdf.com/word-to-pdf</loc>
+    <loc>https://iflexpdf.netlify.app/word-to-pdf</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://iflexpdf.com/pdf-to-word</loc>
+    <loc>https://iflexpdf.netlify.app/pdf-to-word</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://iflexpdf.com/protect</loc>
+    <loc>https://iflexpdf.netlify.app/protect</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://iflexpdf.com/unlock</loc>
+    <loc>https://iflexpdf.netlify.app/unlock</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -78,7 +78,7 @@
 
   <!-- Blog List Page -->
   <url>
-    <loc>https://iflexpdf.com/blog</loc>
+    <loc>https://iflexpdf.netlify.app/blog</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -86,31 +86,31 @@
 
   <!-- Individual Blog Post Articles -->
   <url>
-    <loc>https://iflexpdf.com/blog/how-to-compress-pdf-online</loc>
+    <loc>https://iflexpdf.netlify.app/blog/how-to-compress-pdf-online</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://iflexpdf.com/blog/best-pdf-tools-for-students</loc>
+    <loc>https://iflexpdf.netlify.app/blog/best-pdf-tools-for-students</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://iflexpdf.com/blog/how-to-merge-pdf-files</loc>
+    <loc>https://iflexpdf.netlify.app/blog/how-to-merge-pdf-files</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://iflexpdf.com/blog/pdf-vs-docx-comparison</loc>
+    <loc>https://iflexpdf.netlify.app/blog/pdf-vs-docx-comparison</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://iflexpdf.com/blog/reduce-pdf-size-without-losing-quality</loc>
+    <loc>https://iflexpdf.netlify.app/blog/reduce-pdf-size-without-losing-quality</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -118,37 +118,37 @@
 
   <!-- Supplementary Compliance & Corporate Pages -->
   <url>
-    <loc>https://iflexpdf.com/about</loc>
+    <loc>https://iflexpdf.netlify.app/about</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://iflexpdf.com/pricing</loc>
+    <loc>https://iflexpdf.netlify.app/pricing</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://iflexpdf.com/security</loc>
+    <loc>https://iflexpdf.netlify.app/security</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://iflexpdf.com/privacy</loc>
+    <loc>https://iflexpdf.netlify.app/privacy</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://iflexpdf.com/terms</loc>
+    <loc>https://iflexpdf.netlify.app/terms</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://iflexpdf.com/contact</loc>
+    <loc>https://iflexpdf.netlify.app/contact</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

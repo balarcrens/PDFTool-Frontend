@@ -162,13 +162,13 @@ export default function CompressPDF() {
             {/* Action Bar */}
             <div className="action-bar-classic sticky top-24 z-30">
               <div className="flex items-center gap-4 w-full md:w-auto">
-                <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center text-slate-400">
+                <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center text-slate-600">
                   <FileDown className="w-5 h-5" />
                 </div>
                 <div className="min-w-0">
                   <p className="font-bold text-[15px] truncate max-w-[150px] md:max-w-[300px] text-slate-900 mb-0.5">{file.name}</p>
                   <div className="flex items-center gap-3">
-                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{(file.size / (1024 * 1024)).toFixed(2)} MB</span>
+                    <span className="text-xs font-bold text-slate-600 uppercase tracking-widest">{(file.size / (1024 * 1024)).toFixed(2)} MB</span>
                     <span className="w-1 h-1 bg-slate-200 rounded-full"></span>
                     <span className="verified-badge">
                       <ShieldCheck className="w-3 h-3" />
@@ -238,15 +238,15 @@ export default function CompressPDF() {
 
                   <div className="grid grid-cols-3 gap-8 text-center relative z-10">
                     <div className="space-y-2">
-                      <p className="text-slate-400 text-[10px] font-bold uppercase tracking-widest">Original State</p>
+                      <p className="text-slate-600 text-xs font-bold uppercase tracking-widest">Original State</p>
                       <p className="text-2xl font-black text-slate-900">{stats.original}</p>
                     </div>
                     <div className="space-y-2">
-                      <p className="text-slate-400 text-[10px] font-bold uppercase tracking-widest">Optimized State</p>
+                      <p className="text-slate-600 text-xs font-bold uppercase tracking-widest">Optimized State</p>
                       <p className="text-2xl font-black text-[#0047AB]">{stats.compressed}</p>
                     </div>
                     <div className="space-y-2">
-                      <p className="text-slate-400 text-[10px] font-bold uppercase tracking-widest">Efficiency</p>
+                      <p className="text-slate-600 text-xs font-bold uppercase tracking-widest">Efficiency</p>
                       <p className="text-2xl font-black text-emerald-500">{stats.savings}</p>
                     </div>
                   </div>
@@ -256,12 +256,12 @@ export default function CompressPDF() {
                       onClick={() => window.open(compressedPdfUrl, '_blank')}
                       className="flex flex-col items-center justify-center p-10 bg-slate-50 border border-slate-100 rounded-[2rem] hover:bg-white hover:border-[#0047AB] hover:shadow-xl transition-all group gap-5"
                     >
-                      <div className="w-16 h-16 bg-white border border-slate-100 rounded-2xl flex items-center justify-center text-slate-400 group-hover:text-[#0047AB] group-hover:scale-110 group-hover:shadow-lg transition-all duration-300">
+                      <div className="w-16 h-16 bg-white border border-slate-100 rounded-2xl flex items-center justify-center text-slate-600 group-hover:text-[#0047AB] group-hover:scale-110 group-hover:shadow-lg transition-all duration-300">
                         <Eye className="w-8 h-8" />
                       </div>
                       <div className="text-center">
                         <p className="font-bold text-slate-900 mb-1">Review Output</p>
-                        <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">In-Browser Preview</p>
+                        <p className="text-xs font-bold text-slate-600 uppercase tracking-widest">In-Browser Preview</p>
                       </div>
                     </button>
 
@@ -275,7 +275,7 @@ export default function CompressPDF() {
                       </div>
                       <div className="text-center">
                         <p className="font-bold text-white mb-1">Export Optimized PDF</p>
-                        <p className="text-[10px] font-bold text-white/40 uppercase tracking-widest">Secure Local Save</p>
+                        <p className="text-xs font-bold text-white/40 uppercase tracking-widest">Secure Local Save</p>
                       </div>
                     </a>
                   </div>
@@ -329,13 +329,13 @@ function CompressionCard({ active, onClick, title, description, icon }) {
       <div className="decorative-circle !opacity-20" />
       <div className={cn(
         "w-14 h-14 rounded-2xl flex items-center justify-center mb-8 transition-all duration-300 shadow-sm",
-        active ? "bg-[#0047AB] text-white scale-110" : "bg-slate-50 text-slate-400"
+        active ? "bg-[#0047AB] text-white scale-110" : "bg-slate-50 text-slate-600"
       )}>
         {icon}
       </div>
       <div>
         <h4 className="text-xl font-bold text-slate-900 mb-1">{title}</h4>
-        <p className="text-[10px] text-slate-400 font-bold uppercase tracking-[0.2em]">{description}</p>
+        <p className="text-xs text-slate-600 font-bold uppercase tracking-[0.2em]">{description}</p>
       </div>
     </div>
   );

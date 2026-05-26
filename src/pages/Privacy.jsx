@@ -66,7 +66,7 @@ export default function Privacy() {
         <div className="p-12 md:p-16 bg-indigo-950 text-white rounded-[3rem] space-y-8 relative overflow-hidden shadow-2xl shadow-indigo-100">
           <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 blur-[80px] rounded-full -translate-y-1/2 translate-x-1/2"></div>
           <h3 className="text-3xl font-black flex items-center gap-4 relative z-10">
-            <Lock className="w-8 h-8 text-indigo-400" />
+            <Lock className="w-8 h-8 text-indigo-600" />
             Enterprise Encryption
           </h3>
           <p className="text-indigo-200 leading-relaxed font-semibold text-lg relative z-10">

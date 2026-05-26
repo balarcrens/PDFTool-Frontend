@@ -117,13 +117,13 @@ export default function MergePDF() {
             animate={{ opacity: 1, y: 0 }}
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-50 text-slate-500 font-bold text-[11px] uppercase tracking-widest border border-slate-100"
           >
-            <Combine className="w-3.5 h-3.5 text-[#0047AB]" />
+            <Combine className="w-3.5 h-3.5 text-indigo-600" />
             Professional Merge Utility
           </motion.div>
           <h1 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tight">Merge PDF Documents</h1>
           <p className="text-lg text-slate-500 font-medium max-w-2xl mx-auto leading-relaxed">
             Consolidate multiple PDF files into a single, high-fidelity document.
-            All processing happens locally to ensure <span className="text-[#0047AB] font-bold">100% data confidentiality</span>.
+            All processing happens locally to ensure <span className="text-indigo-600 font-bold">100% data confidentiality</span>.
           </p>
         </div>
 
@@ -134,17 +134,17 @@ export default function MergePDF() {
             {/* Action Bar */}
             <div className="action-bar-classic sticky top-24 z-30">
               <div className="flex items-center gap-4 w-full md:w-auto">
-                <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center text-slate-400">
+                <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center text-slate-600">
                   <Files className="w-5 h-5" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Queue Status</span>
+                  <span className="text-xs font-black text-slate-600 uppercase tracking-widest">Queue Status</span>
                   <span className="text-sm font-bold text-slate-900">{files.length} Documents Ready</span>
                 </div>
                 <div className="h-8 w-px bg-slate-100 hidden md:block ml-2"></div>
                 <button
                   onClick={reverseOrder}
-                  className="hidden sm:flex items-center gap-2 text-[11px] font-bold text-slate-500 hover:text-[#0047AB] transition-all uppercase tracking-wider"
+                  className="hidden sm:flex items-center gap-2 text-[11px] font-bold text-slate-500 hover:text-indigo-600 transition-all uppercase tracking-wider"
                 >
                   <ArrowDownUp className="w-4 h-4" />
                   Reverse
@@ -205,13 +205,13 @@ export default function MergePDF() {
                     <div className="text-slate-300 group-hover:text-slate-600 transition-colors">
                       <GripVertical className="w-5 h-5" />
                     </div>
-                    <div className="w-11 h-11 bg-slate-50 rounded-xl flex items-center justify-center text-slate-400 group-hover:bg-[#0047AB] group-hover:text-white transition-all">
+                    <div className="w-11 h-11 bg-slate-50 rounded-xl flex items-center justify-center text-slate-600 group-hover:bg-indigo-600 group-hover:text-white transition-all">
                       <FileText className="w-5 h-5" />
                     </div>
                     <div className="flex-grow min-w-0 text-left">
                       <p className="font-bold text-[15px] truncate text-slate-900 mb-0.5">{file.name}</p>
                       <div className="flex items-center gap-3">
-                        <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{file.size}</span>
+                        <span className="text-xs font-bold text-slate-600 uppercase tracking-widest">{file.size}</span>
                         <span className="w-1 h-1 bg-slate-200 rounded-full"></span>
                         <span className="verified-badge">
                           <ShieldCheck className="w-3 h-3" />
@@ -241,7 +241,7 @@ export default function MergePDF() {
                   <div className="decorative-circle !w-64 !h-64" />
 
                   <div className="flex flex-col items-center space-y-6">
-                    <div className="w-20 h-20 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 shadow-inner">
+                    <div className="w-20 h-20 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-700 shadow-inner">
                       <CheckCircle2 className="w-10 h-10" />
                     </div>
                     <div className="space-y-2">
@@ -253,28 +253,28 @@ export default function MergePDF() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
                     <button
                       onClick={() => window.open(mergedPdfUrl, '_blank')}
-                      className="flex flex-col items-center justify-center p-10 bg-slate-50 border border-slate-100 rounded-[2rem] hover:bg-white hover:border-[#0047AB] hover:shadow-xl transition-all group gap-5"
+                      className="flex flex-col items-center justify-center p-10 bg-slate-50 border border-slate-100 rounded-[2rem] hover:bg-white hover:border-indigo-600 hover:shadow-xl transition-all group gap-5"
                     >
-                      <div className="w-16 h-16 bg-white border border-slate-100 rounded-2xl flex items-center justify-center text-slate-400 group-hover:text-[#0047AB] group-hover:scale-110 group-hover:shadow-lg transition-all duration-300">
+                      <div className="w-16 h-16 bg-white border border-slate-100 rounded-2xl flex items-center justify-center text-slate-600 group-hover:text-indigo-600 group-hover:scale-110 group-hover:shadow-lg transition-all duration-300">
                         <Eye className="w-8 h-8" />
                       </div>
                       <div className="text-center">
                         <p className="font-bold text-slate-900 mb-1">Verify Quality</p>
-                        <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">In-Browser Preview</p>
+                        <p className="text-xs font-bold text-slate-600 uppercase tracking-widest">In-Browser Preview</p>
                       </div>
                     </button>
 
                     <a
                       href={mergedPdfUrl}
                       download="merged_document.pdf"
-                      className="flex flex-col items-center justify-center p-10 bg-[#0047AB] text-white rounded-[2rem] hover:bg-[#003580] transition-all group gap-5 shadow-2xl shadow-indigo-100"
+                      className="flex flex-col items-center justify-center p-10 bg-indigo-600 text-white rounded-[2rem] hover:bg-indigo-700 transition-all group gap-5 shadow-2xl shadow-indigo-100"
                     >
                       <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center text-white group-hover:scale-110 transition-all duration-300 shadow-lg">
                         <Download className="w-8 h-8" />
                       </div>
                       <div className="text-center">
                         <p className="font-bold text-white mb-1">Download Final PDF</p>
-                        <p className="text-[10px] font-bold text-white/40 uppercase tracking-widest">Secure Export</p>
+                        <p className="text-xs font-bold text-white/40 uppercase tracking-widest">Secure Export</p>
                       </div>
                     </a>
                   </div>

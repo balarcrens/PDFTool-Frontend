@@ -100,7 +100,7 @@ export default function FAQPage() {
                   <div className="flex items-center gap-4 pr-4">
                     <div className={cn(
                       "w-10 h-10 rounded-xl flex items-center justify-center shrink-0 border",
-                      isOpen ? "bg-indigo-600 text-white border-indigo-600" : "bg-slate-50 text-slate-400 border-slate-100"
+                      isOpen ? "bg-indigo-600 text-white border-indigo-600" : "bg-slate-50 text-slate-600 border-slate-100"
                     )}>
                       <faq.icon className="w-4 h-4" />
                     </div>
@@ -110,7 +110,7 @@ export default function FAQPage() {
                   </div>
                   <ChevronDown
                     className={cn(
-                      "w-5 h-5 text-slate-400 shrink-0 transition-transform duration-500",
+                      "w-5 h-5 text-slate-600 shrink-0 transition-transform duration-500",
                       isOpen && "rotate-180 text-indigo-600"
                     )}
                   />

@@ -155,13 +155,13 @@ export default function WatermarkPDF() {
             {/* Action Bar */}
             <div className="action-bar-classic sticky top-24 z-30">
               <div className="flex items-center gap-4 w-full md:w-auto">
-                <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center text-slate-400">
+                <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center text-slate-600">
                   <FileText className="w-5 h-5" />
                 </div>
                 <div>
                   <p className="font-bold text-[15px] truncate max-w-[150px] md:max-w-[300px] text-slate-900 mb-0.5">{file.name}</p>
                   <div className="flex items-center gap-3">
-                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{(file.size / (1024 * 1024)).toFixed(2)} MB</span>
+                    <span className="text-xs font-bold text-slate-600 uppercase tracking-widest">{(file.size / (1024 * 1024)).toFixed(2)} MB</span>
                     <span className="w-1 h-1 bg-slate-200 rounded-full"></span>
                     <span className="verified-badge">
                       <ShieldCheck className="w-3 h-3" />
@@ -204,7 +204,7 @@ export default function WatermarkPDF() {
 
                 {/* Input Text */}
                 <div className="space-y-2">
-                  <label className="text-xs font-bold text-slate-400 uppercase tracking-widest">Watermark Text</label>
+                  <label className="text-xs font-bold text-slate-600 uppercase tracking-widest">Watermark Text</label>
                   <input
                     type="text"
                     value={watermarkText}
@@ -216,7 +216,7 @@ export default function WatermarkPDF() {
 
                 {/* Grid Preset Position */}
                 <div className="space-y-3">
-                  <label className="text-xs font-bold text-slate-400 uppercase tracking-widest">Watermark Position</label>
+                  <label className="text-xs font-bold text-slate-600 uppercase tracking-widest">Watermark Position</label>
                   <div className="grid grid-cols-3 gap-2">
                     <PositionBtn active={position === "topLeft"} label="Top Left" onClick={() => setPosition("topLeft")} />
                     <PositionBtn active={position === "topRight"} label="Top Right" onClick={() => setPosition("topRight")} />
@@ -228,7 +228,7 @@ export default function WatermarkPDF() {
 
                 {/* Font Size Slider */}
                 <div className="space-y-2">
-                  <div className="flex justify-between text-xs font-bold text-slate-400 uppercase tracking-widest">
+                  <div className="flex justify-between text-xs font-bold text-slate-600 uppercase tracking-widest">
                     <span>Font Size</span>
                     <span className="text-[#0047AB]">{fontSize}px</span>
                   </div>
@@ -244,7 +244,7 @@ export default function WatermarkPDF() {
 
                 {/* Opacity Slider */}
                 <div className="space-y-2">
-                  <div className="flex justify-between text-xs font-bold text-slate-400 uppercase tracking-widest">
+                  <div className="flex justify-between text-xs font-bold text-slate-600 uppercase tracking-widest">
                     <span>Opacity</span>
                     <span className="text-[#0047AB]">{Math.round(opacity * 100)}%</span>
                   </div>
@@ -261,7 +261,7 @@ export default function WatermarkPDF() {
 
                 {/* Rotation Slider */}
                 <div className="space-y-2">
-                  <div className="flex justify-between text-xs font-bold text-slate-400 uppercase tracking-widest">
+                  <div className="flex justify-between text-xs font-bold text-slate-600 uppercase tracking-widest">
                     <span>Rotation Angle</span>
                     <span className="text-[#0047AB]">{rotation}°</span>
                   </div>
@@ -277,7 +277,7 @@ export default function WatermarkPDF() {
 
                 {/* Color Selection */}
                 <div className="space-y-2">
-                  <label className="text-xs font-bold text-slate-400 uppercase tracking-widest">Stamp Color</label>
+                  <label className="text-xs font-bold text-slate-600 uppercase tracking-widest">Stamp Color</label>
                   <div className="flex items-center gap-3">
                     <input
                       type="color"
@@ -337,7 +337,7 @@ export default function WatermarkPDF() {
               <div className="decorative-circle !w-64 !h-64" />
 
               <div className="flex flex-col items-center space-y-6">
-                <div className="w-20 h-20 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 shadow-inner">
+                <div className="w-20 h-20 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-700 shadow-inner">
                   <CheckCircle2 className="w-10 h-10" />
                 </div>
                 <div className="space-y-2">
@@ -351,12 +351,12 @@ export default function WatermarkPDF() {
                   onClick={() => window.open(watermarkedPdfUrl, '_blank')}
                   className="flex flex-col items-center justify-center p-10 bg-slate-50 border border-slate-100 rounded-[2rem] hover:bg-white hover:border-[#0047AB] hover:shadow-xl transition-all group gap-5"
                 >
-                  <div className="w-16 h-16 bg-white border border-slate-100 rounded-2xl flex items-center justify-center text-slate-400 group-hover:text-[#0047AB] group-hover:scale-110 group-hover:shadow-lg transition-all duration-300">
+                  <div className="w-16 h-16 bg-white border border-slate-100 rounded-2xl flex items-center justify-center text-slate-600 group-hover:text-[#0047AB] group-hover:scale-110 group-hover:shadow-lg transition-all duration-300">
                     <Eye className="w-8 h-8" />
                   </div>
                   <div className="text-center">
                     <p className="font-bold text-slate-900 mb-1">Verify Output</p>
-                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">In-Browser Preview</p>
+                    <p className="text-xs font-bold text-slate-600 uppercase tracking-widest">In-Browser Preview</p>
                   </div>
                 </button>
 
@@ -370,7 +370,7 @@ export default function WatermarkPDF() {
                   </div>
                   <div className="text-center">
                     <p className="font-bold text-white mb-1">Download PDF</p>
-                    <p className="text-[10px] font-bold text-white/40 uppercase tracking-widest">Secure local save</p>
+                    <p className="text-xs font-bold text-white/40 uppercase tracking-widest">Secure local save</p>
                   </div>
                 </a>
               </div>
@@ -414,7 +414,7 @@ function PositionBtn({ active, label, onClick }) {
     <button
       onClick={onClick}
       className={cn(
-        "px-2 py-2 rounded-lg font-bold text-[10px] uppercase tracking-wider text-center border transition-all truncate",
+        "px-2 py-2 rounded-lg font-bold text-xs uppercase tracking-wider text-center border transition-all truncate",
         active
           ? "bg-[#0047AB] text-white border-[#0047AB]"
           : "bg-slate-50 border-slate-200 text-slate-500 hover:bg-slate-100 hover:text-slate-900"

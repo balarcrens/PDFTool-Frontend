@@ -85,7 +85,7 @@ export default function Cookies() {
           </section>
         </div>
 
-        <div className="pt-16 border-t border-indigo-50 text-[10px] font-black text-indigo-300 uppercase tracking-[0.2em] text-center">
+        <div className="pt-16 border-t border-indigo-50 text-xs font-black text-indigo-300 uppercase tracking-[0.2em] text-center">
           Document Update: May 2026
         </div>
       </div>
@@ -97,7 +97,7 @@ function CookieCard({ title, desc }) {
   return (
     <div className="p-8 border border-slate-100 rounded-3xl bg-white shadow-sm hover:shadow-md hover:border-slate-200 transition-all flex flex-col gap-3">
       <h4 className="font-black text-lg text-indigo-950">{title}</h4>
-      <p className="text-slate-400 text-sm font-semibold leading-relaxed">{desc}</p>
+      <p className="text-slate-600 text-sm font-semibold leading-relaxed">{desc}</p>
     </div>
   );
 }

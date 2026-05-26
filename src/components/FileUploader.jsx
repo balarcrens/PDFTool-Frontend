@@ -31,21 +31,17 @@ export default function FileUploader({
     }
     
     const invalidFiles = Array.from(files).filter(file => {
-      // If accept is empty or *, allow all
       if (!accept || accept === "*") return false;
       
       const acceptList = accept.split(",").map(item => item.trim());
       
       return !acceptList.some(criterion => {
         if (criterion.startsWith(".")) {
-          // Check extension
           return file.name.toLowerCase().endsWith(criterion.toLowerCase());
         } else if (criterion.endsWith("/*")) {
-          // Check category (e.g., image/*)
           const category = criterion.split("/")[0];
           return file.type.startsWith(`${category}/`);
         } else {
-          // Check exact mime type
           return file.type === criterion;
         }
       });
@@ -76,6 +72,14 @@ export default function FileUploader({
     }
   };
 
+  // Keyboard navigation support: Trigger click on Enter or Space
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      fileInputRef.current?.click();
+    }
+  };
+
   return (
     <div className="w-full">
       <motion.div
@@ -83,11 +87,15 @@ export default function FileUploader({
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
         onClick={() => fileInputRef.current?.click()}
+        onKeyDown={handleKeyDown}
+        tabIndex={0}
+        role="button"
+        aria-label={`File uploader. ${title}. ${description}. Allowed formats: ${accept}`}
         className={cn(
-          "relative group cursor-pointer border-2 border-dashed rounded-[2rem] p-16 md:p-24 transition-all duration-500 flex flex-col items-center justify-center text-center",
+          "relative group border-2 border-dashed rounded-3xl p-10 sm:p-16 md:p-20 transition-all duration-300 flex flex-col items-center justify-center text-center outline-none focus-visible:ring-2 focus-visible:ring-indigo-600 focus-visible:ring-offset-2",
           isDragging 
-            ? "border-[#0047AB] bg-slate-50 shadow-2xl shadow-indigo-100 scale-[1.01]" 
-            : "border-slate-200 hover:border-[#0047AB] hover:bg-slate-50/50 hover:shadow-xl hover:shadow-indigo-50"
+            ? "border-indigo-600 bg-indigo-50/20 shadow-md scale-[1.01]" 
+            : "border-slate-200 bg-white hover:border-indigo-600 hover:shadow-premium-hover"
         )}
       >
         <input
@@ -97,30 +105,31 @@ export default function FileUploader({
           accept={accept}
           multiple={multiple}
           className="hidden"
+          tabIndex={-1}
         />
         
-        <div className="relative mb-8">
-          <div className="bg-[#0047AB] p-6 rounded-2xl shadow-2xl shadow-indigo-200 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
-            <Upload className="w-10 h-10 text-white" />
+        <div className="relative mb-6 select-none" aria-hidden="true">
+          <div className="bg-indigo-600 p-5 rounded-2xl shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:rotate-1 text-white">
+            <Upload className="w-8 h-8" />
           </div>
-          <div className="absolute -bottom-2 -right-2 bg-emerald-500 p-1.5 rounded-full border-2 border-white shadow-lg">
-            <ShieldCheck className="w-4 h-4 text-white" />
+          <div className="absolute -bottom-1 -right-1 bg-emerald-500 p-1 rounded-full border-2 border-white shadow">
+            <ShieldCheck className="w-3.5 h-3.5 text-white" />
           </div>
         </div>
         
-        <h3 className="text-3xl font-black mb-3 tracking-tight text-slate-900">{title}</h3>
-        <p className="text-slate-500 text-base mb-10 max-w-xs mx-auto font-medium leading-relaxed">
+        <h3 className="text-xl sm:text-2xl font-bold mb-2 tracking-tight text-slate-800">{title}</h3>
+        <p className="text-slate-500 text-sm sm:text-base mb-8 max-w-xs mx-auto font-medium leading-relaxed">
           {description}
         </p>
         
-        <div className="flex flex-wrap items-center justify-center gap-4 text-[11px] font-bold text-slate-400 uppercase tracking-widest">
-          <div className="flex items-center gap-2 px-4 py-2 bg-white border border-slate-100 rounded-full shadow-sm">
-            <FileText className="w-3.5 h-3.5 text-[#0047AB]" />
-            <span>{accept.includes("pdf") ? "PDF Support" : accept.includes("docx") ? "Word Support" : "Native Files"}</span>
+        <div className="flex flex-wrap items-center justify-center gap-3 text-[10.5px] font-bold text-slate-500 uppercase tracking-wider select-none" aria-hidden="true">
+          <div className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 border border-slate-100 rounded-full">
+            <FileText className="w-3.5 h-3.5 text-indigo-600" />
+            <span>{accept.includes("pdf") ? "PDF Format" : accept.includes("docx") ? "Word Support" : "Allowed files"}</span>
           </div>
-          <div className="flex items-center gap-2 px-4 py-2 bg-white border border-slate-100 rounded-full shadow-sm">
+          <div className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 border border-slate-100 rounded-full">
             <FileCheck className="w-3.5 h-3.5 text-emerald-500" />
-            <span>Encrypted Pipeline</span>
+            <span>Encrypted Sandbox</span>
           </div>
         </div>
       </motion.div>
@@ -131,10 +140,11 @@ export default function FileUploader({
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
-            className="mt-4 p-4 bg-red-50 border border-red-100 rounded-lg flex items-center gap-3 text-red-600"
+            className="mt-4 p-4 bg-red-50 border border-red-100/60 rounded-xl flex items-center gap-3 text-red-700"
+            role="alert"
           >
-            <AlertCircle className="w-5 h-5" />
-            <span className="text-sm font-bold">{error}</span>
+            <AlertCircle className="w-5 h-5 text-red-600 shrink-0" />
+            <span className="text-sm font-semibold">{error}</span>
           </motion.div>
         )}
       </AnimatePresence>

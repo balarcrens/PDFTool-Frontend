@@ -5,6 +5,7 @@ import SEO from "../components/SEO";
 import { Search, Clock, ArrowRight, BookOpen } from "lucide-react";
 import { motion } from "framer-motion";
 import { cn } from "../lib/utils";
+import AdSense from "../components/AdSense";
 
 export default function BlogList() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -82,15 +83,20 @@ export default function BlogList() {
 
           {/* Search Input */}
           <div className="relative w-full md:w-80">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-slate-400" />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-slate-600" />
             <input
               type="text"
               placeholder="Search articles or tags..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-12 pr-4 py-3 bg-white border border-slate-200 rounded-xl focus:border-[#0047AB] focus:ring-2 focus:ring-indigo-100 font-medium text-sm text-slate-800 transition-all outline-none"
+              className="w-full pl-12 pr-4 py-3 bg-white border border-slate-200 rounded-xl focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 font-medium text-sm text-slate-800 transition-all outline-none"
             />
           </div>
+        </div>
+
+        {/* AdSense Slot E - Blog Header Banner */}
+        <div className="max-w-[970px] mx-auto w-full select-none">
+          <AdSense adSlot="7294829384" adFormat="horizontal" />
         </div>
 
         {/* Grid of Articles */}
@@ -108,10 +114,10 @@ export default function BlogList() {
                   <div className="space-y-6">
                     {/* Category and Tags */}
                     <div className="flex flex-wrap items-center gap-2">
-                      <span className="px-3 py-1 bg-indigo-50 border border-indigo-100/50 text-indigo-600 rounded-full font-bold text-[10px] uppercase tracking-wider">
+                      <span className="px-3 py-1 bg-indigo-50 border border-indigo-100/50 text-indigo-600 rounded-full font-bold text-xs uppercase tracking-wider">
                         {art.category}
                       </span>
-                      <span className="text-[11px] font-bold text-slate-400 flex items-center gap-1">
+                      <span className="text-[11px] font-bold text-slate-600 flex items-center gap-1">
                         <Clock className="w-3.5 h-3.5" />
                         {art.readTime}
                       </span>
@@ -136,12 +142,12 @@ export default function BlogList() {
                       </div>
                       <div>
                         <p className="text-xs font-bold text-slate-700 leading-none mb-0.5">{art.author}</p>
-                        <p className="text-[9px] font-bold text-slate-400 uppercase tracking-widest leading-none">{art.date}</p>
+                        <p className="text-[9px] font-bold text-slate-600 uppercase tracking-widest leading-none">{art.date}</p>
                       </div>
                     </div>
 
                     {/* Arrow CTA */}
-                    <div className="w-9 h-9 rounded-full bg-slate-50 group-hover:bg-[#0047AB] group-hover:text-white transition-all flex items-center justify-center text-slate-400">
+                    <div className="w-9 h-9 rounded-full bg-slate-50 group-hover:bg-[#0047AB] group-hover:text-white transition-all flex items-center justify-center text-slate-600">
                       <ArrowRight className="w-4 h-4" />
                     </div>
                   </div>
@@ -153,7 +159,7 @@ export default function BlogList() {
           <div className="text-center py-20 bg-slate-50 rounded-3xl max-w-2xl mx-auto space-y-4">
             <Search className="w-12 h-12 text-slate-300 mx-auto" />
             <h3 className="text-xl font-black text-slate-800">No Articles Found</h3>
-            <p className="text-slate-400 font-medium max-w-xs mx-auto">
+            <p className="text-slate-600 font-medium max-w-xs mx-auto">
               We couldn't find any articles matching "{searchQuery}" under "{activeCategory}". Try another term!
             </p>
           </div>

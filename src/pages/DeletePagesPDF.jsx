@@ -149,13 +149,13 @@ export default function DeletePagesPDF() {
             {/* Action Bar */}
             <div className="action-bar-classic sticky top-24 z-30">
               <div className="flex items-center gap-4 w-full md:w-auto">
-                <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center text-slate-400">
+                <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center text-slate-600">
                   <FileText className="w-5 h-5" />
                 </div>
                 <div className="min-w-0">
                   <p className="font-bold text-[15px] truncate max-w-[150px] md:max-w-[300px] text-slate-900 mb-0.5">{file.name}</p>
                   <div className="flex items-center gap-3">
-                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{pages.length} Pages remaining</span>
+                    <span className="text-xs font-bold text-slate-600 uppercase tracking-widest">{pages.length} Pages remaining</span>
                     <span className="w-1 h-1 bg-slate-200 rounded-full"></span>
                     <span className="verified-badge">
                       <ShieldCheck className="w-3 h-3" />
@@ -195,7 +195,7 @@ export default function DeletePagesPDF() {
                 </div>
                 <div className="text-center space-y-2">
                   <p className="text-2xl font-black text-slate-900">Generating Grid</p>
-                  <p className="text-slate-400 font-bold text-[10px] uppercase tracking-widest">Rendering in-memory thumbnails...</p>
+                  <p className="text-slate-600 font-bold text-xs uppercase tracking-widest">Rendering in-memory thumbnails...</p>
                 </div>
               </div>
             ) : (
@@ -231,7 +231,7 @@ export default function DeletePagesPDF() {
                             >
                               <Trash2 className="w-5 h-5" />
                             </button>
-                            <span className="text-[10px] font-bold text-white tracking-widest uppercase">Delete Page</span>
+                            <span className="text-xs font-bold text-white tracking-widest uppercase">Delete Page</span>
                           </div>
                         </div>
                       </motion.div>
@@ -253,7 +253,7 @@ export default function DeletePagesPDF() {
               <div className="decorative-circle !w-64 !h-64" />
 
               <div className="flex flex-col items-center space-y-6">
-                <div className="w-20 h-20 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 shadow-inner">
+                <div className="w-20 h-20 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-700 shadow-inner">
                   <CheckCircle2 className="w-10 h-10" />
                 </div>
                 <div className="space-y-2">
@@ -267,12 +267,12 @@ export default function DeletePagesPDF() {
                   onClick={() => window.open(finalPdfUrl, '_blank')}
                   className="flex flex-col items-center justify-center p-10 bg-slate-50 border border-slate-100 rounded-[2rem] hover:bg-white hover:border-[#0047AB] hover:shadow-xl transition-all group gap-5"
                 >
-                  <div className="w-16 h-16 bg-white border border-slate-100 rounded-2xl flex items-center justify-center text-slate-400 group-hover:text-[#0047AB] group-hover:scale-110 group-hover:shadow-lg transition-all duration-300">
+                  <div className="w-16 h-16 bg-white border border-slate-100 rounded-2xl flex items-center justify-center text-slate-600 group-hover:text-[#0047AB] group-hover:scale-110 group-hover:shadow-lg transition-all duration-300">
                     <Eye className="w-8 h-8" />
                   </div>
                   <div className="text-center">
                     <p className="font-bold text-slate-900 mb-1">Verify Quality</p>
-                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">In-Browser Preview</p>
+                    <p className="text-xs font-bold text-slate-600 uppercase tracking-widest">In-Browser Preview</p>
                   </div>
                 </button>
 
@@ -286,7 +286,7 @@ export default function DeletePagesPDF() {
                   </div>
                   <div className="text-center">
                     <p className="font-bold text-white mb-1">Download Final PDF</p>
-                    <p className="text-[10px] font-bold text-white/40 uppercase tracking-widest">Secure local save</p>
+                    <p className="text-xs font-bold text-white/40 uppercase tracking-widest">Secure local save</p>
                   </div>
                 </a>
               </div>

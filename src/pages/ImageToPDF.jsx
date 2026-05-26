@@ -158,8 +158,8 @@ export default function ImageToPDF() {
                   <button
                     onClick={() => setOrientation("p")}
                     className={cn(
-                      "px-6 py-2 text-[10px] font-bold uppercase tracking-widest rounded-lg transition-all",
-                      orientation === "p" ? "bg-white text-slate-900 shadow-sm" : "text-slate-400"
+                      "px-6 py-2 text-xs font-bold uppercase tracking-widest rounded-lg transition-all",
+                      orientation === "p" ? "bg-white text-slate-900 shadow-sm" : "text-slate-600"
                     )}
                   >
                     Portrait
@@ -167,8 +167,8 @@ export default function ImageToPDF() {
                   <button
                     onClick={() => setOrientation("l")}
                     className={cn(
-                      "px-6 py-2 text-[10px] font-bold uppercase tracking-widest rounded-lg transition-all",
-                      orientation === "l" ? "bg-white text-slate-900 shadow-sm" : "text-slate-400"
+                      "px-6 py-2 text-xs font-bold uppercase tracking-widest rounded-lg transition-all",
+                      orientation === "l" ? "bg-white text-slate-900 shadow-sm" : "text-slate-600"
                     )}
                   >
                     Landscape
@@ -176,7 +176,7 @@ export default function ImageToPDF() {
                 </div>
                 <div className="h-8 w-px bg-slate-100 hidden md:block"></div>
                 <div className="flex flex-col">
-                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-0.5">Asset Count</span>
+                  <span className="text-xs font-bold text-slate-600 uppercase tracking-widest mb-0.5">Asset Count</span>
                   <span className="text-sm font-bold text-slate-900">{images.length} Photos Selected</span>
                 </div>
               </div>
@@ -247,7 +247,7 @@ export default function ImageToPDF() {
                   <div className="decorative-circle !w-64 !h-64" />
 
                   <div className="flex flex-col items-center space-y-6">
-                    <div className="w-20 h-20 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 shadow-inner">
+                    <div className="w-20 h-20 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-700 shadow-inner">
                       <CheckCircle2 className="w-10 h-10" />
                     </div>
                     <div className="space-y-2">
@@ -261,12 +261,12 @@ export default function ImageToPDF() {
                       onClick={() => window.open(pdfUrl, '_blank')}
                       className="flex flex-col items-center justify-center p-10 bg-slate-50 border border-slate-100 rounded-[2rem] hover:bg-white hover:border-[#0047AB] hover:shadow-xl transition-all group gap-5"
                     >
-                      <div className="w-16 h-16 bg-white border border-slate-100 rounded-2xl flex items-center justify-center text-slate-400 group-hover:text-[#0047AB] group-hover:scale-110 group-hover:shadow-lg transition-all duration-300">
+                      <div className="w-16 h-16 bg-white border border-slate-100 rounded-2xl flex items-center justify-center text-slate-600 group-hover:text-[#0047AB] group-hover:scale-110 group-hover:shadow-lg transition-all duration-300">
                         <Eye className="w-8 h-8" />
                       </div>
                       <div className="text-center">
                         <p className="font-bold text-slate-900 mb-1">Verify Output</p>
-                        <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">In-Browser Preview</p>
+                        <p className="text-xs font-bold text-slate-600 uppercase tracking-widest">In-Browser Preview</p>
                       </div>
                     </button>
 
@@ -280,7 +280,7 @@ export default function ImageToPDF() {
                       </div>
                       <div className="text-center">
                         <p className="font-bold text-white mb-1">Export PDF File</p>
-                        <p className="text-[10px] font-bold text-white/40 uppercase tracking-widest">Secure Local Save</p>
+                        <p className="text-xs font-bold text-white/40 uppercase tracking-widest">Secure Local Save</p>
                       </div>
                     </a>
                   </div>

@@ -104,13 +104,13 @@ export default function PDFToText() {
             {/* Action Bar */}
             <div className="action-bar-classic sticky top-24 z-30">
               <div className="flex items-center gap-4 w-full md:w-auto">
-                <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center text-slate-400">
+                <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center text-slate-600">
                   <FileText className="w-5 h-5" />
                 </div>
                 <div className="min-w-0">
                   <p className="font-bold text-[15px] truncate max-w-[150px] md:max-w-[350px] text-slate-900 mb-0.5">{file.name}</p>
                   <div className="flex items-center gap-3">
-                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{(file.size / (1024 * 1024)).toFixed(2)} MB</span>
+                    <span className="text-xs font-bold text-slate-600 uppercase tracking-widest">{(file.size / (1024 * 1024)).toFixed(2)} MB</span>
                     <span className="w-1 h-1 bg-slate-200 rounded-full"></span>
                     <span className="verified-badge">
                       <ShieldCheck className="w-3 h-3" />
@@ -154,7 +154,7 @@ export default function PDFToText() {
                   <div className="flex flex-col md:flex-row items-center justify-between gap-6 px-4">
                     <div className="space-y-1 text-center md:text-left">
                       <h3 className="text-2xl font-bold text-slate-900 tracking-tight">Extracted Content</h3>
-                      <p className="text-slate-400 font-bold text-[10px] uppercase tracking-widest">System generated plaintext</p>
+                      <p className="text-slate-600 font-bold text-xs uppercase tracking-widest">System generated plaintext</p>
                     </div>
                     <div className="flex gap-3 w-full md:w-auto">
                       <button

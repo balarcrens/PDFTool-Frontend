@@ -135,13 +135,13 @@ export default function SplitPDF() {
           <div className="max-w-4xl mx-auto space-y-12">
             <div className="action-bar-classic sticky top-24 z-30">
               <div className="flex flex-wrap items-center gap-4 w-full md:w-auto">
-                <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center text-slate-400">
+                <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center text-slate-600">
                   <FileText className="w-5 h-5" />
                 </div>
                 <div className="min-w-0">
                   <p className="font-bold text-[15px] truncate max-w-[150px] sm:max-w-[300px] text-slate-900 mb-0.5">{file.name}</p>
                   <div className="flex flex-wrap items-center gap-3">
-                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{(file.size / (1024 * 1024)).toFixed(2)} MB</span>
+                    <span className="text-xs font-bold text-slate-600 uppercase tracking-widest">{(file.size / (1024 * 1024)).toFixed(2)} MB</span>
                     <span className="verified-badge">
                       <ShieldCheck className="w-3 h-3" />
                       Secure Local
@@ -183,7 +183,7 @@ export default function SplitPDF() {
                 <div className="decorative-circle !opacity-20" />
                 <div className={cn(
                   "w-14 h-14 rounded-2xl flex items-center justify-center mb-8 mx-auto sm:mx-0 transition-all duration-300 shadow-sm",
-                  splitMode === "all" ? "bg-[#0047AB] text-white scale-110" : "bg-slate-50 text-slate-400"
+                  splitMode === "all" ? "bg-[#0047AB] text-white scale-110" : "bg-slate-50 text-slate-600"
                 )}>
                   <ArrowLeftRight className="w-7 h-7" />
                 </div>
@@ -203,7 +203,7 @@ export default function SplitPDF() {
                 <div className="decorative-circle !opacity-20" />
                 <div className={cn(
                   "w-14 h-14 rounded-2xl flex items-center justify-center mb-8 mx-auto sm:mx-0 transition-all duration-300 shadow-sm",
-                  splitMode === "range" ? "bg-[#0047AB] text-white scale-110" : "bg-slate-50 text-slate-400"
+                  splitMode === "range" ? "bg-[#0047AB] text-white scale-110" : "bg-slate-50 text-slate-600"
                 )}>
                   <FileText className="w-7 h-7" />
                 </div>
@@ -239,7 +239,7 @@ export default function SplitPDF() {
                 <div className="flex items-center justify-between px-4">
                   <div className="space-y-1">
                     <h3 className="text-2xl font-bold text-slate-900 tracking-tight">Output Documents</h3>
-                    <p className="text-slate-400 font-bold text-[10px] uppercase tracking-widest">Available for immediate export</p>
+                    <p className="text-slate-600 font-bold text-xs uppercase tracking-widest">Available for immediate export</p>
                   </div>
                   <div className="verified-badge !px-4 !py-2">
                     {results.length} Files Generated
@@ -256,12 +256,12 @@ export default function SplitPDF() {
                       className="card-ref !p-6 flex-col group"
                     >
                       <div className="flex items-center gap-4 mb-8">
-                        <div className="w-10 h-10 bg-slate-50 rounded-lg flex items-center justify-center text-slate-400 group-hover:bg-[#0047AB] group-hover:text-white transition-all">
+                        <div className="w-10 h-10 bg-slate-50 rounded-lg flex items-center justify-center text-slate-600 group-hover:bg-[#0047AB] group-hover:text-white transition-all">
                           <FileText className="w-5 h-5" />
                         </div>
                         <div className="min-w-0 text-left">
                           <p className="font-bold truncate text-[14px] text-slate-900">{res.name}</p>
-                          <p className="text-[10px] font-bold text-emerald-500 uppercase tracking-widest">High Quality PDF</p>
+                          <p className="text-xs font-bold text-emerald-500 uppercase tracking-widest">High Quality PDF</p>
                         </div>
                       </div>
 

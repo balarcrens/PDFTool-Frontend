@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { FileText, Globe, Menu, X, ChevronDown, Combine, Scissors, FileDown, Layout, ClipboardList, ImageIcon, FileCode, Lock, Unlock, RotateCw, Type, Hash, Trash2 } from "lucide-react";
+import { FileText, Menu, X, ChevronDown, Combine, Scissors, FileDown, Layout, ClipboardList, ImageIcon, FileCode, Lock, Unlock, RotateCw, Type, Hash, Trash2 } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
@@ -28,10 +28,17 @@ export default function Navbar() {
   const [isToolsOpen, setIsToolsOpen] = useState(false);
   const location = useLocation();
   const dropdownRef = useRef(null);
+  const triggerRef = useRef(null);
 
+  // Close tools dropdown when clicking outside
   useEffect(() => {
     function handleClickOutside(event) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target) &&
+        triggerRef.current &&
+        !triggerRef.current.contains(event.target)
+      ) {
         setIsToolsOpen(false);
       }
     }
@@ -39,42 +46,85 @@ export default function Navbar() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  // Close mobile menu on Escape key down
+  useEffect(() => {
+    function handleKeyDown(e) {
+      if (e.key === "Escape") {
+        setIsMenuOpen(false);
+      }
+    }
+    if (isMenuOpen) {
+      document.addEventListener("keydown", handleKeyDown);
+    }
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [isMenuOpen]);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isMenuOpen]);
+
   return (
     <>
-      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-slate-100 flex items-center h-20">
+      <nav
+        className="sticky top-0 z-40 w-full bg-white/75 backdrop-blur-xl border-b border-slate-100/90 flex items-center h-20 transition-all duration-200"
+        aria-label="Main Directory"
+      >
         <div className="container-professional flex items-center justify-between w-full">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group">
-            <img src="/icon.png" alt="iFlexPDF" className="w-10 h-10 " />
-            <span className="text-xl font-black tracking-tight text-slate-900">
-              iFlexPDF<span className="text-[#0047AB]">.</span>
+          <Link
+            to="/"
+            className="flex items-center gap-2.5 group focus-visible:ring-2 focus-visible:ring-indigo-600 focus-visible:ring-offset-2 rounded-xl px-1 py-1"
+            aria-label="iFlexPDF Home"
+          >
+            <img
+              src="/icon.png"
+              alt="iFlexPDF Logo"
+              className="w-9 h-9 object-contain select-none transition-transform duration-300 group-hover:scale-105"
+              width="36"
+              height="36"
+              loading="eager"
+            />
+            <span className="text-xl font-extrabold tracking-tight text-slate-900 leading-none">
+              iFlexPDF<span className="text-indigo-600">.</span>
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-10">
-            <div className="relative" ref={dropdownRef}>
+          <div className="hidden lg:flex items-center gap-8">
+            <div className="relative">
               <button
+                ref={triggerRef}
                 onClick={() => setIsToolsOpen(!isToolsOpen)}
+                aria-expanded={isToolsOpen}
+                aria-haspopup="true"
                 className={cn(
-                  "flex items-center gap-1.5 text-[14px] font-bold transition-all outline-none py-1 group",
-                  isToolsOpen || location.pathname.length > 1 ? "text-[#0047AB]" : "text-slate-500 hover:text-slate-900"
+                  "flex items-center gap-1 text-[14px] font-semibold transition-all duration-200 focus-visible:ring-2 focus-visible:ring-indigo-600 focus-visible:ring-offset-2 rounded-lg px-2.5 py-1.5 group select-none outline-none",
+                  isToolsOpen || location.pathname.length > 1 ? "text-indigo-600 font-bold" : "text-slate-500 hover:text-slate-900"
                 )}
               >
                 Tools
-                <ChevronDown className={cn("w-3.5 h-3.5 transition-transform duration-500", isToolsOpen && "rotate-180")} />
+                <ChevronDown className={cn("w-3.5 h-3.5 transition-transform duration-300 text-slate-400 group-hover:text-slate-900", isToolsOpen && "rotate-180 text-indigo-600")} />
               </button>
 
               <AnimatePresence>
                 {isToolsOpen && (
                   <motion.div
-                    initial={{ opacity: 0, y: 15, scale: 0.98 }}
+                    ref={dropdownRef}
+                    initial={{ opacity: 0, y: 10, scale: 0.98 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 15, scale: 0.98 }}
-                    transition={{ duration: 0.2, ease: "easeOut" }}
-                    className="absolute top-full left-0 mt-4 w-[580px] bg-white border border-slate-100 rounded-2xl shadow-2xl p-5 grid grid-cols-2 gap-2 z-50 max-h-[480px] overflow-y-auto custom-scrollbar"
+                    exit={{ opacity: 0, y: 10, scale: 0.98 }}
+                    transition={{ duration: 0.15, ease: "easeOut" }}
+                    className="absolute top-full left-0 mt-3 w-[580px] bg-white border border-slate-100 rounded-2xl shadow-premium-xl p-5 grid grid-cols-2 gap-1.5 z-50 max-h-[460px] overflow-y-auto custom-scrollbar"
                   >
-                    <div className="col-span-2 px-3 pb-3 border-b border-slate-50 mb-2">
+                    <div className="col-span-2 px-3 pb-2 border-b border-slate-50 mb-2.5">
                       <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Enterprise Toolbox</p>
                     </div>
                     {toolsLinks.map((link) => (
@@ -82,14 +132,14 @@ export default function Navbar() {
                         key={link.path}
                         to={link.path}
                         onClick={() => setIsToolsOpen(false)}
-                        className="flex items-center gap-4 p-3 rounded-xl hover:bg-slate-50 transition-all group"
+                        className="flex items-center gap-3.5 p-2.5 rounded-xl hover:bg-slate-50/70 transition-all duration-200 group focus-visible:ring-2 focus-visible:ring-indigo-600"
                       >
-                        <div className="w-11 h-11 bg-slate-100 rounded-xl flex items-center justify-center text-slate-400 transition-all group-hover:bg-[#0047AB] group-hover:text-white group-hover:shadow-lg group-hover:shadow-indigo-100">
-                          <link.icon className="w-5 h-5" />
+                        <div className="w-10 h-10 bg-slate-50 border border-slate-100 rounded-xl flex items-center justify-center text-slate-500 transition-all duration-200 group-hover:bg-indigo-600 group-hover:text-white group-hover:border-indigo-600 group-hover:shadow-md group-hover:shadow-indigo-100 shrink-0">
+                          <link.icon className="w-4.5 h-4.5" />
                         </div>
-                        <div>
-                          <p className="text-[13px] font-bold text-slate-900 mb-0.5">{link.name}</p>
-                          <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Fast & Secure</p>
+                        <div className="min-w-0">
+                          <p className="text-[13.5px] font-semibold text-slate-800 leading-tight group-hover:text-indigo-600 transition-colors mb-0.5">{link.name}</p>
+                          <p className="text-[10.5px] font-medium text-slate-400 uppercase tracking-wide">100% Secure & Local</p>
                         </div>
                       </Link>
                     ))}
@@ -100,22 +150,29 @@ export default function Navbar() {
 
             <NavLink to="/blog" active={location.pathname.startsWith("/blog")}>Blog</NavLink>
             <NavLink to="/security" active={location.pathname === "/security"}>Security</NavLink>
+            <NavLink to="/about" active={location.pathname === "/about"}>About</NavLink>
           </div>
 
-          {/* Actions - Clean Local UI */}
+          {/* Action Status Indicator */}
           <div className="hidden lg:flex items-center gap-3">
-            <span className="verified-badge px-4 py-2">
-              <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse mr-1"></span>
-              100% Client-Side Engine Active
+            <span className="verified-badge px-4 py-2 flex items-center gap-2 shadow-sm bg-emerald-50/50 border border-emerald-100/60 select-none">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              </span>
+              <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-800">100% Client-Side Engine Active</span>
             </span>
           </div>
 
+          {/* Mobile Hamburguer trigger */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle Navigation Menu"
-            className="lg:hidden p-2.5 text-slate-600 hover:text-[#0047AB] bg-slate-50 rounded-xl border border-slate-100 transition-all"
+            aria-expanded={isMenuOpen}
+            aria-label="Toggle navigation drawer"
+            aria-controls="mobile-drawer"
+            className="lg:hidden p-2.5 text-slate-600 hover:text-indigo-600 hover:bg-slate-50 border border-slate-100/80 rounded-xl transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-indigo-600"
           >
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isMenuOpen ? <X className="w-5.5 h-5.5" /> : <Menu className="w-5.5 h-5.5" />}
           </button>
         </div>
       </nav>
@@ -131,44 +188,50 @@ export default function Navbar() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 onClick={() => setIsMenuOpen(false)}
-                className="fixed inset-0 bg-slate-900/30 backdrop-blur-sm z-[999] lg:hidden"
+                className="fixed inset-0 bg-slate-950/20 backdrop-blur-[3px] z-[998] lg:hidden"
+                aria-hidden="true"
               />
 
               {/* Sidebar Slide-out Panel */}
               <motion.div
+                id="mobile-drawer"
+                role="dialog"
+                aria-modal="true"
+                aria-label="Navigation menu drawer"
                 initial={{ x: "100%" }}
                 animate={{ x: 0 }}
                 exit={{ x: "100%" }}
-                transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                className="fixed top-0 right-0 h-full w-[310px] max-w-[85vw] bg-white shadow-2xl z-[1000] flex flex-col p-6 border-l border-slate-100 lg:hidden"
+                transition={{ type: "spring", damping: 30, stiffness: 350 }}
+                className="fixed top-0 right-0 h-full w-[320px] max-w-[85vw] bg-white shadow-premium-xl z-[999] flex flex-col p-6 border-l border-slate-100 lg:hidden"
               >
                 {/* Drawer Header */}
-                <div className="flex items-center justify-between mb-6 pb-4 border-b border-slate-50">
-                  <Link to="/" onClick={() => setIsMenuOpen(false)} className="flex items-center gap-3">
-                    <img src="/icon.png" alt="iFlexPDF" className="w-8 h-8" />
-                    <span className="text-lg font-black tracking-tight text-slate-900">
-                      iFlexPDF<span className="text-[#0047AB]">.</span>
+                <div className="flex items-center justify-between mb-6 pb-4 border-b border-slate-100">
+                  <Link to="/" onClick={() => setIsMenuOpen(false)} className="flex items-center gap-2.5 outline-none focus-visible:ring-2 focus-visible:ring-indigo-600 rounded-lg py-0.5 px-0.5">
+                    <img src="/icon.png" alt="iFlexPDF" className="w-7 h-7 object-contain select-none" width="28" height="28" />
+                    <span className="text-lg font-extrabold tracking-tight text-slate-900 leading-none">
+                      iFlexPDF<span className="text-indigo-600">.</span>
                     </span>
                   </Link>
                   <button
                     onClick={() => setIsMenuOpen(false)}
-                    className="p-2 text-slate-400 hover:text-slate-900 hover:bg-slate-50 rounded-xl transition-all"
-                    aria-label="Close Menu"
+                    className="p-2 text-slate-500 hover:text-slate-900 hover:bg-slate-50 rounded-xl transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-indigo-600"
+                    aria-label="Close menu drawer"
                   >
                     <X className="w-5 h-5" />
                   </button>
                 </div>
 
                 {/* Scrollable Navigation Area */}
-                <div className="flex-grow overflow-y-auto pr-1 flex flex-col gap-1.5 scrollbar-thin">
+                <div className="flex-grow overflow-y-auto pr-1 flex flex-col gap-1 custom-scrollbar">
                   <MobileNavLink to="/" onClick={() => setIsMenuOpen(false)}>Home</MobileNavLink>
-                  <MobileNavLink to="/blog" onClick={() => setIsMenuOpen(false)}>Blog</MobileNavLink>
-                  <MobileNavLink to="/security" onClick={() => setIsMenuOpen(false)}>Security</MobileNavLink>
+                  <MobileNavLink to="/blog" onClick={() => setIsMenuOpen(false)}>Blog Guides</MobileNavLink>
+                  <MobileNavLink to="/security" onClick={() => setIsMenuOpen(false)}>Security Protocols</MobileNavLink>
+                  <MobileNavLink to="/about" onClick={() => setIsMenuOpen(false)}>About Us</MobileNavLink>
 
-                  <div className="h-px bg-slate-100 my-4"></div>
-                  <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest px-4 mb-2">Professional Toolbox</p>
+                  <div className="h-px bg-slate-100 my-4" aria-hidden="true"></div>
+                  <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest px-3 mb-2.5 select-none">Professional Toolbox</p>
 
-                  <div className="grid grid-cols-1 gap-1 max-h-[calc(100vh-280px)] overflow-y-auto pr-1">
+                  <div className="grid grid-cols-1 gap-1 max-h-[calc(100vh-320px)] overflow-y-auto pr-0.5 custom-scrollbar">
                     {toolsLinks.map((link) => {
                       const isToolActive = location.pathname === link.path;
                       return (
@@ -177,17 +240,17 @@ export default function Navbar() {
                           to={link.path}
                           onClick={() => setIsMenuOpen(false)}
                           className={cn(
-                            "flex items-center gap-3.5 px-4 py-2.5 rounded-xl font-bold transition-all text-[13px] border border-transparent",
+                            "flex items-center gap-3 px-3 py-2.5 rounded-xl font-semibold transition-all duration-200 text-[13px] border border-transparent outline-none focus-visible:ring-2 focus-visible:ring-indigo-600",
                             isToolActive
-                              ? "text-[#0047AB] bg-indigo-50/40"
+                              ? "text-indigo-600 bg-indigo-50/40 border-indigo-100/30"
                               : "text-slate-600 hover:text-slate-900 hover:bg-slate-50/70"
                           )}
                         >
                           <div className={cn(
-                            "w-8 h-8 rounded-lg flex items-center justify-center border shrink-0",
+                            "w-8 h-8 rounded-lg flex items-center justify-center border shrink-0 transition-colors duration-200",
                             isToolActive
-                              ? "bg-[#0047AB] text-white border-[#0047AB]"
-                              : "bg-slate-50 text-slate-400 border-slate-100"
+                              ? "bg-indigo-600 text-white border-indigo-600"
+                              : "bg-slate-50 text-slate-500 border-slate-100"
                           )}>
                             <link.icon className="w-4 h-4" strokeWidth={2} />
                           </div>
@@ -198,12 +261,15 @@ export default function Navbar() {
                   </div>
                 </div>
 
-                {/* Pinned Bottom CTA Actions - Updated for Security Banner */}
-                <div className="pt-5 mt-4 border-t border-slate-100 bg-white">
-                  <div className="p-4 bg-emerald-50 border border-emerald-100 rounded-2xl flex items-center gap-3">
-                    <div className="w-2.5 h-2.5 bg-emerald-500 rounded-full animate-pulse shrink-0"></div>
-                    <p className="text-[11px] font-bold text-emerald-800 uppercase tracking-wider">
-                      Fully Secure Client Sandbox
+                {/* Footer status in mobile */}
+                <div className="pt-4 mt-4 border-t border-slate-100 bg-white">
+                  <div className="p-3 bg-emerald-50 border border-emerald-100/60 rounded-2xl flex items-center gap-2.5 select-none">
+                    <div className="relative flex h-2 w-2 shrink-0">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                    </div>
+                    <p className="text-[10px] font-bold text-emerald-800 uppercase tracking-wider">
+                      Local Sandboxed Sandbox Active
                     </p>
                   </div>
                 </div>
@@ -222,8 +288,8 @@ function NavLink({ to, children, active }) {
     <Link
       to={to}
       className={cn(
-        "text-[14px] font-bold transition-all py-1 border-b-2",
-        active ? "text-[#0047AB] border-[#0047AB]" : "text-slate-500 hover:text-slate-900 border-transparent"
+        "text-[14px] font-semibold transition-all duration-200 py-1.5 border-b-2 outline-none focus-visible:ring-2 focus-visible:ring-indigo-600 focus-visible:ring-offset-2 rounded px-1",
+        active ? "text-indigo-600 border-indigo-600 font-bold" : "text-slate-500 hover:text-slate-900 border-transparent"
       )}
     >
       {children}
@@ -239,9 +305,9 @@ function MobileNavLink({ to, children, onClick }) {
       to={to}
       onClick={onClick}
       className={cn(
-        "px-4 py-3 rounded-xl font-bold transition-all text-[13px] flex items-center justify-between",
+        "px-3 py-2.5 rounded-xl font-semibold transition-all duration-200 text-[13px] flex items-center justify-between outline-none focus-visible:ring-2 focus-visible:ring-indigo-600",
         active
-          ? "text-[#0047AB] bg-indigo-50/40"
+          ? "text-indigo-600 bg-indigo-50/40 border-l-2 border-indigo-600 rounded-l-none"
           : "text-slate-600 hover:text-slate-900 hover:bg-slate-50/70"
       )}
     >

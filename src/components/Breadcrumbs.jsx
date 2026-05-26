@@ -96,9 +96,9 @@ export default function Breadcrumbs() {
       <div className="container-professional flex items-center gap-2.5 text-[11px] font-bold tracking-wide text-slate-500 overflow-x-auto whitespace-nowrap scrollbar-none py-0.5">
         <Link 
           to="/" 
-          className="flex items-center gap-1.5 text-slate-400 hover:text-indigo-600 hover:scale-[1.02] transition-all duration-200"
+          className="flex items-center gap-1.5 text-slate-600 hover:text-indigo-600 hover:scale-[1.02] transition-all duration-200"
         >
-          <Home className="w-3.5 h-3.5 text-slate-400/80" />
+          <Home className="w-3.5 h-3.5 text-slate-600/80" />
           <span>Home</span>
         </Link>
         

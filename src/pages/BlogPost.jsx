@@ -5,6 +5,7 @@ import SEO from "../components/SEO";
 import { ArrowLeft, Clock, ChevronRight, Share2, ShieldCheck } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import AdSense from "../components/AdSense";
 
 export default function BlogPost() {
   const { slug } = useParams();
@@ -114,11 +115,11 @@ export default function BlogPost() {
           {/* Header Block */}
           <header className="space-y-6 border-b border-slate-100 pb-10">
             <div className="flex flex-wrap items-center gap-3">
-              <span className="px-3.5 py-1 bg-indigo-50 border border-indigo-100 text-indigo-600 rounded-full font-bold text-[10px] uppercase tracking-wider">
+              <span className="px-3.5 py-1 bg-indigo-50 border border-indigo-100 text-indigo-600 rounded-full font-bold text-xs uppercase tracking-wider">
                 {article.category}
               </span>
               <span className="w-1 h-1 bg-slate-200 rounded-full"></span>
-              <span className="text-slate-400 text-xs font-semibold flex items-center gap-1.5">
+              <span className="text-slate-600 text-xs font-semibold flex items-center gap-1.5">
                 <Clock className="w-4 h-4 text-slate-300" />
                 {article.readTime}
               </span>
@@ -139,27 +140,28 @@ export default function BlogPost() {
               </div>
               <div>
                 <p className="text-sm font-bold text-slate-800 leading-none mb-0.5">{article.author}</p>
-                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest leading-none">Published {article.date}</p>
+                <p className="text-xs font-bold text-slate-600 uppercase tracking-widest leading-none">Published {article.date}</p>
               </div>
             </div>
           </header>
 
           {/* Body Content */}
           <div className="prose prose-slate max-w-none space-y-8 text-slate-600 text-base md:text-[17px] leading-relaxed font-medium">
-            {article.content.map((block, idx) => {
+            {article.content.flatMap((block, idx) => {
+              const elements = [];
               if (block.type === "paragraph") {
-                return (
+                elements.push(
                   <p
-                    key={idx}
+                    key={`p-${idx}`}
                     dangerouslySetInnerHTML={{ __html: block.text }}
                     className="text-slate-600 font-medium leading-relaxed"
                   />
                 );
               }
               if (block.type === "heading") {
-                return (
+                elements.push(
                   <h2
-                    key={idx}
+                    key={`h-${idx}`}
                     className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight pt-6 pb-2"
                   >
                     {block.text}
@@ -167,11 +169,11 @@ export default function BlogPost() {
                 );
               }
               if (block.type === "list") {
-                return (
-                  <ul key={idx} className="space-y-4 pl-6 list-disc marker:text-indigo-500">
+                elements.push(
+                  <ul key={`l-${idx}`} className="space-y-4 pl-6 list-disc marker:text-indigo-500">
                     {block.items.map((item, lidx) => (
                       <li
-                        key={lidx}
+                        key={`li-${idx}-${lidx}`}
                         dangerouslySetInnerHTML={{ __html: item }}
                         className="text-slate-600 font-medium leading-relaxed pl-1"
                       />
@@ -179,7 +181,15 @@ export default function BlogPost() {
                   </ul>
                 );
               }
-              return null;
+              // Inject AdSense Slot F dynamically after the second block (idx === 1)
+              if (idx === 1) {
+                elements.push(
+                  <div className="my-8 select-none" key={`ad-${idx}`}>
+                    <AdSense adSlot="8492019485" adFormat="horizontal" />
+                  </div>
+                );
+              }
+              return elements;
             })}
           </div>
 
@@ -187,7 +197,7 @@ export default function BlogPost() {
           <div className="bg-indigo-950 text-white rounded-[2rem] p-8 md:p-12 relative overflow-hidden shadow-xl mt-12 flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="absolute top-0 right-0 w-80 h-80 bg-indigo-500/10 blur-[90px] rounded-full pointer-events-none"></div>
             <div className="space-y-4 relative z-10 text-center md:text-left max-w-lg">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-900/50 border border-indigo-800 text-indigo-300 font-bold text-[10px] uppercase tracking-widest leading-none">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-900/50 border border-indigo-800 text-indigo-300 font-bold text-xs uppercase tracking-widest leading-none">
                 <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
                 <span>100% Secure Local Engine</span>
               </div>
@@ -204,9 +214,14 @@ export default function BlogPost() {
                 className="w-full md:w-auto px-8 py-4 bg-white text-indigo-950 font-black rounded-xl hover:bg-indigo-50 transition-all flex items-center justify-center gap-2 group text-sm"
               >
                 <span>Launch {toolCTA.name}</span>
-                <ChevronRight className="w-4 h-4 text-[#0047AB] group-hover:translate-x-1 transition-transform" />
+                <ChevronRight className="w-4 h-4 text-indigo-600 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
+          </div>
+
+          {/* AdSense Slot G - Post Footer Banner */}
+          <div className="max-w-[970px] mx-auto w-full select-none my-8">
+            <AdSense adSlot="2948105829" adFormat="horizontal" />
           </div>
 
           {/* Article Footer (Tags and Disclaimer) */}
@@ -222,7 +237,7 @@ export default function BlogPost() {
               ))}
             </div>
 
-            <p className="text-slate-400 text-[11px] font-bold uppercase tracking-wider">
+            <p className="text-slate-600 text-[11px] font-bold uppercase tracking-wider">
               Secure Sandbox Certified
             </p>
           </footer>

@@ -88,7 +88,7 @@ export default function Disclaimer() {
           </section>
         </div>
 
-        <div className="pt-16 border-t border-indigo-50 text-[10px] font-black text-indigo-300 uppercase tracking-[0.2em] text-center">
+        <div className="pt-16 border-t border-indigo-50 text-xs font-black text-indigo-300 uppercase tracking-[0.2em] text-center">
           Document Update: May 2026
         </div>
       </div>
