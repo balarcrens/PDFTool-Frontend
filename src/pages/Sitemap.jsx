@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { LayoutGrid, FileText, BookOpen, ShieldAlert, ChevronRight } from "lucide-react";
 import SEO from "../components/SEO";
+import { blogArticles } from "../data/blogArticles";
 
 export default function Sitemap() {
   const tools = [
@@ -43,7 +44,7 @@ export default function Sitemap() {
         description="Browse all available tools, articles, and documentation pages on our interactive XML sitemap index."
         keywords="sitemap, site index, pdf tools directory, privacy links, support desk"
       />
-      <div className="container-professional space-y-24 py-16 md:py-24 max-w-5xl mx-auto">
+      <div className="container-professional space-y-24 py-16 md:py-24 max-w-7xl mx-auto px-4 md:px-8">
         {/* Page Header */}
         <div className="text-center space-y-8">
           <motion.div
@@ -63,7 +64,7 @@ export default function Sitemap() {
         </div>
 
         {/* Directory Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Column 1: PDF Utilities */}
           <SitemapColumn icon={FileText} title="PDF Tools Suite">
             {tools.map((item, idx) => (
@@ -71,7 +72,7 @@ export default function Sitemap() {
             ))}
           </SitemapColumn>
 
-          {/* Column 2: Information & Guides */}
+          {/* Column 2: Resources & Help */}
           <SitemapColumn icon={BookOpen} title="Resources & Help">
             <SitemapLink to="/" label="Home Toolkit" />
             <SitemapLink to="/blog" label="Blog Index & Guides" />
@@ -80,10 +81,17 @@ export default function Sitemap() {
             ))}
           </SitemapColumn>
 
-          {/* Column 3: Legal & Security */}
+          {/* Column 3: Legal & Compliance */}
           <SitemapColumn icon={ShieldAlert} title="Legal & Compliance">
             {legalPages.map((item, idx) => (
               <SitemapLink key={idx} to={item.path} label={item.name} />
+            ))}
+          </SitemapColumn>
+
+          {/* Column 4: Blog Articles & Guides */}
+          <SitemapColumn icon={BookOpen} title="Guides & Articles">
+            {blogArticles.map((article, idx) => (
+              <SitemapLink key={idx} to={`/blog/${article.slug}`} label={article.title.replace(/: The Ultimate Guide|: A Complete Security Guide|: A Client-Side Conversion Manual|: A Security Auditing Review|: Promoting Your Copyrights Online|: Protecting Your Copyrights Online|: Fixing Misaligned Scan Documents|: Clean Document Redundancy Removal|: Removing Owner Restrictions and Password Protection|: Fixing Orientation and Layout Coordinates|: Numbering PDF Pages with Professional Formats|: Professional-grade, local-first browser PDF utilities|: A complete manual/, '')} />
             ))}
           </SitemapColumn>
         </div>
