@@ -236,27 +236,27 @@ export default function CompressPDF() {
                 >
                   <div className="decorative-circle !w-64 !h-64" />
 
-                  <div className="grid grid-cols-3 gap-8 text-center relative z-10">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 text-center relative z-10">
                     <div className="space-y-2">
                       <p className="text-slate-600 text-xs font-bold uppercase tracking-widest">Original State</p>
                       <p className="text-2xl font-black text-slate-900">{stats.original}</p>
                     </div>
                     <div className="space-y-2">
                       <p className="text-slate-600 text-xs font-bold uppercase tracking-widest">Optimized State</p>
-                      <p className="text-2xl font-black text-[#0047AB]">{stats.compressed}</p>
+                      <p className="text-2xl font-black text-blue-600">{stats.compressed}</p>
                     </div>
                     <div className="space-y-2">
                       <p className="text-slate-600 text-xs font-bold uppercase tracking-widest">Efficiency</p>
-                      <p className="text-2xl font-black text-emerald-500">{stats.savings}</p>
+                      <p className="text-2xl font-black text-emerald-600">{stats.savings}</p>
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
                     <button
                       onClick={() => window.open(compressedPdfUrl, '_blank')}
-                      className="flex flex-col items-center justify-center p-10 bg-slate-50 border border-slate-100 rounded-[2rem] hover:bg-white hover:border-[#0047AB] hover:shadow-xl transition-all group gap-5"
+                      className="flex flex-col items-center justify-center p-10 bg-slate-50 border border-slate-100 rounded-[2rem] hover:bg-white hover:border-blue-600 hover:shadow-xl transition-all group gap-5"
                     >
-                      <div className="w-16 h-16 bg-white border border-slate-100 rounded-2xl flex items-center justify-center text-slate-600 group-hover:text-[#0047AB] group-hover:scale-110 group-hover:shadow-lg transition-all duration-300">
+                      <div className="w-16 h-16 bg-white border border-slate-100 rounded-2xl flex items-center justify-center text-slate-600 group-hover:text-blue-600 group-hover:scale-110 group-hover:shadow-lg transition-all duration-300">
                         <Eye className="w-8 h-8" />
                       </div>
                       <div className="text-center">
@@ -268,7 +268,7 @@ export default function CompressPDF() {
                     <a
                       href={compressedPdfUrl}
                       download={`compressed_${file.name}`}
-                      className="flex flex-col items-center justify-center p-10 bg-[#0047AB] text-white rounded-[2rem] hover:bg-[#003580] transition-all group gap-5 shadow-2xl shadow-indigo-100"
+                      className="flex flex-col items-center justify-center p-10 bg-blue-600 text-white rounded-[2rem] hover:bg-blue-700 transition-all group gap-5 shadow-2xl shadow-blue-100/50"
                     >
                       <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center text-white group-hover:scale-110 transition-all duration-300 shadow-lg">
                         <Download className="w-8 h-8" />
@@ -323,13 +323,13 @@ function CompressionCard({ active, onClick, title, description, icon }) {
       onClick={onClick}
       className={cn(
         "card-ref !p-10 cursor-pointer text-center items-center transition-all duration-300",
-        active ? "ring-2 ring-[#0047AB] bg-indigo-50/30" : ""
+        active ? "ring-2 ring-blue-600 bg-blue-50/20" : ""
       )}
     >
       <div className="decorative-circle !opacity-20" />
       <div className={cn(
         "w-14 h-14 rounded-2xl flex items-center justify-center mb-8 transition-all duration-300 shadow-sm",
-        active ? "bg-[#0047AB] text-white scale-110" : "bg-slate-50 text-slate-600"
+        active ? "bg-blue-600 text-white scale-110" : "bg-slate-50 text-slate-600"
       )}>
         {icon}
       </div>

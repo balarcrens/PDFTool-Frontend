@@ -195,16 +195,13 @@ export default function Home() {
       />
       <div className="space-y-24 md:space-y-32 py-12 md:py-20 relative bg-grid-pattern overflow-hidden">
         
-        {/* Glow Radial Accents */}
-        <div className="absolute top-[10%] left-1/2 -translate-x-1/2 w-full max-w-[800px] h-[500px] bg-radial-glow -z-10 pointer-events-none" aria-hidden="true" />
-
         {/* Hero Section */}
         <header className="container-professional text-center space-y-8 relative pt-8 md:pt-16">
           <div
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200/80 text-slate-500 font-semibold text-xs tracking-wide shadow-sm select-none animate-fade-in"
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200 text-slate-500 font-semibold text-xs tracking-wide shadow-sm select-none animate-fade-in"
           >
-            <ShieldCheck className="w-4 h-4 text-indigo-600" />
-            <span>100% Local In-Browser Sandbox</span>
+            <ShieldCheck className="w-4 h-4 text-blue-600" />
+            <span>100% Private Local Processing</span>
           </div>
 
           <div className="space-y-4 max-w-4xl mx-auto">
@@ -212,15 +209,15 @@ export default function Home() {
               className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-slate-900 leading-[1.08] pr-1 animate-fade-in [animation-delay:100ms]"
             >
               Do anything with PDF. <br />
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 via-indigo-500 to-purple-600">
-                Guaranteed Secure.
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-800">
+                Completely Private.
               </span>
             </h1>
 
             <p
               className="text-base sm:text-lg md:text-xl text-slate-500 max-w-2xl mx-auto font-medium leading-relaxed animate-fade-in [animation-delay:200ms]"
             >
-              Enterprise-grade document utilities executed entirely on your CPU. No uploads, no servers, zero bandwidth delays, and complete data privacy.
+              Securely manage, convert, and optimize your PDF documents directly on your device. No uploads, no servers, and complete data privacy.
             </p>
           </div>
 
@@ -240,8 +237,8 @@ export default function Home() {
               className="btn-outline-ref px-8 py-3.5 text-[15px] cursor-pointer"
               aria-label="Drop a file inside any specific utility tool"
             >
-              <FileDown className="w-4.5 h-4.5 text-indigo-600" />
-              Launch Sandbox Engine
+              <FileDown className="w-4.5 h-4.5 text-blue-600" />
+              Launch Offline Utility
             </button>
           </div>
         </header>
@@ -258,13 +255,13 @@ export default function Home() {
           aria-label="PDF Toolbox"
         >
           {/* Live Search & Filter Bar */}
-          <div className="mb-10 flex flex-col md:flex-row items-center justify-between gap-6 pb-6 border-b border-slate-100/80">
+          <div className="mb-10 flex flex-col md:flex-row items-center justify-between gap-6 pb-6 border-b border-slate-200">
             <div className="text-left space-y-1 shrink-0 w-full md:w-auto">
               <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
-                Secure Utility Toolbox
+                All PDF Utilities
               </h2>
               <p className="text-xs font-semibold text-slate-400 uppercase tracking-widest leading-none select-none">
-                100% Native Browser Processing
+                Processed Locally in Your Browser
               </p>
             </div>
 
@@ -279,8 +276,8 @@ export default function Home() {
                     className={cn(
                       "px-3.5 py-2 rounded-xl text-[11px] font-bold uppercase tracking-wider transition-all duration-200 border cursor-pointer",
                       selectedCategory === cat
-                        ? "bg-indigo-600 border-indigo-600 text-white shadow-md shadow-indigo-100"
-                        : "bg-white border-slate-200/70 text-slate-500 hover:text-slate-900 hover:border-slate-300"
+                        ? "bg-blue-600 border-blue-600 text-white shadow-md shadow-blue-100"
+                        : "bg-white border-slate-200 text-slate-505 hover:text-slate-900 hover:border-slate-350"
                     )}
                   >
                     {cat}
@@ -292,10 +289,10 @@ export default function Home() {
               <div className="relative flex-grow">
                 <input
                   type="text"
-                  placeholder="Search 15+ secure tools..."
+                  placeholder="Search PDF utilities..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-10 py-2.5 bg-slate-50 border border-slate-200/80 rounded-xl text-xs sm:text-sm font-semibold text-slate-800 placeholder-slate-400 focus:bg-white focus:border-indigo-500 focus:ring-4 focus:ring-indigo-100/50 transition-all duration-200 animate-pulse-once"
+                  className="w-full pl-10 pr-10 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm font-semibold text-slate-800 placeholder-slate-400 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-100/50 transition-all duration-200 animate-pulse-once"
                 />
                 <Search className="w-4.5 h-4.5 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
                 {searchQuery && (
@@ -326,11 +323,11 @@ export default function Home() {
                 <Link 
                   to={tool.path} 
                   key={index} 
-                  className="group outline-none focus-visible:ring-2 focus-visible:ring-indigo-600 rounded-[22px] hover:scale-[1.015] transition-transform duration-300"
+                  className="group outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded-xl hover:scale-[1.015] transition-transform duration-300"
                   aria-label={`Open ${tool.title} tool - ${tool.description}`}
                 >
                   <article
-                    className="tool-card transition-all duration-300 hover:border-indigo-200/80 hover:shadow-premium-hover h-full"
+                    className="tool-card transition-all duration-305 hover:border-blue-200/80 hover:shadow-premium-hover h-full"
                   >
                     <div className="tool-card-shape" aria-hidden="true" />
                     
@@ -345,8 +342,8 @@ export default function Home() {
                       <p className="tool-card-description flex-grow">
                         {tool.description}
                       </p>
-                      <div className="mt-5 pt-3 border-t border-slate-50 flex items-center gap-1.5 text-xs font-bold text-slate-400 group-hover:text-indigo-600 transition-colors uppercase tracking-wider select-none">
-                        <span>Launch Utility</span>
+                      <div className="mt-5 pt-3 border-t border-slate-50 flex items-center gap-1.5 text-xs font-bold text-slate-400 group-hover:text-blue-600 transition-colors uppercase tracking-wider select-none">
+                        <span>Launch Tool</span>
                         <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-200" />
                       </div>
                     </div>
@@ -361,47 +358,47 @@ export default function Home() {
         <section className="container-professional pt-8 text-center space-y-12" aria-label="Processing Timeline">
           <div className="space-y-3">
             <span className="badge-professional select-none">
-              Client-Side Processing Lifecycle
+              How It Works
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">
-              Processing PDFs locally in 3 simple steps.
+              Process your documents in three simple steps
             </h2>
             <p className="text-slate-500 font-medium max-w-xl mx-auto text-sm sm:text-base">
-              A quick guide on how our local sandbox isolation operates natively on your computer's CPU.
+              All utility operations run directly inside your browser for maximum security.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative select-none">
             {/* Step 1 */}
             <div className="space-y-4 text-left p-8 bg-white border border-slate-100 rounded-2xl shadow-sm relative hover:shadow-md transition-all duration-300 hover:-translate-y-1">
-              <div className="w-10 h-10 bg-indigo-50 border border-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center font-bold text-sm">
+              <div className="w-10 h-10 bg-blue-50 border border-blue-100 text-blue-600 rounded-xl flex items-center justify-center font-bold text-sm">
                 01
               </div>
               <h3 className="text-lg font-bold text-slate-900">Select & Load Files</h3>
               <p className="text-slate-500 text-xs sm:text-[13.5px] leading-relaxed font-medium">
-                Choose any PDF utility page. Drop your documents or images into the sandboxed uploader. Your files are read into temporary in-browser memory (RAM).
+                Select the tool you need and select or drop your files into our local uploader. Your files are loaded temporarily in your browser's local memory.
               </p>
             </div>
 
             {/* Step 2 */}
             <div className="space-y-4 text-left p-8 bg-white border border-slate-100 rounded-2xl shadow-sm relative hover:shadow-md transition-all duration-300 hover:-translate-y-1">
-              <div className="w-10 h-10 bg-indigo-50 border border-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center font-bold text-sm">
+              <div className="w-10 h-10 bg-blue-50 border border-blue-100 text-blue-600 rounded-xl flex items-center justify-center font-bold text-sm">
                 02
               </div>
-              <h3 className="text-lg font-bold text-slate-900">In-Browser Compilation</h3>
+              <h3 className="text-lg font-bold text-slate-900">Local Processing</h3>
               <p className="text-slate-500 text-xs sm:text-[13.5px] leading-relaxed font-medium">
-                Click compile. Our client-side scripts execute the algorithms on your computer's hardware. **No documents are sent over the network**, ensuring 100% privacy.
+                Configure your preferences and click execute. The files are processed locally on your machine—no data is ever sent over the network.
               </p>
             </div>
 
             {/* Step 3 */}
             <div className="space-y-4 text-left p-8 bg-white border border-slate-100 rounded-2xl shadow-sm relative hover:shadow-md transition-all duration-300 hover:-translate-y-1">
-              <div className="w-10 h-10 bg-indigo-50 border border-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center font-bold text-sm">
+              <div className="w-10 h-10 bg-blue-50 border border-blue-100 text-blue-600 rounded-xl flex items-center justify-center font-bold text-sm">
                 03
               </div>
               <h3 className="text-lg font-bold text-slate-900">Instant Download</h3>
               <p className="text-slate-500 text-xs sm:text-[13.5px] leading-relaxed font-medium">
-                The optimized document bytes compile in memory in milliseconds. Save your newly constructed PDF file directly to your downloads directory.
+                The processed document is generated in milliseconds. Download and save the final PDF directly to your device.
               </p>
             </div>
           </div>
@@ -409,42 +406,40 @@ export default function Home() {
 
         {/* Privacy Architecture Section */}
         <section 
-          className="container-professional py-16 md:py-24 relative overflow-hidden rounded-[2.5rem] bg-white border border-slate-100 shadow-premium"
+          className="container-professional py-16 md:py-24 relative overflow-hidden rounded-2xl bg-white border border-slate-200 shadow-premium"
           aria-label="Security & Privacy Protocol"
         >
-          <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-radial-glow -z-10 opacity-60 pointer-events-none" aria-hidden="true" />
-          
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             <div className="lg:col-span-7 space-y-8 text-left">
               <div className="space-y-4">
                 <span className="badge-professional select-none">
-                  Security Architecture
+                  Privacy First Architecture
                 </span>
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 leading-[1.1] tracking-tight">
-                  Your files never touch the cloud.
+                  Complete privacy. Your documents stay yours.
                 </h2>
                 <p className="text-slate-500 text-sm sm:text-base leading-relaxed font-medium">
-                  Conventional online converters upload your tax forms, corporate contracts, and ID scans to external cloud nodes. iFlexPDF runs on advanced Javascript sandbox engines compiled inside your browser, keeping your critical business layouts entirely localized.
+                  Unlike traditional online converters that upload your files to remote cloud servers, iFlexPDF processes your documents directly in your web browser. Your private details, contracts, and sensitive financial logs never leave your device.
                 </p>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4 border-t border-slate-100">
                 <div className="space-y-2">
-                  <div className="w-9 h-9 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-600 select-none" aria-hidden="true">
+                  <div className="w-9 h-9 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 select-none" aria-hidden="true">
                     <ShieldCheck className="w-5 h-5" />
                   </div>
                   <h3 className="font-bold text-[15px] text-slate-800 leading-none">100% Private</h3>
                   <p className="text-slate-400 text-xs font-semibold leading-relaxed">No tracking, no logs, zero trace on servers.</p>
                 </div>
                 <div className="space-y-2">
-                  <div className="w-9 h-9 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-600 select-none" aria-hidden="true">
+                  <div className="w-9 h-9 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 select-none" aria-hidden="true">
                     <Zap className="w-5 h-5" />
                   </div>
                   <h3 className="font-bold text-[15px] text-slate-800 leading-none">Zero Delay</h3>
                   <p className="text-slate-400 text-xs font-semibold leading-relaxed">Instant compile speeds powered by your CPU.</p>
                 </div>
                 <div className="space-y-2">
-                  <div className="w-9 h-9 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-600 select-none" aria-hidden="true">
+                  <div className="w-9 h-9 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 select-none" aria-hidden="true">
                     <CheckCircle2 className="w-5 h-5" />
                   </div>
                   <h3 className="font-bold text-[15px] text-slate-800 leading-none">Offline Ready</h3>
@@ -454,24 +449,24 @@ export default function Home() {
             </div>
 
             <div className="lg:col-span-5 flex justify-center lg:justify-end">
-              <div className="w-full max-w-sm p-1.5 bg-slate-50/50 border border-slate-100 rounded-[2.5rem] shadow-sm select-none">
-                <div className="card-dotted h-full flex flex-col items-center justify-center text-center space-y-6 py-12 md:py-16">
-                  <div className="w-14 h-14 bg-indigo-50 rounded-2xl flex items-center justify-center text-indigo-600 shadow-inner">
+              <div className="w-full max-w-sm p-1.5 bg-slate-50/50 border border-slate-200 rounded-3xl shadow-sm select-none">
+                <div className="card-ref h-full flex flex-col items-center justify-center text-center space-y-6 py-12 md:py-16">
+                  <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 shadow-inner border border-blue-100">
                     <ShieldCheck className="w-7 h-7" />
                   </div>
                   <div className="space-y-2">
-                    <h3 className="text-lg font-bold text-slate-900">Sandbox Isolation Active</h3>
-                    <p className="text-slate-400 text-xs font-semibold px-6 leading-relaxed">All active edits are isolated within your secure browser session RAM.</p>
+                    <h3 className="text-lg font-bold text-slate-900">Local Processing Active</h3>
+                    <p className="text-slate-505 text-xs font-semibold px-6 leading-relaxed">Your files are processed directly on your CPU in-memory.</p>
                   </div>
                   <div className="w-full px-8 space-y-3.5">
                     <div className="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
                       <div
-                        className="h-full bg-indigo-600 animate-progress-grow"
+                        className="h-full bg-blue-600 animate-progress-grow"
                         style={{ width: "100%" }}
                         aria-hidden="true"
                       />
                     </div>
-                    <p className="text-[10px] font-bold text-indigo-600 uppercase tracking-widest">Active System: Encrypted Sandbox</p>
+                    <p className="text-[10px] font-bold text-blue-600 uppercase tracking-widest">100% Private local processing</p>
                   </div>
                 </div>
               </div>
@@ -491,7 +486,7 @@ export default function Home() {
         >
           <div className="text-center space-y-3 mb-12">
             <span className="badge-professional select-none">
-              <BookOpen className="w-3.5 h-3.5 text-indigo-600" />
+              <BookOpen className="w-3.5 h-3.5 text-blue-600" />
               Latest Insights
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight leading-tight">
@@ -507,7 +502,7 @@ export default function Home() {
               <Link 
                 to={`/blog/${art.slug}`} 
                 key={idx} 
-                className="group flex outline-none focus-visible:ring-2 focus-visible:ring-indigo-600 rounded-[22px] hover:scale-[1.015] transition-transform duration-350"
+                className="group flex outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded-xl hover:scale-[1.015] transition-transform duration-350"
                 aria-label={`Read article: ${art.title}`}
               >
                 <article
@@ -515,7 +510,7 @@ export default function Home() {
                 >
                   <div className="space-y-4 text-left">
                     <div className="flex items-center gap-2 select-none">
-                      <span className="px-2.5 py-0.5 bg-indigo-50 border border-indigo-100/50 text-indigo-600 rounded-full font-bold text-[9px] uppercase tracking-wider">
+                      <span className="px-2.5 py-0.5 bg-blue-50 border border-blue-100/50 text-blue-600 rounded-full font-bold text-[9px] uppercase tracking-wider">
                         {art.category}
                       </span>
                       <span className="text-[10px] font-bold text-slate-400 flex items-center gap-1">
@@ -523,14 +518,14 @@ export default function Home() {
                         {art.readTime}
                       </span>
                     </div>
-                    <h3 className="text-base sm:text-lg font-bold text-slate-900 group-hover:text-indigo-600 transition-colors leading-snug">
+                    <h3 className="text-base sm:text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-snug">
                       {art.title}
                     </h3>
                     <p className="text-slate-400 text-[12.5px] leading-relaxed font-medium line-clamp-3">
                       {art.excerpt}
                     </p>
                   </div>
-                  <div className="mt-6 pt-4 border-t border-slate-50 flex items-center justify-between text-slate-500 text-[11px] font-bold uppercase tracking-wider group-hover:text-indigo-600 transition-colors select-none">
+                  <div className="mt-6 pt-4 border-t border-slate-50 flex items-center justify-between text-slate-505 text-[11px] font-bold uppercase tracking-wider group-hover:text-blue-600 transition-colors select-none">
                     <span>Read Article</span>
                     <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1.5 transition-transform duration-200" />
                   </div>
@@ -568,7 +563,7 @@ export default function Home() {
                   <button
                     onClick={() => setOpenFaqIndex(isOpen ? null : idx)}
                     aria-expanded={isOpen}
-                    className="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-600/30"
+                    className="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600/30"
                   >
                     <span className="font-bold text-[15px] sm:text-[16px] text-slate-800 pr-4 leading-snug">
                       {faq.question}
@@ -576,7 +571,7 @@ export default function Home() {
                     <ChevronDown
                       className={cn(
                         "w-4.5 h-4.5 text-slate-400 shrink-0 transition-transform duration-300",
-                        isOpen && "rotate-180 text-indigo-600"
+                        isOpen && "rotate-180 text-blue-600"
                       )}
                     />
                   </button>
@@ -605,22 +600,19 @@ export default function Home() {
           className="container-professional pb-12"
           aria-label="Secure Your Workflow CTA"
         >
-          <div className="bg-[#0f172a] rounded-[2.5rem] p-10 md:p-16 text-center text-white relative overflow-hidden shadow-premium-xl border border-slate-800">
-            {/* CTA Background Radial shape */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(99,102,241,0.12),transparent_60%)] pointer-events-none" aria-hidden="true" />
-            
+          <div className="bg-[#0f172a] rounded-2xl p-10 md:p-16 text-center text-white relative overflow-hidden shadow-premium-xl border border-slate-850">
             <div className="relative z-10 space-y-6 max-w-2xl mx-auto">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-tight">
-                Secure your document workflow.
+                A faster, more secure document workflow
               </h2>
               <p className="text-slate-400 text-sm sm:text-base leading-relaxed font-medium">
-                Eliminate the risk of server breaches. Switch to our 100% in-browser sandbox and process documents with infinite speed and privacy.
+                Avoid the risk of cloud server data breaches. Work entirely on your device with high-speed local processing.
               </p>
               <div className="flex justify-center pt-2 select-none">
                 <button 
                   onClick={handleScrollToToolkit}
-                  className="px-8 py-3.5 bg-white text-[#0f172a] hover:bg-slate-50 active:scale-95 rounded-xl font-bold text-xs uppercase tracking-widest shadow-md transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-indigo-600 focus-visible:ring-offset-2"
-                  aria-label="Launch local sandbox toolbox"
+                  className="px-8 py-3.5 bg-white text-[#0f172a] hover:bg-slate-50 active:scale-95 rounded-lg font-bold text-xs uppercase tracking-widest shadow-md transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2"
+                  aria-label="Launch local toolbox"
                 >
                   Get Started for Free
                 </button>

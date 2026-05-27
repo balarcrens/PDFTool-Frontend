@@ -217,7 +217,7 @@ export default function WatermarkPDF() {
                 {/* Grid Preset Position */}
                 <div className="space-y-3">
                   <label className="text-xs font-bold text-slate-600 uppercase tracking-widest">Watermark Position</label>
-                  <div className="grid grid-cols-3 gap-2">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                     <PositionBtn active={position === "topLeft"} label="Top Left" onClick={() => setPosition("topLeft")} />
                     <PositionBtn active={position === "topRight"} label="Top Right" onClick={() => setPosition("topRight")} />
                     <PositionBtn active={position === "center"} label="Center" onClick={() => setPosition("center")} />
@@ -230,7 +230,7 @@ export default function WatermarkPDF() {
                 <div className="space-y-2">
                   <div className="flex justify-between text-xs font-bold text-slate-600 uppercase tracking-widest">
                     <span>Font Size</span>
-                    <span className="text-[#0047AB]">{fontSize}px</span>
+                    <span className="text-blue-600">{fontSize}px</span>
                   </div>
                   <input
                     type="range"
@@ -246,7 +246,7 @@ export default function WatermarkPDF() {
                 <div className="space-y-2">
                   <div className="flex justify-between text-xs font-bold text-slate-600 uppercase tracking-widest">
                     <span>Opacity</span>
-                    <span className="text-[#0047AB]">{Math.round(opacity * 100)}%</span>
+                    <span className="text-blue-600">{Math.round(opacity * 100)}%</span>
                   </div>
                   <input
                     type="range"
@@ -263,7 +263,7 @@ export default function WatermarkPDF() {
                 <div className="space-y-2">
                   <div className="flex justify-between text-xs font-bold text-slate-600 uppercase tracking-widest">
                     <span>Rotation Angle</span>
-                    <span className="text-[#0047AB]">{rotation}°</span>
+                    <span className="text-blue-600">{rotation}°</span>
                   </div>
                   <input
                     type="range"
@@ -416,7 +416,7 @@ function PositionBtn({ active, label, onClick }) {
       className={cn(
         "px-2 py-2 rounded-lg font-bold text-xs uppercase tracking-wider text-center border transition-all truncate",
         active
-          ? "bg-[#0047AB] text-white border-[#0047AB]"
+          ? "bg-blue-600 text-white border-blue-600"
           : "bg-slate-50 border-slate-200 text-slate-500 hover:bg-slate-100 hover:text-slate-900"
       )}
     >

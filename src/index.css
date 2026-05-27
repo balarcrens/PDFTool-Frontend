@@ -1,23 +1,23 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand: #4f46e5;
-  --color-brand-light: #818cf8;
-  --color-brand-dark: #3730a3;
-  --color-primary: #0f172a; /* Slate 900 for modern SaaS vibe */
-  --color-accent: #6366f1;
+  --color-brand: #2563eb; /* Royal Classic Blue */
+  --color-brand-light: #60a5fa;
+  --color-brand-dark: #1d4ed8;
+  --color-primary: #0f172a; /* Slate 900 */
+  --color-accent: #2563eb;
   --color-surface: #ffffff;
   
-  --shadow-premium: 0 4px 30px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.02);
-  --shadow-premium-hover: 0 20px 40px -10px rgba(79, 70, 229, 0.08), 0 1px 10px rgba(0, 0, 0, 0.03);
-  --shadow-premium-xl: 0 30px 60px -15px rgba(15, 23, 42, 0.08), 0 0 1px rgba(0, 0, 0, 0.05);
+  --shadow-premium: 0 4px 20px rgba(15, 23, 42, 0.02), 0 1px 2px rgba(15, 23, 42, 0.01);
+  --shadow-premium-hover: 0 12px 30px -4px rgba(15, 23, 42, 0.04), 0 1px 4px rgba(15, 23, 42, 0.02);
+  --shadow-premium-xl: 0 20px 40px -10px rgba(15, 23, 42, 0.06), 0 0 1px rgba(15, 23, 42, 0.04);
 }
 
 :root {
-  --background: #fafbfe;
+  --background: #f8fafc; /* Beautiful clean workspace grey-white */
   --foreground: #0f172a;
-  --border: #f1f5f9;
-  --indigo-glow: rgba(99, 102, 241, 0.15);
+  --border: #e2e8f0;
+  --indigo-glow: rgba(37, 99, 235, 0.03); /* Subtle corporate navy glow */
 }
 
 body {
@@ -44,23 +44,22 @@ label,
 
 /* Containerized Layout */
 .container-professional {
-  @apply max-w-[1240px] mx-auto px-6 sm:px-8;
+  @apply max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8;
 }
 
 /* 
-   Button Styles - Premium SaaS standard 
-   No global transition overrides, explicit duration-200 transitions
+   Button Styles - Premium standard 
 */
 .btn-primary-ref {
-  @apply bg-slate-900 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-200 flex items-center justify-center gap-2 text-sm shadow-sm hover:bg-slate-800 hover:shadow-md hover:scale-[1.01] active:scale-[0.99] border border-slate-800/10 focus-visible:ring-2 focus-visible:ring-slate-950 focus-visible:ring-offset-2;
+  @apply bg-slate-900 text-white px-6 py-2.5 rounded-lg font-semibold transition-all duration-200 flex items-center justify-center gap-2 text-sm shadow-sm hover:bg-slate-800 hover:scale-[1.01] active:scale-[0.99] border border-slate-800/10 focus-visible:ring-2 focus-visible:ring-slate-950 focus-visible:ring-offset-2;
 }
 
 .btn-outline-ref {
-  @apply bg-white text-slate-700 border border-slate-200/80 px-6 py-3 rounded-xl font-semibold transition-all duration-200 flex items-center justify-center gap-2 text-sm shadow-sm hover:bg-slate-50 hover:border-slate-300 hover:scale-[1.01] active:scale-[0.99] focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2;
+  @apply bg-white text-slate-700 border border-slate-200 px-6 py-2.5 rounded-lg font-semibold transition-all duration-200 flex items-center justify-center gap-2 text-sm shadow-sm hover:bg-slate-50 hover:border-slate-300 hover:scale-[1.01] active:scale-[0.99] focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2;
 }
 
 .btn-ghost {
-  @apply text-slate-600 hover:text-indigo-600 hover:bg-indigo-50/50 px-4 py-2.5 rounded-xl font-semibold transition-all duration-200 text-sm focus-visible:ring-2 focus-visible:ring-indigo-100;
+  @apply text-slate-600 hover:text-blue-600 hover:bg-blue-50/50 px-4 py-2.5 rounded-lg font-semibold transition-all duration-200 text-sm focus-visible:ring-2 focus-visible:ring-blue-100;
 }
 
 /* Tool Cards - SaaS Grid */
@@ -68,141 +67,137 @@ label,
   position: relative;
   overflow: hidden;
   background: #ffffff;
-  border: 1px solid rgba(241, 245, 249, 0.9);
-  border-radius: 20px;
-  padding: 28px;
-  min-height: 195px;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 24px;
+  min-height: 180px;
   transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.02), 0 2px 4px -1px rgba(15, 23, 42, 0.01);
+  box-shadow: var(--shadow-premium);
 }
 
 .tool-card:hover {
-  border-color: rgba(99, 102, 241, 0.25);
-  transform: translateY(-4px);
+  border-color: rgba(37, 99, 235, 0.4);
+  transform: translateY(-2px);
   box-shadow: var(--shadow-premium-hover);
 }
 
-/* Top-right decorative background glow */
+/* Highly subtle premium card accent background */
 .tool-card-shape {
   position: absolute;
   top: -45px;
   right: -45px;
   width: 140px;
   height: 140px;
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.06) 0%, rgba(255, 255, 255, 0) 70%);
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.02) 0%, rgba(255, 255, 255, 0) 70%);
   border-radius: 999px;
   pointer-events: none;
   transition: transform 0.3s ease;
 }
 
 .tool-card:hover .tool-card-shape {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
 /* Icon Box inside tool card */
 .tool-card-icon {
   position: relative;
   z-index: 10;
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
   background: #f8fafc;
-  border: 1px solid #f1f5f9;
+  border: 1px solid #e2e8f0;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #4f46e5;
-  margin-bottom: 24px;
-  transition: all 0.25s ease;
+  color: #2563eb;
+  margin-bottom: 20px;
+  transition: all 0.2s ease;
 }
 
 .tool-card:hover .tool-card-icon {
-  background: #4f46e5;
+  background: #2563eb;
   color: #ffffff;
-  border-color: #4f46e5;
-  box-shadow: 0 8px 16px -4px rgba(79, 70, 229, 0.3);
+  border-color: #2563eb;
+  box-shadow: 0 4px 12px -2px rgba(37, 99, 235, 0.2);
 }
 
 /* Card Title */
 .tool-card-title {
-  font-size: 17px;
+  font-size: 16px;
   line-height: 1.35;
-  font-weight: 600;
+  font-weight: 700;
   color: #0f172a;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   transition: color 0.2s ease;
 }
 
 .tool-card:hover .tool-card-title {
-  color: #4f46e5;
+  color: #2563eb;
 }
 
 /* Description */
 .tool-card-description {
-  font-size: 13.5px;
-  line-height: 1.6;
-  color: #64748b;
-  font-weight: 450;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #475569;
+  font-weight: 400;
   max-width: 100%;
 }
 
 /* Premium SaaS Card layouts */
 .card-ref {
-  @apply bg-white border border-slate-100/90 rounded-2xl p-8 shadow-premium transition-all duration-200 relative overflow-hidden flex flex-col hover:border-slate-200/90 hover:shadow-premium-hover;
+  @apply bg-white border border-slate-200 rounded-2xl p-6 md:p-8 shadow-premium transition-all duration-200 relative overflow-hidden flex flex-col hover:border-slate-300 hover:shadow-premium-hover;
 }
 
 .card-dotted {
-  @apply border-2 border-dashed border-slate-200 rounded-3xl p-10 bg-white relative overflow-hidden transition-all duration-300;
+  @apply border-2 border-dashed border-slate-200 rounded-2xl p-8 bg-white relative overflow-hidden transition-all duration-200;
 }
 
 .card-dotted:hover {
-  @apply border-indigo-400 bg-slate-50/20 shadow-premium-hover;
+  @apply border-blue-400 bg-slate-50/10 shadow-premium-hover;
 }
 
 /* Custom Spacing & Typography Utilities */
 .h1-classic {
-  @apply text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.1] text-slate-900;
+  @apply text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.1] text-slate-900;
 }
 
 .h2-classic {
-  @apply text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 leading-snug;
+  @apply text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 leading-snug;
 }
 
 .p-classic {
-  @apply text-base sm:text-lg text-slate-500 font-normal leading-relaxed;
+  @apply text-sm sm:text-base text-slate-500 font-normal leading-relaxed;
 }
 
 .badge-professional {
-  @apply inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50/80 text-indigo-600 font-semibold text-xs tracking-wide border border-indigo-100/60 shadow-sm transition-all duration-200;
+  @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 text-slate-700 font-bold text-[10px] tracking-wider uppercase border border-slate-200/50 shadow-sm transition-all duration-200;
 }
 
 .verified-badge {
-  @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50/80 text-emerald-700 font-semibold text-xs border border-emerald-100/80;
+  @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100/80 text-slate-600 font-bold text-[10px] tracking-wider uppercase border border-slate-200/50 select-none;
 }
 
 .action-bar-classic {
-  @apply flex flex-col md:flex-row items-center justify-between gap-6 p-4 bg-white/85 backdrop-blur-md border border-slate-200/60 rounded-2xl shadow-xl transition-all duration-200;
+  @apply flex flex-col md:flex-row items-center justify-between gap-4 p-4 bg-white/95 backdrop-blur-md border border-slate-200 rounded-xl shadow-lg transition-all duration-200;
 }
 
 .decorative-circle {
-  @apply absolute rounded-full bg-indigo-100/40 blur-[80px] -z-10 pointer-events-none;
-  width: 180px;
-  height: 180px;
-  bottom: -30px;
-  right: -30px;
+  display: none; /* Removed AI glowing decorations */
 }
 
 /* Selection Highlight */
 ::selection {
-  @apply bg-indigo-600 text-white;
+  @apply bg-slate-900 text-white;
 }
 
 /* Smooth custom scrollbars for specific containers */
 .custom-scrollbar::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+  width: 4px;
+  height: 4px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
@@ -223,19 +218,19 @@ textarea {
 
 /* Grid & Dots Background Patterns */
 .bg-grid-pattern {
-  background-size: 30px 30px;
+  background-size: 40px 40px;
   background-image: 
-    linear-gradient(to right, rgba(15, 23, 42, 0.02) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(15, 23, 42, 0.02) 1px, transparent 1px);
+    linear-gradient(to right, rgba(15, 23, 42, 0.015) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.015) 1px, transparent 1px);
 }
 
 .bg-radial-glow {
-  background: radial-gradient(circle at 50% 50%, var(--indigo-glow) 0%, transparent 60%);
+  display: none; /* Removed cheap neon glow */
 }
 
 /* Google AdSense Premium Fallback & Placeholder System */
 .adsense-container {
-  @apply border border-dashed border-slate-200 bg-slate-50/20 rounded-2xl flex flex-col items-center justify-center transition-all duration-300 relative;
+  @apply border border-slate-200 bg-slate-50/50 rounded-xl flex flex-col items-center justify-center transition-all duration-200 relative;
 }
 
 /* If the AdSense tag has loaded content (iframe generated), hide the container border and bg */
@@ -248,11 +243,11 @@ textarea {
   @apply opacity-0 pointer-events-none hidden;
 }
 
-/* GPU-Accelerated Core Performance Transitions & Keyframe Animations (Lighthouse) */
+/* GPU-Accelerated Core Performance Transitions & Keyframe Animations */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(6px);
   }
   to {
     opacity: 1;
@@ -261,14 +256,14 @@ textarea {
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   opacity: 0;
 }
 
 @keyframes dropdownFadeIn {
   from {
     opacity: 0;
-    transform: translateY(8px) scale(0.98);
+    transform: translateY(4px) scale(0.99);
   }
   to {
     opacity: 1;
@@ -277,7 +272,7 @@ textarea {
 }
 
 .animate-dropdown {
-  animation: dropdownFadeIn 0.15s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: dropdownFadeIn 0.12s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   transform-origin: top left;
 }
 
@@ -291,16 +286,16 @@ textarea {
 }
 
 .animate-progress-grow {
-  animation: progressGrow 1.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation: progressGrow 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   width: 0%;
 }
 
 @keyframes pulseOnce {
   0% { transform: scale(1); }
-  50% { transform: scale(1.008); }
+  50% { transform: scale(1.002); }
   100% { transform: scale(1); }
 }
 
 .animate-pulse-once {
-  animation: pulseOnce 0.4s ease-in-out;
+  animation: pulseOnce 0.3s ease-in-out;
 }

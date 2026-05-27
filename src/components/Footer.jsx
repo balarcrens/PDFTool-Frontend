@@ -14,20 +14,20 @@ export default function Footer() {
           <div className="space-y-4 text-left">
             <Link 
               to="/" 
-              className="flex items-center gap-2.5 outline-none focus-visible:ring-2 focus-visible:ring-indigo-600 rounded-lg py-0.5 px-0.5 inline-flex"
+              className="flex items-center gap-2.5 outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded-lg py-0.5 px-0.5 inline-flex"
               aria-label="iFlexPDF Home"
             >
               <img src="/icon.png" alt="iFlexPDF Logo" className="w-8 h-8 object-contain" width="32" height="32" loading="lazy" decoding="async" />
               <span className="text-lg font-extrabold tracking-tight text-slate-900 leading-none">
-                iFlexPDF<span className="text-indigo-600">.</span>
+                iFlexPDF<span className="text-blue-600">.</span>
               </span>
             </Link>
             <p className="text-slate-500 text-[13px] font-normal leading-relaxed">
               Professional, enterprise-grade PDF tools running entirely inside your browser. Your documents never touch our servers, guaranteed.
             </p>
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-emerald-50 border border-emerald-100 rounded-full text-emerald-800 font-bold text-[10px] uppercase tracking-wider select-none">
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-              100% Local Sandboxed
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-full text-slate-700 font-bold text-[10px] uppercase tracking-wider select-none">
+              <ShieldCheck className="w-3.5 h-3.5 text-slate-600" />
+              100% Private & Local
             </div>
           </div>
 
@@ -72,10 +72,10 @@ export default function Footer() {
         {/* Footer Bottom bar */}
         <div className="pt-8 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-slate-400 text-xs font-medium">
-            © {new Date().getFullYear()} iFlexPDF. Built with local client sandbox isolation.
+            © {new Date().getFullYear()} iFlexPDF. Processed locally and securely in your browser.
           </p>
           <p className="text-slate-400 text-xs font-semibold flex items-center gap-1.5 select-none">
-            Designed with <Heart className="w-3.5 h-3.5 text-red-500 fill-red-500 animate-pulse" /> for security first document productivity.
+            Designed with <Heart className="w-3.5 h-3.5 text-red-500 fill-red-500" /> for private and secure document productivity.
           </p>
         </div>
       </div>
@@ -87,7 +87,7 @@ function FooterLink({ to, children }) {
   return (
     <Link
       to={to}
-      className="text-slate-500 hover:text-indigo-600 transition-all duration-200 text-[13px] font-medium tracking-wide hover:translate-x-0.5 outline-none focus-visible:ring-2 focus-visible:ring-indigo-600 rounded"
+      className="text-slate-500 hover:text-blue-600 transition-all duration-200 text-[13px] font-medium tracking-wide hover:translate-x-0.5 outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded"
     >
       {children}
     </Link>

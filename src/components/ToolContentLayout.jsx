@@ -23,8 +23,8 @@ export default function ToolContentLayout({
   const guide = toolGuides[toolName];
 
   return (
-    <div className="w-full mt-24 border-t border-slate-100 pt-20 space-y-24 bg-slate-50/40 -mx-6 sm:-mx-8 px-6 sm:px-8 pb-20">
-      <div className="max-w-[1200px] mx-auto space-y-24">
+    <div className="w-full mt-24 border-t border-slate-100 pt-16 space-y-20 bg-slate-50/20 pb-16 rounded-3xl px-4 sm:px-8">
+      <div className="max-w-[1200px] mx-auto space-y-20">
         
         {/* Section 1: Step-by-Step How to Use */}
         {howItWorksSteps.length > 0 && (
@@ -42,10 +42,10 @@ export default function ToolContentLayout({
               {howItWorksSteps.map((step, idx) => (
                 <div 
                   key={idx} 
-                  className="relative p-8 bg-white border border-slate-100/90 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 flex flex-col space-y-4 pt-10"
+                  className="relative p-8 bg-white border border-slate-100 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 flex flex-col space-y-4 pt-10"
                 >
                   <div 
-                    className="absolute -top-4 left-6 w-9 h-9 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-extrabold text-sm shadow-md shadow-indigo-100 select-none"
+                    className="absolute -top-4 left-6 w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center font-extrabold text-sm shadow-md shadow-blue-100 select-none"
                     aria-hidden="true"
                   >
                     {idx + 1}
@@ -78,10 +78,10 @@ export default function ToolContentLayout({
                 return (
                   <div 
                     key={idx} 
-                    className="p-6 bg-white border border-slate-100/90 rounded-2xl transition-all duration-300 flex items-start gap-4 hover:border-slate-200 hover:shadow-md"
+                    className="p-6 bg-white border border-slate-100 rounded-2xl transition-all duration-300 flex items-start gap-4 hover:border-slate-200 hover:shadow-md"
                   >
                     <div 
-                      className="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-600 shrink-0 select-none"
+                      className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 shrink-0 select-none"
                       aria-hidden="true"
                     >
                       <Icon className="w-5 h-5" />
@@ -122,7 +122,7 @@ export default function ToolContentLayout({
                     key={idx} 
                     className={cn(
                       "bg-white border rounded-2xl overflow-hidden transition-all duration-200",
-                      isOpen ? "border-indigo-600 shadow-md" : "border-slate-100 hover:border-slate-200"
+                      isOpen ? "border-blue-600 shadow-md" : "border-slate-100 hover:border-slate-200"
                     )}
                   >
                     <button
@@ -136,7 +136,7 @@ export default function ToolContentLayout({
                       <ChevronDown 
                         className={cn(
                           "w-4.5 h-4.5 text-slate-400 shrink-0 transition-transform duration-300", 
-                          isOpen && "rotate-180 text-indigo-600"
+                          isOpen && "rotate-180 text-blue-600"
                         )} 
                       />
                     </button>
@@ -178,11 +178,11 @@ export default function ToolContentLayout({
               </p>
             </div>
 
-            <div className="space-y-10 bg-white border border-slate-100/90 rounded-3xl p-6 sm:p-10 md:p-12 shadow-sm">
+            <div className="space-y-10 bg-white border border-slate-100 rounded-3xl p-6 sm:p-10 md:p-12 shadow-sm">
               {guide.sections.map((section, sIdx) => (
                 <div key={sIdx} className="space-y-3.5">
                   <h3 className="text-xl sm:text-2xl font-bold text-slate-800 tracking-tight flex items-center gap-2.5">
-                    <span className="w-1.5 h-5.5 bg-indigo-600 rounded-full shrink-0" aria-hidden="true"></span>
+                    <span className="w-1.5 h-5.5 bg-blue-600 rounded-full shrink-0" aria-hidden="true"></span>
                     {section.heading}
                   </h3>
                   <div className="text-slate-500 text-xs sm:text-sm leading-relaxed font-medium whitespace-pre-wrap pl-4 border-l-2 border-slate-100">
@@ -208,17 +208,17 @@ export default function ToolContentLayout({
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5">
               {relatedTools.map((tool, idx) => (
-                <Link key={idx} to={tool.path} className="group outline-none focus-visible:ring-2 focus-visible:ring-indigo-600 rounded-2xl">
-                  <div className="p-5 bg-white border border-slate-100/90 rounded-2xl hover:border-indigo-400 hover:shadow-md transition-all duration-300 h-full flex flex-col justify-between">
+                <Link key={idx} to={tool.path} className="group outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded-2xl">
+                  <div className="p-5 bg-white border border-slate-100 rounded-2xl hover:border-blue-400 hover:shadow-md transition-all duration-300 h-full flex flex-col justify-between">
                     <div className="space-y-2.5">
-                      <h3 className="font-bold text-slate-800 group-hover:text-indigo-600 transition-colors text-[14.5px] leading-tight">
+                      <h3 className="font-bold text-slate-800 group-hover:text-blue-600 transition-colors text-[14.5px] leading-tight">
                         {tool.name}
                       </h3>
                       <p className="text-slate-400 text-xs leading-relaxed font-medium">
                         {tool.description}
                       </p>
                     </div>
-                    <div className="flex items-center gap-1.5 text-xs font-bold text-slate-400 group-hover:text-indigo-600 mt-4 transition-all">
+                    <div className="flex items-center gap-1.5 text-xs font-bold text-slate-400 group-hover:text-blue-600 mt-4 transition-all">
                       <span>Launch Tool</span>
                       <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 duration-200 transition-transform" />
                     </div>
@@ -243,16 +243,16 @@ export default function ToolContentLayout({
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
               {relatedArticles.map((art, idx) => (
-                <Link key={idx} to={`/blog/${art.slug}`} className="group outline-none focus-visible:ring-2 focus-visible:ring-indigo-600 rounded-2xl">
-                  <div className="p-5 bg-white border border-slate-100/90 rounded-2xl hover:border-slate-200 hover:shadow-md transition-all duration-300 flex gap-4 items-center">
+                <Link key={idx} to={`/blog/${art.slug}`} className="group outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded-2xl">
+                  <div className="p-5 bg-white border border-slate-100 rounded-2xl hover:border-slate-200 hover:shadow-md transition-all duration-300 flex gap-4 items-center">
                     <div 
-                      className="w-11 h-11 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-600 shrink-0 group-hover:bg-indigo-600 group-hover:text-white transition-all select-none"
+                      className="w-11 h-11 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 shrink-0 group-hover:bg-blue-600 group-hover:text-white transition-all select-none"
                       aria-hidden="true"
                     >
                       <BookOpen className="w-5 h-5" />
                     </div>
                     <div className="space-y-1 min-w-0">
-                      <h3 className="font-bold text-slate-800 group-hover:text-indigo-600 transition-colors text-[14.5px] leading-snug truncate">
+                      <h3 className="font-bold text-slate-800 group-hover:text-blue-600 transition-colors text-[14.5px] leading-snug truncate">
                         {art.title}
                       </h3>
                       <p className="text-slate-400 text-xs font-semibold leading-none">

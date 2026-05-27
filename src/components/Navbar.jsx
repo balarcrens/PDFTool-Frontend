@@ -92,7 +92,7 @@ export default function Navbar() {
               loading="eager"
             />
             <span className="text-xl font-extrabold tracking-tight text-slate-900 leading-none">
-              iFlexPDF<span className="text-indigo-600">.</span>
+              iFlexPDF<span className="text-blue-600">.</span>
             </span>
           </Link>
 
@@ -105,12 +105,12 @@ export default function Navbar() {
                 aria-expanded={isToolsOpen}
                 aria-haspopup="true"
                 className={cn(
-                  "flex items-center gap-1 text-[14px] font-semibold transition-all duration-200 focus-visible:ring-2 focus-visible:ring-indigo-600 focus-visible:ring-offset-2 rounded-lg px-2.5 py-1.5 group select-none outline-none",
-                  isToolsOpen || location.pathname.length > 1 ? "text-indigo-600 font-bold" : "text-slate-500 hover:text-slate-900"
+                  "flex items-center gap-1 text-[14px] font-semibold transition-all duration-200 focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 rounded-lg px-2.5 py-1.5 group select-none outline-none",
+                  isToolsOpen || location.pathname.length > 1 ? "text-blue-600 font-bold" : "text-slate-500 hover:text-slate-900"
                 )}
               >
                 Tools
-                <ChevronDown className={cn("w-3.5 h-3.5 transition-transform duration-300 text-slate-400 group-hover:text-slate-900", isToolsOpen && "rotate-180 text-indigo-600")} />
+                <ChevronDown className={cn("w-3.5 h-3.5 transition-transform duration-300 text-slate-400 group-hover:text-slate-900", isToolsOpen && "rotate-180 text-blue-600")} />
               </button>
 
               {isToolsOpen && (
@@ -119,21 +119,21 @@ export default function Navbar() {
                   className="absolute top-full left-0 mt-3 w-[580px] bg-white border border-slate-100 rounded-2xl shadow-premium-xl p-5 grid grid-cols-2 gap-1.5 z-50 max-h-[460px] overflow-y-auto custom-scrollbar animate-dropdown"
                 >
                   <div className="col-span-2 px-3 pb-2 border-b border-slate-50 mb-2.5">
-                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Enterprise Toolbox</p>
+                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">All PDF Tools</p>
                   </div>
                   {toolsLinks.map((link) => (
                     <Link
                       key={link.path}
                       to={link.path}
                       onClick={() => setIsToolsOpen(false)}
-                      className="flex items-center gap-3.5 p-2.5 rounded-xl hover:bg-slate-50/70 transition-all duration-200 group focus-visible:ring-2 focus-visible:ring-indigo-600"
+                      className="flex items-center gap-3.5 p-2.5 rounded-xl hover:bg-slate-50/70 transition-all duration-200 group focus-visible:ring-2 focus-visible:ring-blue-600"
                     >
-                      <div className="w-10 h-10 bg-slate-50 border border-slate-100 rounded-xl flex items-center justify-center text-slate-500 transition-all duration-200 group-hover:bg-indigo-600 group-hover:text-white group-hover:border-indigo-600 group-hover:shadow-md group-hover:shadow-indigo-100 shrink-0">
+                      <div className="w-10 h-10 bg-slate-50 border border-slate-100 rounded-xl flex items-center justify-center text-slate-500 transition-all duration-200 group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 group-hover:shadow-md group-hover:shadow-blue-100 shrink-0">
                         <link.icon className="w-4.5 h-4.5" />
                       </div>
                       <div className="min-w-0">
-                        <p className="text-[13.5px] font-semibold text-slate-800 leading-tight group-hover:text-indigo-600 transition-colors mb-0.5">{link.name}</p>
-                        <p className="text-[10.5px] font-medium text-slate-400 uppercase tracking-wide">100% Secure & Local</p>
+                        <p className="text-[13.5px] font-semibold text-slate-800 leading-tight group-hover:text-blue-600 transition-colors mb-0.5">{link.name}</p>
+                        <p className="text-[10.5px] font-medium text-slate-400 uppercase tracking-wide">Processed Locally</p>
                       </div>
                     </Link>
                   ))}
@@ -148,12 +148,12 @@ export default function Navbar() {
 
           {/* Action Status Indicator */}
           <div className="hidden lg:flex items-center gap-3">
-            <span className="verified-badge px-4 py-2 flex items-center gap-2 shadow-sm bg-emerald-50/50 border border-emerald-100/60 select-none">
+            <span className="verified-badge px-4 py-2 flex items-center gap-2 shadow-sm bg-slate-50 border border-slate-200 select-none">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
               </span>
-              <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-800">100% Client-Side Engine Active</span>
+              <span className="text-[11px] font-bold uppercase tracking-wider text-slate-700">Secure Offline-Ready Engine</span>
             </span>
           </div>
 
@@ -163,7 +163,7 @@ export default function Navbar() {
             aria-expanded={isMenuOpen}
             aria-label="Toggle navigation drawer"
             aria-controls="mobile-drawer"
-            className="lg:hidden p-2.5 text-slate-600 hover:text-indigo-600 hover:bg-slate-50 border border-slate-100/80 rounded-xl transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-indigo-600"
+            className="lg:hidden p-2.5 text-slate-600 hover:text-blue-600 hover:bg-slate-50 border border-slate-100/80 rounded-xl transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
           >
             {isMenuOpen ? <X className="w-5.5 h-5.5" /> : <Menu className="w-5.5 h-5.5" />}
           </button>
@@ -196,15 +196,15 @@ export default function Navbar() {
           >
             {/* Drawer Header */}
             <div className="flex items-center justify-between mb-6 pb-4 border-b border-slate-100">
-              <Link to="/" onClick={() => setIsMenuOpen(false)} className="flex items-center gap-2.5 outline-none focus-visible:ring-2 focus-visible:ring-indigo-600 rounded-lg py-0.5 px-0.5">
+              <Link to="/" onClick={() => setIsMenuOpen(false)} className="flex items-center gap-2.5 outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded-lg py-0.5 px-0.5">
                 <img src="/icon.png" alt="iFlexPDF" className="w-7 h-7 object-contain select-none" width="28" height="28" loading="lazy" decoding="async" />
                 <span className="text-lg font-extrabold tracking-tight text-slate-900 leading-none">
-                  iFlexPDF<span className="text-indigo-600">.</span>
+                  iFlexPDF<span className="text-blue-600">.</span>
                 </span>
               </Link>
               <button
                 onClick={() => setIsMenuOpen(false)}
-                className="p-2 text-slate-500 hover:text-slate-900 hover:bg-slate-50 rounded-xl transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-indigo-600"
+                className="p-2 text-slate-500 hover:text-slate-900 hover:bg-slate-50 rounded-xl transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
                 aria-label="Close menu drawer"
               >
                 <X className="w-5 h-5" />
@@ -219,7 +219,7 @@ export default function Navbar() {
               <MobileNavLink to="/about" onClick={() => setIsMenuOpen(false)}>About Us</MobileNavLink>
 
               <div className="h-px bg-slate-100 my-4" aria-hidden="true"></div>
-              <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest px-3 mb-2.5 select-none">Professional Toolbox</p>
+              <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest px-3 mb-2.5 select-none">All PDF Tools</p>
 
               <div className="grid grid-cols-1 gap-1 max-h-[calc(100vh-320px)] overflow-y-auto pr-0.5 custom-scrollbar">
                 {toolsLinks.map((link) => {
@@ -230,16 +230,16 @@ export default function Navbar() {
                       to={link.path}
                       onClick={() => setIsMenuOpen(false)}
                       className={cn(
-                        "flex items-center gap-3 px-3 py-2.5 rounded-xl font-semibold transition-all duration-200 text-[13px] border border-transparent outline-none focus-visible:ring-2 focus-visible:ring-indigo-600",
+                        "flex items-center gap-3 px-3 py-2.5 rounded-xl font-semibold transition-all duration-200 text-[13px] border border-transparent outline-none focus-visible:ring-2 focus-visible:ring-blue-600",
                         isToolActive
-                          ? "text-indigo-600 bg-indigo-50/40 border-indigo-100/30"
+                          ? "text-blue-600 bg-blue-50/40 border-blue-100/30"
                           : "text-slate-600 hover:text-slate-900 hover:bg-slate-50/70"
                       )}
                     >
                       <div className={cn(
                         "w-8 h-8 rounded-lg flex items-center justify-center border shrink-0 transition-colors duration-200",
                         isToolActive
-                          ? "bg-indigo-600 text-white border-indigo-600"
+                          ? "bg-blue-600 text-white border-blue-600"
                           : "bg-slate-50 text-slate-500 border-slate-100"
                       )}>
                         <link.icon className="w-4 h-4" strokeWidth={2} />
@@ -253,13 +253,13 @@ export default function Navbar() {
 
             {/* Footer status in mobile */}
             <div className="pt-4 mt-4 border-t border-slate-100 bg-white">
-              <div className="p-3 bg-emerald-50 border border-emerald-100/60 rounded-2xl flex items-center gap-2.5 select-none">
+              <div className="p-3 bg-slate-50 border border-slate-200 rounded-2xl flex items-center gap-2.5 select-none">
                 <div className="relative flex h-2 w-2 shrink-0">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                 </div>
-                <p className="text-[10px] font-bold text-emerald-800 uppercase tracking-wider">
-                  Local Sandboxed Sandbox Active
+                <p className="text-[10px] font-bold text-slate-700 uppercase tracking-wider">
+                  Local Processing Active
                 </p>
               </div>
             </div>
@@ -276,8 +276,8 @@ function NavLink({ to, children, active }) {
     <Link
       to={to}
       className={cn(
-        "text-[14px] font-semibold transition-all duration-200 py-1.5 border-b-2 outline-none focus-visible:ring-2 focus-visible:ring-indigo-600 focus-visible:ring-offset-2 rounded px-1",
-        active ? "text-indigo-600 border-indigo-600 font-bold" : "text-slate-500 hover:text-slate-900 border-transparent"
+        "text-[14px] font-semibold transition-all duration-200 py-1.5 border-b-2 outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 rounded px-1",
+        active ? "text-blue-600 border-blue-600 font-bold" : "text-slate-500 hover:text-slate-900 border-transparent"
       )}
     >
       {children}
@@ -293,9 +293,9 @@ function MobileNavLink({ to, children, onClick }) {
       to={to}
       onClick={onClick}
       className={cn(
-        "px-3 py-2.5 rounded-xl font-semibold transition-all duration-200 text-[13px] flex items-center justify-between outline-none focus-visible:ring-2 focus-visible:ring-indigo-600",
+        "px-3 py-2.5 rounded-xl font-semibold transition-all duration-200 text-[13px] flex items-center justify-between outline-none focus-visible:ring-2 focus-visible:ring-blue-600",
         active
-          ? "text-indigo-600 bg-indigo-50/40 border-l-2 border-indigo-600 rounded-l-none"
+          ? "text-blue-600 bg-blue-50/40 border-l-2 border-blue-600 rounded-l-none"
           : "text-slate-600 hover:text-slate-900 hover:bg-slate-50/70"
       )}
     >

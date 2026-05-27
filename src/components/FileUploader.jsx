@@ -92,10 +92,10 @@ export default function FileUploader({
         role="button"
         aria-label={`File uploader. ${title}. ${description}. Allowed formats: ${accept}`}
         className={cn(
-          "relative group border-2 border-dashed rounded-3xl p-10 sm:p-16 md:p-20 transition-all duration-300 flex flex-col items-center justify-center text-center outline-none focus-visible:ring-2 focus-visible:ring-indigo-600 focus-visible:ring-offset-2",
+          "relative group border-2 border-dashed rounded-2xl p-6 sm:p-12 md:p-16 transition-all duration-300 flex flex-col items-center justify-center text-center outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2",
           isDragging 
-            ? "border-indigo-600 bg-indigo-50/20 shadow-md scale-[1.01]" 
-            : "border-slate-200 bg-white hover:border-indigo-600 hover:shadow-premium-hover"
+            ? "border-blue-600 bg-blue-50/10 shadow-md scale-[1.01]" 
+            : "border-slate-200 bg-white hover:border-blue-600 hover:shadow-premium-hover"
         )}
       >
         <input
@@ -109,10 +109,10 @@ export default function FileUploader({
         />
         
         <div className="relative mb-6 select-none" aria-hidden="true">
-          <div className="bg-indigo-600 p-5 rounded-2xl shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:rotate-1 text-white">
+          <div className="bg-blue-600 p-5 rounded-2xl shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:rotate-1 text-white">
             <Upload className="w-8 h-8" />
           </div>
-          <div className="absolute -bottom-1 -right-1 bg-emerald-500 p-1 rounded-full border-2 border-white shadow">
+          <div className="absolute -bottom-1 -right-1 bg-emerald-600 p-1 rounded-full border-2 border-white shadow">
             <ShieldCheck className="w-3.5 h-3.5 text-white" />
           </div>
         </div>
@@ -122,14 +122,14 @@ export default function FileUploader({
           {description}
         </p>
         
-        <div className="flex flex-wrap items-center justify-center gap-3 text-[10.5px] font-bold text-slate-500 uppercase tracking-wider select-none" aria-hidden="true">
+        <div className="flex flex-wrap items-center justify-center gap-3 text-[10.5px] font-bold text-slate-505 uppercase tracking-wider select-none" aria-hidden="true">
           <div className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 border border-slate-100 rounded-full">
-            <FileText className="w-3.5 h-3.5 text-indigo-600" />
+            <FileText className="w-3.5 h-3.5 text-blue-600" />
             <span>{accept.includes("pdf") ? "PDF Format" : accept.includes("docx") ? "Word Support" : "Allowed files"}</span>
           </div>
           <div className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 border border-slate-100 rounded-full">
-            <FileCheck className="w-3.5 h-3.5 text-emerald-500" />
-            <span>Encrypted Sandbox</span>
+            <FileCheck className="w-3.5 h-3.5 text-emerald-600" />
+            <span>100% Private</span>
           </div>
         </div>
       </motion.div>
