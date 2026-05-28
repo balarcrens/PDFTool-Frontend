@@ -12,7 +12,7 @@ export default function About() {
           className="badge-professional"
         >
           <ShieldCheck className="w-3.5 h-3.5 text-indigo-600" />
-          <span>Established 2024</span>
+          <span>Established 2026</span>
         </motion.div>
         <h1 className="h2-classic md:text-6xl max-w-4xl mx-auto">
           Defining the Future of <span className="text-indigo-600">Document Productivity</span>

@@ -65,7 +65,7 @@ export default function Terms() {
       </div>
 
       <div className="pt-16 border-t border-indigo-50 text-xs font-black text-indigo-300 uppercase tracking-[0.2em] text-center">
-        Protocol Revision Date: May 10, 2024
+        Protocol Revision Date: May 10, 2026
       </div>
     </div>
   );
