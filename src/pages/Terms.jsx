@@ -1,72 +1,174 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { FileText, AlertCircle } from "lucide-react";
+import { FileText, AlertCircle, Printer, ArrowRight } from "lucide-react";
+import SEO from "../components/SEO";
+import { cn } from "../lib/utils";
 
 export default function Terms() {
-  return (
-    <div className="container-professional space-y-24 py-16 md:py-24">
-      {/* Page Header */}
-      <div className="text-center space-y-8">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="badge-professional"
-        >
-          <FileText className="w-3.5 h-3.5 text-indigo-600" />
-          <span>Operational Framework</span>
-        </motion.div>
-        <h1 className="h2-classic md:text-6xl max-w-4xl mx-auto">Terms of <span className="text-indigo-600">Service</span></h1>
-        <p className="p-classic max-w-2xl mx-auto text-[15px] md:text-lg">
-          The transparent legal framework governing your utilization of the iFlexPDF
-          Professional ecosystem.
-        </p>
-      </div>
+	const [activeSection, setActiveSection] = useState("acceptable-use");
 
-      <div className="space-y-16 max-w-4xl mx-auto">
-        <section className="space-y-6">
-          <h2 className="text-3xl font-black text-indigo-950 tracking-tight">1. Acceptable Utilization</h2>
-          <p className="text-slate-500 leading-relaxed font-semibold text-[17px]">
-            By accessing iFlexPDF Professional, you agree to utilize the platform exclusively
-            for legitimate purposes. Users maintain total sovereignty and responsibility
-            for processed content. Unauthorized distribution of restricted assets or
-            malicious code is strictly prohibited.
-          </p>
-        </section>
+	const sections = [
+		{ id: "acceptable-use", label: "1. Acceptable Utilization" },
+		{ id: "service-continuity", label: "2. Service Continuity" },
+		{ id: "liability-exclusion", label: "3. Limitation of Liability" },
+		{ id: "compliance-updates", label: "4. Regulatory Revisions" }
+	];
 
-        <section className="space-y-6">
-          <h2 className="text-3xl font-black text-indigo-950 tracking-tight">2. Service Continuity</h2>
-          <p className="text-slate-500 leading-relaxed font-semibold text-[17px]">
-            While we maintain a high-availability infrastructure, the service is provided
-            on an "as is" and "as available" basis. We reserve the right to perform
-            system optimizations without prior notification to ensure long-term
-            platform stability.
-          </p>
-        </section>
+	const handlePrint = () => {
+		window.print();
+	};
 
-        <section className="space-y-6">
-          <h2 className="text-3xl font-black text-indigo-950 tracking-tight">3. Limitation of Liability</h2>
-          <div className="p-10 bg-indigo-50/50 border border-indigo-100 rounded-[2.5rem] flex items-start gap-6 shadow-inner">
-            <AlertCircle className="w-10 h-10 text-indigo-600 flex-shrink-0 mt-1" />
-            <p className="text-indigo-950 font-black leading-relaxed">
-              iFlexPDF Professional and its contributors assume zero liability for direct,
-              indirect, or consequential damages resulting from document processing
-              errors or temporary service interruptions.
-            </p>
-          </div>
-        </section>
+	const scrollToSection = (id) => {
+		setActiveSection(id);
+		const element = document.getElementById(id);
+		if (element) {
+			element.scrollIntoView({ behavior: "smooth", block: "start" });
+		}
+	};
 
-        <section className="space-y-6">
-          <h2 className="text-3xl font-black text-indigo-950 tracking-tight">4. Regulatory Updates</h2>
-          <p className="text-slate-500 leading-relaxed font-semibold text-[17px]">
-            We reserve the right to refine these operational terms at our discretion.
-            Continued engagement with the platform signifies acceptance of the
-            latest legal revisions.
-          </p>
-        </section>
-      </div>
+	return (
+		<>
+			<SEO
+				title="Terms of Service - iFlexPDF Professional"
+				description="Read the operational terms, acceptable use policies, and legal framework governing the use of iFlexPDF's browser-local document tools."
+				keywords="terms of service, legal terms, pdf tool agreement, user agreement, software usage terms"
+			/>
+			
+			<div className="container-professional py-12 md:py-20 max-w-6xl mx-auto">
+				{/* Top Header Row with Print Utility */}
+				<div className="flex flex-col sm:flex-row items-center justify-between border-b border-slate-100 pb-8 mb-12 gap-4 select-none">
+					<div className="flex items-center gap-3">
+						<div className="w-10 h-10 bg-blue-50 border border-blue-100 rounded-xl flex items-center justify-center text-blue-600">
+							<FileText className="w-5 h-5" />
+						</div>
+						<div className="text-left">
+							<span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest leading-none">Operational Framework</span>
+							<p className="text-xs font-bold text-slate-500">Effective Date: May 2026</p>
+						</div>
+					</div>
+					<button
+						onClick={handlePrint}
+						className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-200 hover:border-blue-600 hover:text-blue-600 text-xs font-bold text-slate-500 bg-white transition-all active:scale-95 shadow-sm"
+					>
+						<Printer className="w-3.5 h-3.5" />
+						Print Terms
+					</button>
+				</div>
 
-      <div className="pt-16 border-t border-indigo-50 text-xs font-black text-indigo-300 uppercase tracking-[0.2em] text-center">
-        Protocol Revision Date: May 10, 2026
-      </div>
-    </div>
-  );
+				{/* Page Header */}
+				<div className="text-center space-y-6 mb-16 max-w-3xl mx-auto">
+					<h1 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+						Terms of <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-650">Service</span>
+					</h1>
+					<p className="text-slate-500 font-medium text-sm sm:text-base leading-relaxed">
+						Please read the legal guidelines and acceptable use parameters governing your interaction with iFlexPDF's browser-local tools.
+					</p>
+				</div>
+
+				{/* 2-Column Responsive Layout */}
+				<div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+					{/* Left Sticky Sidebar Index */}
+					<aside className="md:col-span-4 sticky top-24 hidden md:block select-none">
+						<div className="border-r border-slate-100 pr-6 mr-6 space-y-1">
+							<h3 className="text-slate-400 font-bold uppercase tracking-wider text-[10px] mb-4 pl-3">Sections</h3>
+							{sections.map((sec) => {
+								const isActive = activeSection === sec.id;
+								return (
+									<button
+										key={sec.id}
+										onClick={() => scrollToSection(sec.id)}
+										className={cn(
+											"w-full text-left px-4 py-3 rounded-lg text-xs font-bold transition-all duration-200 flex items-center justify-between group",
+											isActive 
+												? "bg-blue-50 text-blue-600 shadow-sm" 
+												: "text-slate-500 hover:bg-slate-50 hover:text-slate-800"
+										)}
+									>
+										<span>{sec.label}</span>
+										<ArrowRight className={cn(
+											"w-3 h-3 transition-all duration-300 opacity-0 -translate-x-2 shrink-0",
+											isActive ? "opacity-100 translate-x-0" : "group-hover:opacity-40 group-hover:translate-x-0"
+										)} />
+									</button>
+								);
+							})}
+						</div>
+					</aside>
+
+					{/* Right Content Panel */}
+					<div className="md:col-span-8 space-y-16">
+						{/* Section 1 */}
+						<section id="acceptable-use" className="space-y-6 scroll-mt-24">
+							<div className="flex items-center gap-4">
+								<h2 className="text-xl sm:text-2xl font-bold text-slate-800 tracking-tight">1. Acceptable Utilization</h2>
+							</div>
+							
+							<div className="text-slate-500 font-medium text-sm sm:text-base leading-relaxed space-y-4">
+								<p>
+									By accessing iFlexPDF Professional, you agree to utilize our tools exclusively for legitimate, lawful purposes. Since document rendering, merging, encryption, and editing occur entirely client-side on your local device, you hold exclusive responsibility and absolute sovereignty over any files processed.
+								</p>
+								<p>
+									You agree not to use the platform to process documents containing malicious code, Trojan horses, or illegal materials. Any automated scraping, reverse engineering of client-side assets, or systematic harvesting of codebase tools is strictly prohibited.
+								</p>
+							</div>
+						</section>
+
+						{/* Section 2 */}
+						<section id="service-continuity" className="space-y-6 scroll-mt-24">
+							<div className="flex items-center gap-4">
+								<h2 className="text-xl sm:text-2xl font-bold text-slate-800 tracking-tight">2. Service Continuity</h2>
+							</div>
+							
+							<div className="text-slate-500 font-medium text-sm sm:text-base leading-relaxed space-y-4">
+								<p>
+									iFlexPDF is designed as a serverless static web utility. Once files and libraries compile into your local browser active cache, you can process documents without relying on server uploads. While we strive to maintain high web accessibility, the platform is provided on an "as is" and "as available" basis.
+								</p>
+								<p>
+									We reserve the right to perform system optimizations, library updates, or minor operational modifications at any time and without prior notification to ensure long-term tool stability and security.
+								</p>
+							</div>
+						</section>
+
+						{/* Section 3 */}
+						<section id="liability-exclusion" className="space-y-6 scroll-mt-24">
+							<div className="flex items-center gap-4">
+								<h2 className="text-xl sm:text-2xl font-bold text-slate-800 tracking-tight">3. Limitation of Liability</h2>
+							</div>
+							
+							<div className="text-slate-500 font-medium text-sm sm:text-base leading-relaxed space-y-4">
+								<p>
+									Because the entire toolchain executes entirely within your browser's private memory thread, we do not store, review, or inspect your documents. You assume all operational outcomes of document compilation, cropping, formatting, or encryption.
+								</p>
+								
+								<div className="p-6 bg-slate-50 border-l-4 border-blue-600 rounded-r-xl flex items-start gap-4 shadow-sm mt-4 select-none">
+									<AlertCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+									<p className="text-slate-700 font-bold leading-relaxed text-xs sm:text-sm">
+										iFlexPDF, its contributors, and developers assume zero liability for direct, indirect, special, or consequential damages resulting from document formatting errors, local data losses, or temporary browser tab crashes.
+									</p>
+								</div>
+							</div>
+						</section>
+
+						{/* Section 4 */}
+						<section id="compliance-updates" className="space-y-6 scroll-mt-24">
+							<div className="flex items-center gap-4">
+								<h2 className="text-xl sm:text-2xl font-bold text-slate-800 tracking-tight">4. Regulatory Revisions</h2>
+							</div>
+							
+							<div className="text-slate-500 font-medium text-sm sm:text-base leading-relaxed space-y-4">
+								<p>
+									We reserve the right to refine, modify, or update these operational terms at our sole discretion. Any changes will be posted directly on this page with an updated effective date. Continued engagement with iFlexPDF signifies your voluntary agreement and absolute acceptance of the revised Terms of Service.
+								</p>
+							</div>
+						</section>
+
+						{/* Bottom Revision Notice */}
+						<div className="pt-8 border-t border-slate-100 text-xs font-bold text-slate-400 uppercase tracking-widest text-center select-none">
+							iFlexPDF Protocol Revision: May 2026
+						</div>
+					</div>
+				</div>
+			</div>
+		</>
+	);
 }

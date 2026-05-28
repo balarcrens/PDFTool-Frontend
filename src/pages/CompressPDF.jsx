@@ -16,6 +16,8 @@ import {
   Gauge,
   Eye,
   ShieldCheck,
+  CheckCircle2,
+  RefreshCcw,
 } from "lucide-react";
 import { cn } from "../lib/utils";
 import confetti from "canvas-confetti";
@@ -46,8 +48,8 @@ export default function CompressPDF() {
 
       if (compressionLevel === "basic") {
         const fileArrayBuffer = await file.arrayBuffer();
-        const pdfDoc = await PDFDocument.load(fileArrayBuffer);
-        const compressedBytes = await pdfDoc.save({
+        const pdf = await PDFDocument.load(fileArrayBuffer);
+        const compressedBytes = await pdf.save({
           useObjectStreams: true,
           addDefaultPage: false,
         });
@@ -232,53 +234,71 @@ export default function CompressPDF() {
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="card-ref !p-12 md:!p-20 text-center space-y-12"
+                  className="premium-success-card text-center flex flex-col items-center"
                 >
-                  <div className="decorative-circle !w-64 !h-64" />
+                  <div className="success-icon-badge-premium">
+                    <CheckCircle2 className="w-9 h-9" />
+                  </div>
+                  
+                  <h3 className="text-2xl sm:text-3xl font-black text-slate-900 mb-2">Compression Complete</h3>
+                  <p className="text-slate-500 font-medium max-w-md mb-8">
+                    Your PDF has been successfully optimized and reduced inside your browser sandbox.
+                  </p>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 text-center relative z-10">
-                    <div className="space-y-2">
-                      <p className="text-slate-600 text-xs font-bold uppercase tracking-widest">Original State</p>
-                      <p className="text-2xl font-black text-slate-900">{stats.original}</p>
+                  <div className="premium-file-details max-w-xl">
+                    <div className="text-left">
+                      <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">File Name</p>
+                      <p className="font-bold text-slate-800 text-sm truncate max-w-[200px] sm:max-w-[300px]">{file.name}</p>
                     </div>
-                    <div className="space-y-2">
-                      <p className="text-slate-600 text-xs font-bold uppercase tracking-widest">Optimized State</p>
-                      <p className="text-2xl font-black text-blue-600">{stats.compressed}</p>
-                    </div>
-                    <div className="space-y-2">
-                      <p className="text-slate-600 text-xs font-bold uppercase tracking-widest">Efficiency</p>
-                      <p className="text-2xl font-black text-emerald-600">{stats.savings}</p>
+                    <div className="flex gap-6 sm:gap-10">
+                      <div>
+                        <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Before</p>
+                        <p className="font-bold text-slate-500 text-sm line-through">{stats.original}</p>
+                      </div>
+                      <div>
+                        <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">After</p>
+                        <p className="font-bold text-blue-600 text-sm">{stats.compressed}</p>
+                      </div>
+                      <div>
+                        <p className="text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-1">Saved</p>
+                        <p className="font-bold text-emerald-600 text-sm">{stats.savings}</p>
+                      </div>
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
+                  <div className="premium-actions-layout">
                     <button
                       onClick={() => window.open(compressedPdfUrl, '_blank')}
-                      className="flex flex-col items-center justify-center p-10 bg-slate-50 border border-slate-100 rounded-[2rem] hover:bg-white hover:border-blue-600 hover:shadow-xl transition-all group gap-5"
+                      className="btn-premium-secondary"
                     >
-                      <div className="w-16 h-16 bg-white border border-slate-100 rounded-2xl flex items-center justify-center text-slate-600 group-hover:text-blue-600 group-hover:scale-110 group-hover:shadow-lg transition-all duration-300">
-                        <Eye className="w-8 h-8" />
-                      </div>
-                      <div className="text-center">
-                        <p className="font-bold text-slate-900 mb-1">Review Output</p>
-                        <p className="text-xs font-bold text-slate-600 uppercase tracking-widest">In-Browser Preview</p>
-                      </div>
+                      <span className="btn-premium-action-text flex items-center gap-2">
+                        <Eye className="w-4 h-4" /> Review Output
+                      </span>
+                      <span className="btn-premium-action-subtext">In-Browser Preview</span>
                     </button>
 
                     <a
                       href={compressedPdfUrl}
                       download={`compressed_${file.name}`}
-                      className="flex flex-col items-center justify-center p-10 bg-blue-600 text-white rounded-[2rem] hover:bg-blue-700 transition-all group gap-5 shadow-2xl shadow-blue-100/50"
+                      className="btn-premium-primary"
                     >
-                      <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center text-white group-hover:scale-110 transition-all duration-300 shadow-lg">
-                        <Download className="w-8 h-8" />
-                      </div>
-                      <div className="text-center">
-                        <p className="font-bold text-white mb-1">Export Optimized PDF</p>
-                        <p className="text-xs font-bold text-white/40 uppercase tracking-widest">Secure Local Save</p>
-                      </div>
+                      <span className="btn-premium-action-text flex items-center gap-2">
+                        <Download className="w-4 h-4" /> Download PDF
+                      </span>
+                      <span className="btn-premium-action-subtext">Secure Local Save</span>
                     </a>
                   </div>
+
+                  <button
+                    onClick={() => {
+                      setFile(null);
+                      setCompressedPdfUrl(null);
+                      setStats(null);
+                    }}
+                    className="btn-premium-reset"
+                  >
+                    <RefreshCcw className="w-3.5 h-3.5" /> Optimize Another File
+                  </button>
                 </motion.div>
               )}
             </AnimatePresence>
