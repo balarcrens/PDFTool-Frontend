@@ -1,6 +1,3 @@
-// Dense search-optimized educational guides for all 15 iFlexPDF tools
-// Written with detailed structured sections, H2/H3 layouts, and rich content to avoid thin content issues and maximize AdSense crawlability.
-
 export const toolGuides = {
     "Merge PDF": {
         title: "The Ultimate Guide to Merging PDF Documents Securely in Your Browser",
@@ -167,27 +164,6 @@ export const toolGuides = {
             {
                 heading: "Layout Fidelity and XML Tag Mapping",
                 content: "Our localized converter reads the nested XML layout tags of Word files (paragraphs, tables, lists, text weights) and translates them into absolute PDF coordinates. This ensures that complex table grids, bulleted spacing, and headers translate neatly without layout shifting."
-            }
-        ]
-    },
-    "PDF to Word": {
-        title: "How to Convert PDF to Editable Microsoft Word Documents Offline",
-        sections: [
-            {
-                heading: "Restoring Editability to Locked PDFs",
-                content: "PDFs are designed for viewing, not editing. When you need to modify a contract clause, edit a resume layout, or update a PDF report, you must convert it back to DOCX. iFlexPDF contains a layout re-constructor that parses text streams and bounding boxes to compile them back into editable Word structures."
-            },
-            {
-                heading: "Why Local Conversion is Essential for Secure Files",
-                content: "Legal contracts or bank records should never be uploaded to external web servers. iFlexPDF runs its conversion algorithms completely in-memory on your device. The document is parsed and rebuilds in standard browser RAM, keeping your private business records safe."
-            },
-            {
-                heading: "How to Convert Your PDF to an Editable DOCX File",
-                content: "1. Load your target PDF into the local browser converter.\n2. Click 'Convert to Word' to initiate the layout re-construction sequence.\n3. Let the client-side parser reconstruct paragraphs, text boxes, and table cells.\n4. Click 'Download Word File' to save the editable document on your device."
-            },
-            {
-                heading: "Layout Flow Recovery and Formatting",
-                content: "Rather than simply dumping unformatted characters onto a blank page, our local engine groups lines into single flowing paragraphs, identifies tabular text structures, and maintains formatting elements like bold weights and text margins to save you manual editing time."
             }
         ]
     },

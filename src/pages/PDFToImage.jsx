@@ -45,7 +45,7 @@ export default function PDFToImage() {
 
             for (let i = 1; i <= pageCount; i++) {
                 const page = await pdf.getPage(i);
-                const viewport = page.getViewport({ scale: 2.0 }); // High resolution
+                const viewport = page.getViewport({ scale: 2.0 });
                 const canvas = document.createElement("canvas");
                 const context = canvas.getContext("2d");
                 canvas.height = viewport.height;
@@ -92,7 +92,6 @@ export default function PDFToImage() {
                 keywords="pdf to image, convert pdf to png, pdf to jpg, high-resolution pdf rendering, secure local pdf converter"
             />
             <div className="container-professional space-y-16 py-16 md:py-24">
-                {/* Tool Header */}
                 <div className="text-center space-y-6">
                     <motion.div
                         initial={{ opacity: 0, y: 10 }}
@@ -113,7 +112,6 @@ export default function PDFToImage() {
                     <FileUploader onFilesSelected={handleFileSelected} multiple={false} />
                 ) : (
                     <div className="max-w-6xl mx-auto space-y-12">
-                        {/* Action Bar */}
                         <div className="action-bar-classic sticky top-24 z-30">
                             <div className="flex flex-col md:flex-row items-center gap-6 w-full md:w-auto">
                                 <div className="flex bg-slate-100 p-1 rounded-xl border border-slate-200">
@@ -216,7 +214,6 @@ export default function PDFToImage() {
                                     </button>
                                 </div>
 
-                                {/* Grid gallery */}
                                 <div className="w-full pt-8 border-t border-slate-100 text-left">
                                     <div className="flex items-center justify-between mb-6 px-2">
                                         <div>
@@ -285,7 +282,6 @@ export default function PDFToImage() {
                     relatedTools={[
                         { name: "Merge PDF", path: "/merge", description: "Combine multiple PDF files into one clean document." },
                         { name: "Split PDF", path: "/split", description: "Separate your pages or extract specific parts easily." },
-                        { name: "PDF to Word", path: "/pdf-to-word", description: "Convert PDF documents back to editable Microsoft Word files locally." }
                     ]}
                     relatedArticles={[
                         { title: "PDF vs DOCX Comparison: Which Format Should You Use?", slug: "pdf-vs-docx-comparison" },

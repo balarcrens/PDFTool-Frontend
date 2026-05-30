@@ -51,7 +51,6 @@ const trustPoints = [
 export default function Security() {
     return (
         <div className="py-20 space-y-32">
-            {/* Hero Section */}
             <section className="container-professional text-center space-y-8">
                 <motion.div
                     initial={{ opacity: 0, y: 10 }}
@@ -82,7 +81,6 @@ export default function Security() {
                 </motion.p>
             </section>
 
-            {/* Security Feature Cards */}
             <section className="container-professional">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {securityFeatures.map((feature, index) => (
@@ -94,7 +92,6 @@ export default function Security() {
                             transition={{ delay: index * 0.1 }}
                             className="group relative p-10 bg-white border border-slate-100 rounded-[2rem] overflow-hidden hover:border-indigo-100 hover:shadow-xl hover:shadow-indigo-500/5 transition-all duration-500"
                         >
-                            {/* Ghost Icon Background */}
                             <feature.ghostIcon className="absolute -top-4 -right-4 w-32 h-32 text-slate-50 opacity-[0.03] group-hover:opacity-[0.07] transition-opacity duration-500" />
 
                             <div className="relative z-10 space-y-6">
@@ -111,11 +108,9 @@ export default function Security() {
                 </div>
             </section>
 
-            {/* Trust Section */}
             <section className="container-professional">
                 <div className="bg-slate-50 rounded-[3rem] overflow-hidden border border-slate-100">
                     <div className="grid grid-cols-1 lg:grid-cols-2">
-                        {/* Left Content */}
                         <div className="p-12 md:p-20 space-y-12 bg-white">
                             <h2 className="text-3xl md:text-4xl font-black text-slate-900">Why Professionals Trust Us</h2>
 
@@ -136,9 +131,7 @@ export default function Security() {
                             </div>
                         </div>
 
-                        {/* Right Graphic */}
                         <div className="relative bg-slate-50 flex items-center justify-center p-12 md:p-20 overflow-hidden">
-                            {/* Decorative Rings */}
                             <div className="absolute inset-0 flex items-center justify-center">
                                 <div className="w-[400px] h-[400px] border-2 border-dashed border-indigo-100 rounded-full animate-[spin_20s_linear_infinite]" />
                             </div>

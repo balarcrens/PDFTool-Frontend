@@ -8,13 +8,11 @@ export default function Footer() {
             aria-label="Site Footer"
         >
             <div className="container-professional space-y-12">
-                {/* Multi-Column Directory */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 md:gap-8">
-                    {/* Brand Info */}
                     <div className="space-y-4 text-left">
                         <Link
                             to="/"
-                            className="flex items-center gap-2.5 outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded-lg py-0.5 px-0.5 inline-flex"
+                            className="flex items-center gap-2.5 outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded-lg py-0.5 px-0.5"
                             aria-label="iFlexPDF Home"
                         >
                             <img src="/icon.png" alt="iFlexPDF Logo" className="w-8 h-8 object-contain" width="32" height="32" loading="lazy" decoding="async" />
@@ -31,7 +29,6 @@ export default function Footer() {
                         </div>
                     </div>
 
-                    {/* Column 1: Core Tools */}
                     <div className="space-y-4 text-left">
                         <h2 className="text-[11px] font-bold text-slate-400 uppercase tracking-widest select-none">PDF Utility Tools</h2>
                         <nav className="flex flex-col gap-2.5" aria-label="PDF Tools Footer Navigation">
@@ -44,7 +41,6 @@ export default function Footer() {
                         </nav>
                     </div>
 
-                    {/* Column 2: Resources & Sitemap */}
                     <div className="space-y-4 text-left">
                         <h2 className="text-[11px] font-bold text-slate-400 uppercase tracking-widest select-none">Platform & Security</h2>
                         <nav className="flex flex-col gap-2.5" aria-label="Platform Resources Footer Navigation">
@@ -56,7 +52,6 @@ export default function Footer() {
                         </nav>
                     </div>
 
-                    {/* Column 3: Legal & Support */}
                     <div className="space-y-4 text-left">
                         <h2 className="text-[11px] font-bold text-slate-400 uppercase tracking-widest select-none">Legal & Compliance</h2>
                         <nav className="flex flex-col gap-2.5" aria-label="Legal Compliance Footer Navigation">
@@ -69,7 +64,6 @@ export default function Footer() {
                     </div>
                 </div>
 
-                {/* Footer Bottom bar */}
                 <div className="pt-8 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
                     <p className="text-slate-400 text-xs font-medium">
                         © {new Date().getFullYear()} iFlexPDF. Processed locally and securely in your browser.

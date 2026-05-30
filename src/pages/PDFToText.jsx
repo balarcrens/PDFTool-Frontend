@@ -81,7 +81,6 @@ export default function PDFToText() {
                 keywords="pdf to text, extract text from pdf, convert pdf to txt, secure text extractor, free client-side characters parser"
             />
             <div className="container-professional space-y-16 py-16 md:py-24">
-                {/* Tool Header */}
                 <div className="text-center space-y-6">
                     <motion.div
                         initial={{ opacity: 0, y: 10 }}
@@ -102,7 +101,6 @@ export default function PDFToText() {
                     <FileUploader onFilesSelected={handleFileSelected} multiple={false} />
                 ) : (
                     <div className="max-w-5xl mx-auto space-y-12">
-                        {/* Action Bar */}
                         <div className="action-bar-classic sticky top-24 z-30">
                             <div className="flex items-center gap-4 w-full md:w-auto">
                                 <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center text-slate-600">
@@ -195,7 +193,6 @@ export default function PDFToText() {
                                         </button>
                                     </div>
 
-                                    {/* Plaintext Preview Block */}
                                     <div className="w-full text-left pt-8 border-t border-slate-100">
                                         <div className="flex items-center justify-between mb-4 px-2">
                                             <div>
@@ -245,7 +242,6 @@ export default function PDFToText() {
                         { question: "How are multi-page documents formatted in the output?", answer: "To maintain perfect readability and structure, each page's extracted text is prefixed with a clear page delimiter (e.g. --- Page 1 ---), making it easy to identify chapters or sources." }
                     ]}
                     relatedTools={[
-                        { name: "PDF to Word", path: "/pdf-to-word", description: "Convert PDF documents back to editable Microsoft Word files locally." },
                         { name: "Merge PDF", path: "/merge", description: "Combine multiple PDF files into one clean document." },
                         { name: "Split PDF", path: "/split", description: "Separate your pages or extract specific parts easily." }
                     ]}

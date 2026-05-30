@@ -72,7 +72,6 @@ export default function FileUploader({
         }
     };
 
-    // Keyboard navigation support: Trigger click on Enter or Space
     const handleKeyDown = (e) => {
         if (e.key === "Enter" || e.key === " ") {
             e.preventDefault();

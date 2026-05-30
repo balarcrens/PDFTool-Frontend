@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ChevronDown, ArrowRight, ShieldCheck, Zap, Sparkles, BookOpen, Star, RefreshCcw } from "lucide-react";
+import { ChevronDown, ArrowRight, BookOpen, Star } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "../lib/utils";
 import { toolGuides } from "../data/toolGuides";
@@ -25,8 +25,6 @@ export default function ToolContentLayout({
     return (
         <div className="w-full mt-24 border-t border-slate-100 pt-16 space-y-20 bg-slate-50/20 pb-16 rounded-3xl px-4 sm:px-8">
             <div className="max-w-[1200px] mx-auto space-y-20">
-
-                {/* Section 1: Step-by-Step How to Use */}
                 {howItWorksSteps.length > 0 && (
                     <section className="space-y-12 text-left" aria-label={`How to use ${toolName}`}>
                         <div className="text-center space-y-4">
@@ -60,7 +58,6 @@ export default function ToolContentLayout({
                     </section>
                 )}
 
-                {/* Section 2: Features & Benefits Grid */}
                 {features.length > 0 && (
                     <section className="space-y-12 text-left" aria-label={`Features of ${toolName}`}>
                         <div className="text-center space-y-4">
@@ -97,12 +94,10 @@ export default function ToolContentLayout({
                     </section>
                 )}
 
-                {/* AdSense Slot C - Middle Page Tool Banner */}
                 <div className="w-full max-w-[970px] mx-auto select-none">
                     <AdSense adSlot="9573820485" adFormat="horizontal" />
                 </div>
 
-                {/* Section 3: Collapsible FAQs */}
                 {faqs.length > 0 && (
                     <section className="max-w-3xl mx-auto space-y-12 text-left" aria-label="Frequently Asked Questions">
                         <div className="text-center space-y-4">
@@ -161,12 +156,10 @@ export default function ToolContentLayout({
                     </section>
                 )}
 
-                {/* AdSense Slot D - Handbook Header Banner */}
                 <div className="w-full max-w-[970px] mx-auto select-none">
                     <AdSense adSlot="4382940285" adFormat="horizontal" />
                 </div>
 
-                {/* Section 4: Handbook & Deep Guides (AdSense Dense Content) */}
                 {guide && (
                     <section className="space-y-12 max-w-4xl mx-auto border-t border-slate-100 pt-16 text-left" aria-label={`Handbook guide for ${toolName}`}>
                         <div className="text-center space-y-4">
@@ -194,7 +187,6 @@ export default function ToolContentLayout({
                     </section>
                 )}
 
-                {/* Section 5: Related Tools (Internal Linking) */}
                 {relatedTools.length > 0 && (
                     <section className="space-y-12 border-t border-slate-100 pt-16 text-left" aria-label="Alternative Utility Workflows">
                         <div className="text-center space-y-4">
@@ -229,7 +221,6 @@ export default function ToolContentLayout({
                     </section>
                 )}
 
-                {/* Section 6: Related Articles */}
                 {relatedArticles.length > 0 && (
                     <section className="space-y-12 border-t border-slate-100 pt-16 text-left" aria-label="Recommended Productivity Guides">
                         <div className="text-center space-y-4">

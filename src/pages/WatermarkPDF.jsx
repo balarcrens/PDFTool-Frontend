@@ -25,8 +25,8 @@ export default function WatermarkPDF() {
     const [fontSize, setFontSize] = useState(50);
     const [opacity, setOpacity] = useState(0.3);
     const [rotation, setRotation] = useState(45);
-    const [color, setColor] = useState("#ff0000"); // Hex red
-    const [position, setPosition] = useState("center"); // center, topLeft, topRight, bottomLeft, bottomRight
+    const [color, setColor] = useState("#ff0000");
+    const [position, setPosition] = useState("center");
     const [isProcessing, setIsProcessing] = useState(false);
     const [watermarkedPdfUrl, setWatermarkedPdfUrl] = useState(null);
 
@@ -62,7 +62,6 @@ export default function WatermarkPDF() {
             for (const page of pages) {
                 const { width, height } = page.getSize();
 
-                // Calculate coordinates based on selected preset
                 let x = width / 2;
                 let y = height / 2;
 
@@ -133,7 +132,6 @@ export default function WatermarkPDF() {
                 schemaData={webAppSchema}
             />
             <div className="container-professional space-y-16 py-16 md:py-24">
-                {/* Tool Header */}
                 <div className="text-center space-y-6">
                     <motion.div
                         initial={{ opacity: 0, y: 10 }}
@@ -153,7 +151,6 @@ export default function WatermarkPDF() {
                     <FileUploader onFilesSelected={handleFileSelected} multiple={false} />
                 ) : (
                     <div className="max-w-5xl mx-auto space-y-10">
-                        {/* Action Bar */}
                         <div className="action-bar-classic sticky top-24 z-30">
                             <div className="flex items-center gap-4 w-full md:w-auto">
                                 <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center text-slate-600">
@@ -194,16 +191,13 @@ export default function WatermarkPDF() {
                             </div>
                         </div>
 
-                        {/* Customization Workspace */}
                         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-                            {/* Options Form */}
                             <div className="lg:col-span-1 card-ref p-8 space-y-8">
                                 <div className="flex items-center gap-3 pb-4 border-b border-slate-100">
                                     <Sliders className="w-5 h-5 text-[#0047AB]" />
                                     <h3 className="text-lg font-black text-slate-900">Customization Panel</h3>
                                 </div>
 
-                                {/* Input Text */}
                                 <div className="space-y-2">
                                     <label className="text-xs font-bold text-slate-600 uppercase tracking-widest">Watermark Text</label>
                                     <input
@@ -215,7 +209,6 @@ export default function WatermarkPDF() {
                                     />
                                 </div>
 
-                                {/* Grid Preset Position */}
                                 <div className="space-y-3">
                                     <label className="text-xs font-bold text-slate-600 uppercase tracking-widest">Watermark Position</label>
                                     <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
@@ -227,7 +220,6 @@ export default function WatermarkPDF() {
                                     </div>
                                 </div>
 
-                                {/* Font Size Slider */}
                                 <div className="space-y-2">
                                     <div className="flex justify-between text-xs font-bold text-slate-600 uppercase tracking-widest">
                                         <span>Font Size</span>
@@ -243,7 +235,6 @@ export default function WatermarkPDF() {
                                     />
                                 </div>
 
-                                {/* Opacity Slider */}
                                 <div className="space-y-2">
                                     <div className="flex justify-between text-xs font-bold text-slate-600 uppercase tracking-widest">
                                         <span>Opacity</span>
@@ -260,7 +251,6 @@ export default function WatermarkPDF() {
                                     />
                                 </div>
 
-                                {/* Rotation Slider */}
                                 <div className="space-y-2">
                                     <div className="flex justify-between text-xs font-bold text-slate-600 uppercase tracking-widest">
                                         <span>Rotation Angle</span>
@@ -276,7 +266,6 @@ export default function WatermarkPDF() {
                                     />
                                 </div>
 
-                                {/* Color Selection */}
                                 <div className="space-y-2">
                                     <label className="text-xs font-bold text-slate-600 uppercase tracking-widest">Stamp Color</label>
                                     <div className="flex items-center gap-3">
@@ -291,7 +280,6 @@ export default function WatermarkPDF() {
                                 </div>
                             </div>
 
-                            {/* Real-time Preview Area */}
                             <div className="lg:col-span-2 workspace-preview-panel flex items-center justify-center min-h-[450px] relative overflow-hidden">
                                 <div className="workspace-card-preview bg-white aspect-[3/4] w-full max-w-[300px] relative flex flex-col items-center justify-center p-6 border border-slate-200/50">
                                     <div className="w-full space-y-4 opacity-15 select-none pointer-events-none">
@@ -303,7 +291,6 @@ export default function WatermarkPDF() {
                                         <div className="h-4 w-2/3 bg-slate-200 rounded"></div>
                                     </div>
 
-                                    {/* Floating Watermark Preview Tag */}
                                     <div
                                         className="absolute font-black select-none pointer-events-none transition-all duration-300 text-center uppercase"
                                         style={{
@@ -327,7 +314,6 @@ export default function WatermarkPDF() {
                     </div>
                 )}
 
-                {/* Result Area */}
                 <AnimatePresence>
                     {watermarkedPdfUrl && (
                         <motion.div

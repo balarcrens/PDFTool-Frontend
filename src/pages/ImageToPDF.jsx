@@ -126,7 +126,6 @@ export default function ImageToPDF() {
             />
 
             <div className="container-professional space-y-16 py-16 md:py-24">
-                {/* Tool Header */}
                 <div className="text-center space-y-6">
                     <motion.div
                         initial={{ opacity: 0, y: 10 }}
@@ -152,7 +151,6 @@ export default function ImageToPDF() {
                     />
                 ) : (
                     <div className="max-w-6xl mx-auto space-y-12">
-                        {/* Action Bar */}
                         <div className="action-bar-classic sticky top-24 z-30">
                             <div className="flex flex-col md:flex-row items-center gap-6 w-full md:w-auto">
                                 <div className="flex bg-slate-100 p-1 rounded-xl border border-slate-200">

@@ -5,7 +5,6 @@ import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import Breadcrumbs from "./components/Breadcrumbs";
 
-// Lazy-loaded page components for highly optimized bundle size (Lighthouse)
 const Home = lazy(() => import("./pages/Home"));
 const MergePDF = lazy(() => import("./pages/MergePDF"));
 const SplitPDF = lazy(() => import("./pages/SplitPDF"));
@@ -15,7 +14,6 @@ const OrganizePDF = lazy(() => import("./pages/OrganizePDF"));
 const CompressPDF = lazy(() => import("./pages/CompressPDF"));
 const PDFToText = lazy(() => import("./pages/PDFToText"));
 const WordToPDF = lazy(() => import("./pages/WordToPDF"));
-const PDFToWord = lazy(() => import("./pages/PDFToWord"));
 const ProtectPDF = lazy(() => import("./pages/ProtectPDF"));
 const UnlockPDF = lazy(() => import("./pages/UnlockPDF"));
 const RotatePDF = lazy(() => import("./pages/RotatePDF"));
@@ -61,7 +59,6 @@ function App() {
                             <Route path="/compress" element={<CompressPDF />} />
                             <Route path="/pdf-to-text" element={<PDFToText />} />
                             <Route path="/word-to-pdf" element={<WordToPDF />} />
-                            <Route path="/pdf-to-word" element={<PDFToWord />} />
                             <Route path="/protect" element={<ProtectPDF />} />
                             <Route path="/unlock" element={<UnlockPDF />} />
                             <Route path="/rotate" element={<RotatePDF />} />

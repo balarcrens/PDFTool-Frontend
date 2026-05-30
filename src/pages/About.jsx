@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ShieldCheck, Zap, Heart, Globe, Award, Lock, FileText, CheckCircle2 } from "lucide-react";
+import { ShieldCheck, Heart, Globe, Award, Lock, CheckCircle2 } from "lucide-react";
 import SEO from "../components/SEO";
 
 export default function About() {
@@ -12,7 +12,6 @@ export default function About() {
             />
 
             <div className="container-professional space-y-20 py-16 md:py-24">
-                {/* Page Header */}
                 <div className="text-center space-y-6">
                     <motion.div
                         initial={{ opacity: 0, y: 10 }}
@@ -33,7 +32,6 @@ export default function About() {
                     </p>
                 </div>
 
-                {/* Narrative Section: Why We Are Different */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pt-8 border-t border-slate-100 max-w-6xl mx-auto">
                     <div className="lg:col-span-7 space-y-6 text-left">
                         <span className="badge-professional select-none">
@@ -63,7 +61,6 @@ export default function About() {
                     </div>
                 </div>
 
-                {/* Global Statistics Banner */}
                 <div className="bg-[#0f172a] rounded-2xl p-12 md:p-16 relative overflow-hidden shadow-xl border border-slate-800 text-center max-w-6xl mx-auto">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center relative z-10 select-none">
                         <div className="space-y-2">
@@ -81,7 +78,6 @@ export default function About() {
                     </div>
                 </div>
 
-                {/* Our Engineering Core Pillars */}
                 <div className="space-y-12 text-center pt-8">
                     <div className="space-y-3">
                         <span className="badge-professional select-none">
@@ -130,7 +126,6 @@ export default function About() {
                     </div>
                 </div>
 
-                {/* Security Clearances Footer */}
                 <div className="pt-12 border-t border-slate-100 text-center max-w-2xl mx-auto space-y-4 select-none">
                     <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">Guaranteed Data Security Standards</p>
                     <div className="flex justify-center items-center gap-6 flex-wrap">

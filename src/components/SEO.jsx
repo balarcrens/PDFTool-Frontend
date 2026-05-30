@@ -18,30 +18,24 @@ export default function SEO({
 
     return (
         <Helmet>
-            {/* Title */}
             <title>{formattedTitle}</title>
 
-            {/* Meta Tags */}
             <meta name="description" content={activeDescription} />
             <meta name="keywords" content={activeKeywords} />
 
-            {/* Canonical URL */}
             <link rel="canonical" href={activeCanonical} />
 
-            {/* Open Graph / Facebook */}
             <meta property="og:title" content={formattedTitle} />
             <meta property="og:description" content={activeDescription} />
             <meta property="og:type" content={ogType} />
             <meta property="og:url" content={activeCanonical} />
             <meta property="og:image" content={window.location.origin + ogImage} />
 
-            {/* Twitter Cards */}
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:title" content={formattedTitle} />
             <meta name="twitter:description" content={activeDescription} />
             <meta name="twitter:image" content={window.location.origin + ogImage} />
 
-            {/* Structured Schema Markup (JSON-LD) */}
             {schemaData && (
                 <script type="application/ld+json">
                     {JSON.stringify(schemaData)}

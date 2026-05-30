@@ -142,7 +142,6 @@ export default function RotatePDF() {
                 schemaData={webAppSchema}
             />
             <div className="container-professional space-y-16 py-16 md:py-24">
-                {/* Tool Header */}
                 <div className="text-center space-y-6">
                     <motion.div
                         initial={{ opacity: 0, y: 10 }}
@@ -162,7 +161,6 @@ export default function RotatePDF() {
                     <FileUploader onFilesSelected={handleFileSelected} multiple={false} />
                 ) : (
                     <div className="max-w-7xl mx-auto space-y-12">
-                        {/* Action Bar */}
                         <div className="action-bar-classic sticky top-24 z-30">
                             <div className="flex flex-col sm:flex-row sm:items-center gap-4 w-full md:w-auto">
                                 <div className="flex items-center gap-4">

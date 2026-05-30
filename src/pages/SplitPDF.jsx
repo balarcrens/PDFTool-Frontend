@@ -352,7 +352,6 @@ export default function SplitPDF() {
                     relatedTools={[
                         { name: "Merge PDF", path: "/merge", description: "Combine multiple PDF files into one clean document." },
                         { name: "Organize PDF", path: "/organize", description: "Rearrange, rotate, or delete pages visually." },
-                        { name: "PDF to Word", path: "/pdf-to-word", description: "Convert PDF documents back to editable Microsoft Word files locally." }
                     ]}
                     relatedArticles={[
                         { title: "Best PDF Tools for Students in 2026", slug: "best-pdf-tools-for-students" },

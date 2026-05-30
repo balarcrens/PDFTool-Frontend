@@ -110,7 +110,6 @@ export default function MergePDF() {
             />
 
             <div className="container-professional space-y-16 py-16 md:py-24">
-                {/* Tool Header */}
                 <div className="text-center space-y-6">
                     <motion.div
                         initial={{ opacity: 0, y: 10 }}
@@ -131,7 +130,6 @@ export default function MergePDF() {
                     <FileUploader onFilesSelected={handleFilesSelected} />
                 ) : (
                     <div className="max-w-4xl mx-auto space-y-10">
-                        {/* Action Bar */}
                         <div className="action-bar-classic sticky top-24 z-30">
                             <div className="flex items-center gap-4 w-full md:w-auto">
                                 <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center text-slate-600">
@@ -189,7 +187,6 @@ export default function MergePDF() {
                             </div>
                         </div>
 
-                        {/* File List */}
                         <Reorder.Group axis="y" values={files} onReorder={setFiles} className="space-y-2">
                             <AnimatePresence>
                                 {files.map((file) => (
@@ -230,7 +227,6 @@ export default function MergePDF() {
                             </AnimatePresence>
                         </Reorder.Group>
 
-                        {/* Result Section */}
                         <AnimatePresence>
                             {mergedPdfUrl && (
                                 <motion.div
@@ -315,7 +311,6 @@ export default function MergePDF() {
                     ]}
                     relatedTools={[
                         { name: "Split PDF", path: "/split", description: "Isolate specific pages or separate documents easily." },
-                        { name: "PDF to Word", path: "/pdf-to-word", description: "Convert PDF documents back to editable Microsoft Word files locally." },
                         { name: "Compress PDF", path: "/compress", description: "Reduce file sizes securely while maintaining text clarity." }
                     ]}
                     relatedArticles={[

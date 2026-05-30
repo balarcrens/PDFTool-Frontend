@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -8,14 +9,11 @@ const __dirname = path.dirname(__filename);
 
 const BASE_URL = 'https://iflexpdf.online';
 
-// Current Date in YYYY-MM-DD format
 const currentDate = new Date().toISOString().split('T')[0];
 
 const routes = [
-  // Core Home Page
   { path: '/', priority: '1.0', changefreq: 'daily' },
 
-  // PDF Utility Pages (15 core tools)
   { path: '/merge', priority: '0.9', changefreq: 'weekly' },
   { path: '/split', priority: '0.9', changefreq: 'weekly' },
   { path: '/compress', priority: '0.9', changefreq: 'weekly' },
@@ -24,7 +22,6 @@ const routes = [
   { path: '/organize', priority: '0.9', changefreq: 'weekly' },
   { path: '/pdf-to-text', priority: '0.9', changefreq: 'weekly' },
   { path: '/word-to-pdf', priority: '0.9', changefreq: 'weekly' },
-  { path: '/pdf-to-word', priority: '0.9', changefreq: 'weekly' },
   { path: '/protect', priority: '0.9', changefreq: 'weekly' },
   { path: '/unlock', priority: '0.9', changefreq: 'weekly' },
   { path: '/rotate', priority: '0.9', changefreq: 'weekly' },
@@ -32,26 +29,21 @@ const routes = [
   { path: '/page-numbers', priority: '0.9', changefreq: 'weekly' },
   { path: '/delete-pages', priority: '0.9', changefreq: 'weekly' },
 
-  // Blog Hub Page
   { path: '/blog', priority: '0.8', changefreq: 'daily' },
 
-  // Corporate & Info Pages
   { path: '/about', priority: '0.5', changefreq: 'monthly' },
   { path: '/security', priority: '0.6', changefreq: 'monthly' },
   { path: '/faq', priority: '0.6', changefreq: 'monthly' },
   { path: '/contact', priority: '0.5', changefreq: 'monthly' },
 
-  // Compliance & Legal Pages
   { path: '/privacy', priority: '0.4', changefreq: 'monthly' },
   { path: '/terms', priority: '0.4', changefreq: 'monthly' },
   { path: '/cookies', priority: '0.4', changefreq: 'monthly' },
   { path: '/disclaimer', priority: '0.4', changefreq: 'monthly' },
 
-  // Interactive Sitemap
   { path: '/sitemap', priority: '0.5', changefreq: 'monthly' }
 ];
 
-// Append blog articles dynamically from source database
 blogArticles.forEach((article) => {
   let lastmod = currentDate;
   try {
@@ -60,7 +52,7 @@ blogArticles.forEach((article) => {
       lastmod = parsedDate.toISOString().split('T')[0];
     }
   } catch (e) {
-    // Fallback to currentDate
+    // 
   }
 
   routes.push({
@@ -71,7 +63,6 @@ blogArticles.forEach((article) => {
   });
 });
 
-// Construct high-quality formatted XML
 let xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 `;
@@ -91,7 +82,6 @@ xml += `</urlset>\n`;
 
 const outputPath = path.join(__dirname, '../public/sitemap.xml');
 
-// Ensure public directory exists
 const publicDir = path.dirname(outputPath);
 if (!fs.existsSync(publicDir)) {
   fs.mkdirSync(publicDir, { recursive: true });

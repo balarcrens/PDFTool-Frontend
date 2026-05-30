@@ -1,13 +1,13 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react-hooks/set-state-in-effect */
 import { useEffect, useState, useRef } from 'react';
 import { cn } from '../lib/utils';
 
-// Global execution flag to guarantee the external AdSense script tag is injected exactly once
 let isAdSenseScriptInjected = false;
 
 const injectAdSenseScript = () => {
     if (isAdSenseScriptInjected) return;
     
-    // Completely bypass injecting AdSense script on localhost to prevent console 400 errors!
     if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
         return;
     }
@@ -33,11 +33,10 @@ const AdSense = ({
     className = '',
     style = {},
 }) => {
-    const [adStatus, setAdStatus] = useState('loading'); // 'loading', 'filled', 'unfilled', 'error'
+    const [adStatus, setAdStatus] = useState('loading');
     const insRef = useRef(null);
 
     useEffect(() => {
-        // If on localhost, bypass AdSense load completely and display static placeholder directly!
         if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
             setAdStatus('unfilled');
             return;
@@ -55,19 +54,16 @@ const AdSense = ({
             window.removeEventListener('keydown', handleInteraction);
         };
 
-        // Bind interactive event triggers to dynamically load ca-pub script on interaction
         window.addEventListener('scroll', handleInteraction, { passive: true });
         window.addEventListener('mousemove', handleInteraction, { passive: true });
         window.addEventListener('touchstart', handleInteraction, { passive: true });
         window.addEventListener('keydown', handleInteraction, { passive: true });
 
-        // Fallback safety timeout: inject ca-pub script after 3000ms if the user is completely idle
         const loadTimer = setTimeout(() => {
             injectAdSenseScript();
             cleanupListeners();
         }, 3000);
 
-        // Initialize Adsense elements slightly after the script injection tick has run
         const initTimer = setTimeout(() => {
             try {
                 if (window.adsbygoogle) {
@@ -79,7 +75,7 @@ const AdSense = ({
                             try {
                                 window.adsbygoogle.push({});
                             } catch (e) {
-                                // Ignore push errors on individual block levels
+                                // 
                             }
                         });
                     }
@@ -90,7 +86,6 @@ const AdSense = ({
             }
         }, 3200);
 
-        // MutationObserver to listen for Google AdSense's dynamic status insertions (filled/unfilled)
         let observer = null;
         if (insRef.current) {
             observer = new MutationObserver(() => {
@@ -106,7 +101,6 @@ const AdSense = ({
             observer.observe(insRef.current, { attributes: true, attributeFilter: ['data-ad-status'] });
         }
 
-        // Interval checker fallback (checks if AdSense returns 400 error or gets blocked)
         const checkTimer = setInterval(() => {
             if (insRef.current) {
                 const status = insRef.current.getAttribute('data-ad-status');
@@ -123,7 +117,7 @@ const AdSense = ({
                             setAdStatus('filled');
                         }
                     } catch (e) {
-                        // ignore styling mismatch errors
+                        // 
                     }
                 }
             }
@@ -140,7 +134,6 @@ const AdSense = ({
         };
     }, [adSlot]);
 
-    // Reserve standard heights based on ad format to eliminate Cumulative Layout Shift (CLS)
     const isRectangle = adFormat === 'rectangle' || adFormat === 'vertical';
     const minHeightClass = isRectangle ? 'min-h-[250px]' : 'min-h-[120px]';
 
@@ -156,7 +149,6 @@ const AdSense = ({
             )}
             style={adStatus === 'filled' ? {} : style}
         >
-            {/* AdSense Injected Element */}
             {window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1' && (
                 <ins
                     ref={insRef}
@@ -174,7 +166,6 @@ const AdSense = ({
                 />
             )}
 
-            {/* Premium Dashed Placeholder Fallback Layer */}
             {adStatus !== 'filled' && (
                 <div 
                     className="adsense-fallback absolute inset-0 flex flex-col items-center justify-center gap-1.5 select-none pointer-events-none z-0 px-4 transition-opacity duration-300"

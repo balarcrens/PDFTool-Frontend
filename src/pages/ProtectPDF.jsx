@@ -13,8 +13,16 @@ import {
     RefreshCcw
 } from "lucide-react";
 import confetti from "canvas-confetti";
+import { useState } from "react";
+import { PDFWorker } from "pdfjs-dist";
+import * as pdfjsLib from "pdfjs-dist";
+import jsPDF from "jspdf";
+import { AnimatePresence, motion } from "framer-motion";
+import FileUploader from "../components/FileUploader";
+import ToolContentLayout from "../components/ToolContentLayout";
+import SEO from "../components/SEO";
 
-pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker;
+pdfjsLib.GlobalWorkerOptions.workerSrc = PDFWorker;
 
 export default function ProtectPDF() {
     const [file, setFile] = useState(null);
@@ -109,7 +117,6 @@ export default function ProtectPDF() {
             />
 
             <div className="container-professional space-y-16 py-16 md:py-24">
-                {/* Tool Header */}
                 <div className="text-center space-y-6">
                     <motion.div
                         initial={{ opacity: 0, y: 10 }}
@@ -130,7 +137,6 @@ export default function ProtectPDF() {
                     <FileUploader onFilesSelected={handleFileSelected} multiple={false} />
                 ) : (
                     <div className="max-w-3xl mx-auto space-y-12">
-                        {/* Action Bar */}
                         <div className="action-bar-classic sticky top-24 z-30 px-8 py-6">
                             <div className="flex items-center gap-6">
                                 <div className="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-slate-600">

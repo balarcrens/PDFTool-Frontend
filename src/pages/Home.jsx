@@ -19,7 +19,6 @@ import {
     ChevronDown,
     BookOpen,
     Clock,
-    FileText,
     Type,
     Hash,
     Trash2,
@@ -54,12 +53,6 @@ const tools = [
         description: "Convert Word documents (.docx) to high-quality PDF files instantly.",
         icon: FileCode,
         path: "/word-to-pdf",
-    },
-    {
-        title: "PDF to Word",
-        description: "Convert PDF documents back to editable Microsoft Word files locally.",
-        icon: FileText,
-        path: "/pdf-to-word",
     },
     {
         title: "PDF to Text",
@@ -130,7 +123,6 @@ export default function Home() {
 
     const categories = ["All", "Convert", "Organize", "Security"];
 
-    // Helper classification logic
     const getToolCategory = (title) => {
         const titleLower = title.toLowerCase();
         if (
@@ -191,16 +183,24 @@ export default function Home() {
             <SEO
                 title="iFlexPDF - Free Secure Browser PDF Solutions"
                 description="Professional-grade, local-first browser PDF utilities. Process your PDFs entirely in your browser with zero server uploads for 100% security."
-                keywords="pdf, compress pdf, merge pdf, split pdf, word to pdf, local pdf tools, secure pdf converter, free online pdf tools, organize pdf, protect pdf, unlock pdf, watermark pdf, add page numbers, delete pages, extract text pdf, pdf to image, pdf to word, word to pdf"
+                keywords="pdf, compress pdf, merge pdf, split pdf, word to pdf, local pdf tools, secure pdf converter, free online pdf tools, organize pdf, protect pdf, unlock pdf, watermark pdf, add page numbers, delete pages, extract text pdf, pdf to image, word to pdf"
             />
-            <div className="space-y-24 md:space-y-32 py-12 md:py-20 relative bg-grid-pattern overflow-hidden">
 
-                {/* Hero Section */}
-                <header className="container-professional text-center space-y-8 relative pt-8 md:pt-16">
+            <div className="relative overflow-t-hidden bg-white py-20 md:py-28">
+                <div
+                    className="absolute left-[-20%] top-[-20%] w-[45%] h-[90%] rounded-full bg-cyan-400/20 blur-3xl sm:blur-3xl pointer-events-none select-none"
+                    aria-hidden="true"
+                />
+                <div
+                    className="absolute right-[-20%] bottom-[-20%] w-[50%] h-[100%] rounded-full bg-blue-500/20 blur-3xl sm:blur-3xl pointer-events-none select-none"
+                    aria-hidden="true"
+                />
+
+                <header className="container-professional text-center space-y-8 relative z-10">
                     <div
-                        className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200 text-slate-500 font-semibold text-xs tracking-wide shadow-sm select-none animate-fade-in"
+                        className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#0f172a] border border-slate-800 text-slate-100 font-semibold text-xs tracking-wide shadow-md select-none animate-fade-in"
                     >
-                        <ShieldCheck className="w-4 h-4 text-blue-600" />
+                        <ShieldCheck className="w-4 h-4 text-blue-400" />
                         <span>100% Private Local Processing</span>
                     </div>
 
@@ -209,7 +209,7 @@ export default function Home() {
                             className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-slate-900 leading-[1.08] pr-1 animate-fade-in [animation-delay:100ms]"
                         >
                             Do anything with PDF. <br />
-                            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-800">
+                            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-700">
                                 Completely Private.
                             </span>
                         </h1>
@@ -226,7 +226,7 @@ export default function Home() {
                     >
                         <button
                             onClick={handleScrollToToolkit}
-                            className="btn-primary-ref px-8 py-3.5 text-[15px] cursor-pointer"
+                            className="px-8 py-3.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold text-[15px] shadow-lg shadow-blue-500/10 hover:shadow-blue-500/20 transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer border border-blue-700/10 hover:scale-[1.015] active:scale-[0.985] focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                             aria-label="Explore secure PDF tools"
                         >
                             Explore Tools
@@ -234,7 +234,7 @@ export default function Home() {
                         </button>
                         <button
                             onClick={handleScrollToToolkit}
-                            className="btn-outline-ref px-8 py-3.5 text-[15px] cursor-pointer"
+                            className="bg-white text-slate-700 border border-slate-200 px-8 py-3.5 rounded-xl font-bold text-[15px] shadow-sm hover:bg-slate-50 hover:border-slate-300 hover:shadow-md transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer hover:scale-[1.015] active:scale-[0.985] focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2"
                             aria-label="Drop a file inside any specific utility tool"
                         >
                             <FileDown className="w-4.5 h-4.5 text-blue-600" />
@@ -242,19 +242,18 @@ export default function Home() {
                         </button>
                     </div>
                 </header>
+            </div>
 
-                {/* AdSense Slot A - Hero Banner */}
+            <div className="space-y-24 md:space-y-32 py-12 md:py-20 relative bg-grid-pattern overflow-hidden">
                 <div className="container-professional max-w-[970px] mx-auto select-none">
                     <AdSense adSlot="8116403558" adFormat="horizontal" />
                 </div>
 
-                {/* Tools Grid Section */}
                 <section
                     id="toolkit"
                     className="container-professional pt-4 scroll-mt-24"
                     aria-label="PDF Toolbox"
                 >
-                    {/* Live Search & Filter Bar */}
                     <div className="mb-10 flex flex-col md:flex-row items-center justify-between gap-6 pb-6 border-b border-slate-200">
                         <div className="text-left space-y-1 shrink-0 w-full md:w-auto">
                             <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
@@ -265,9 +264,7 @@ export default function Home() {
                             </p>
                         </div>
 
-                        {/* Interactive Search Controls */}
                         <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full max-w-xl">
-                            {/* Category Pills */}
                             <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 custom-scrollbar select-none shrink-0">
                                 {categories.map((cat) => (
                                     <button
@@ -285,7 +282,6 @@ export default function Home() {
                                 ))}
                             </div>
 
-                            {/* Text Search Input */}
                             <div className="relative flex-grow">
                                 <input
                                     type="text"
@@ -326,10 +322,18 @@ export default function Home() {
                                     className="group outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded-xl hover:scale-[1.015] transition-transform duration-300"
                                     aria-label={`Open ${tool.title} tool - ${tool.description}`}
                                 >
-                                    <article
-                                        className="tool-card transition-all duration-305 hover:border-blue-200/80 hover:shadow-premium-hover h-full"
+                                    <article className="tool-card transition-all duration-305 hover:border-blue-200/80 hover:shadow-premium-hover h-full"
                                     >
                                         <div className="tool-card-shape" aria-hidden="true" />
+
+                                        <div className="absolute flex justify-center items-center -top-9 -right-9 w-32 h-32 bg-slate-100 border border-slate-100 rounded-full z-10">
+                                            <div
+                                                className="w-8 h-8 rounded-full bg-white border border-slate-100 flex items-center justify-center group-hover:bg-blue-50 group-hover:border-blue-100 group-hover:scale-105 transition-all duration-300 shadow-sm"
+                                                aria-hidden="true"
+                                            >
+                                                <ArrowRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-blue-600 transition-transform duration-300 group-hover:translate-x-[1px] group-hover:translate-y-[-1px] rotate-[-45deg]" />
+                                            </div>
+                                        </div>
 
                                         <div className="tool-card-icon select-none" aria-hidden="true">
                                             <tool.icon className="w-5 h-5" />
@@ -354,7 +358,6 @@ export default function Home() {
                     )}
                 </section>
 
-                {/* Step-by-Step Visual Timeline Guide */}
                 <section className="container-professional pt-8 text-center space-y-12" aria-label="Processing Timeline">
                     <div className="space-y-3">
                         <span className="badge-professional select-none">
@@ -369,9 +372,8 @@ export default function Home() {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative select-none">
-                        {/* Step 1 */}
                         <div className="space-y-4 text-left p-8 bg-white border border-slate-100 rounded-2xl shadow-sm relative hover:shadow-md transition-all duration-300 hover:-translate-y-1">
-                            <div className="w-10 h-10 bg-blue-50 border border-blue-100 text-blue-600 rounded-xl flex items-center justify-center font-bold text-sm">
+                            <div className="    w-10 h-10 bg-blue-50 border border-blue-100 text-blue-600 rounded-xl flex items-center justify-center font-bold text-sm">
                                 01
                             </div>
                             <h3 className="text-lg font-bold text-slate-900">Select & Load Files</h3>
@@ -380,7 +382,6 @@ export default function Home() {
                             </p>
                         </div>
 
-                        {/* Step 2 */}
                         <div className="space-y-4 text-left p-8 bg-white border border-slate-100 rounded-2xl shadow-sm relative hover:shadow-md transition-all duration-300 hover:-translate-y-1">
                             <div className="w-10 h-10 bg-blue-50 border border-blue-100 text-blue-600 rounded-xl flex items-center justify-center font-bold text-sm">
                                 02
@@ -391,7 +392,6 @@ export default function Home() {
                             </p>
                         </div>
 
-                        {/* Step 3 */}
                         <div className="space-y-4 text-left p-8 bg-white border border-slate-100 rounded-2xl shadow-sm relative hover:shadow-md transition-all duration-300 hover:-translate-y-1">
                             <div className="w-10 h-10 bg-blue-50 border border-blue-100 text-blue-600 rounded-xl flex items-center justify-center font-bold text-sm">
                                 03
@@ -404,7 +404,6 @@ export default function Home() {
                     </div>
                 </section>
 
-                {/* Privacy Architecture Section */}
                 <section
                     className="container-professional py-16 md:py-24 relative overflow-hidden rounded-2xl bg-white border border-slate-200 shadow-premium"
                     aria-label="Security & Privacy Protocol"
@@ -474,12 +473,10 @@ export default function Home() {
                     </div>
                 </section>
 
-                {/* AdSense Slot B - Midsite Banner */}
                 <div className="container-professional max-w-[970px] mx-auto select-none">
                     <AdSense adSlot="6372857492" adFormat="horizontal" />
                 </div>
 
-                {/* Blog Articles Section */}
                 <section
                     className="container-professional pt-8"
                     aria-label="Insights & Productivity Blog"
@@ -535,7 +532,6 @@ export default function Home() {
                     </div>
                 </section>
 
-                {/* FAQ Section */}
                 <section
                     className="container-professional max-w-4xl mx-auto pt-8"
                     aria-label="Frequently Asked Questions"
@@ -576,7 +572,6 @@ export default function Home() {
                                         />
                                     </button>
 
-                                    {/* High performance CSS Grid Auto-Height transition - Zero JS overhead! */}
                                     <div
                                         className={cn(
                                             "grid transition-all duration-300 ease-in-out",
@@ -595,11 +590,7 @@ export default function Home() {
                     </div>
                 </section>
 
-                {/* Final CTA Section */}
-                <section
-                    className="container-professional pb-12"
-                    aria-label="Secure Your Workflow CTA"
-                >
+                <section className="container-professional pb-12" aria-label="Secure Your Workflow CTA">
                     <div className="bg-[#0f172a] rounded-2xl p-10 md:p-16 text-center text-white relative overflow-hidden shadow-premium-xl border border-slate-850">
                         <div className="relative z-10 space-y-6 max-w-2xl mx-auto">
                             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-tight">

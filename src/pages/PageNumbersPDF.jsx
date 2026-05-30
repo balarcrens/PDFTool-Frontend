@@ -20,8 +20,8 @@ import confetti from "canvas-confetti";
 
 export default function PageNumbersPDF() {
     const [file, setFile] = useState(null);
-    const [style, setStyle] = useState("xofv"); // xofv, simplePage, simpleNum
-    const [position, setPosition] = useState("bottomRight"); // bottomCenter, bottomRight, bottomLeft, topCenter, topRight, topLeft
+    const [style, setStyle] = useState("xofv");
+    const [position, setPosition] = useState("bottomRight");
     const [fontSize, setFontSize] = useState(10);
     const [margin, setMargin] = useState(30);
     const [startNum, setStartNum] = useState(1);
@@ -58,7 +58,6 @@ export default function PageNumbersPDF() {
                     text = `Page ${activePageNum}`;
                 }
 
-                // Calculate positions
                 let x = width / 2;
                 let y = margin;
 
@@ -87,7 +86,7 @@ export default function PageNumbersPDF() {
                     y,
                     size: fontSize,
                     font: helveticaFont,
-                    color: rgb(0.3, 0.3, 0.3), // Dark neutral grey
+                    color: rgb(0.3, 0.3, 0.3),
                 });
             }
 
@@ -133,7 +132,6 @@ export default function PageNumbersPDF() {
                 schemaData={webAppSchema}
             />
             <div className="container-professional space-y-16 py-16 md:py-24">
-                {/* Tool Header */}
                 <div className="text-center space-y-6">
                     <motion.div
                         initial={{ opacity: 0, y: 10 }}
@@ -153,7 +151,6 @@ export default function PageNumbersPDF() {
                     <FileUploader onFilesSelected={handleFileSelected} multiple={false} />
                 ) : (
                     <div className="max-w-5xl mx-auto space-y-10">
-                        {/* Action Bar */}
                         <div className="action-bar-classic sticky top-24 z-30">
                             <div className="flex items-center gap-4 w-full md:w-auto">
                                 <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center text-slate-600">
@@ -194,16 +191,13 @@ export default function PageNumbersPDF() {
                             </div>
                         </div>
 
-                        {/* Pagination Customization */}
                         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-                            {/* Form Options */}
                             <div className="lg:col-span-1 card-ref p-8 space-y-8">
                                 <div className="flex items-center gap-3 pb-4 border-b border-slate-100">
                                     <Sliders className="w-5 h-5 text-[#0047AB]" />
                                     <h3 className="text-lg font-black text-slate-900">Pagination Setup</h3>
                                 </div>
 
-                                {/* Sizing Style select */}
                                 <div className="space-y-2">
                                     <label className="text-xs font-bold text-slate-600 uppercase tracking-widest">Numbering Style</label>
                                     <select
@@ -217,7 +211,6 @@ export default function PageNumbersPDF() {
                                     </select>
                                 </div>
 
-                                {/* Sizing Alignment select */}
                                 <div className="space-y-2">
                                     <label className="text-xs font-bold text-slate-600 uppercase tracking-widest">Number Placement</label>
                                     <select
@@ -234,7 +227,6 @@ export default function PageNumbersPDF() {
                                     </select>
                                 </div>
 
-                                {/* Size slider */}
                                 <div className="space-y-2">
                                     <div className="flex justify-between text-xs font-bold text-slate-600 uppercase tracking-widest">
                                         <span>Text Size</span>
@@ -250,7 +242,6 @@ export default function PageNumbersPDF() {
                                     />
                                 </div>
 
-                                {/* Margin slider */}
                                 <div className="space-y-2">
                                     <div className="flex justify-between text-xs font-bold text-slate-600 uppercase tracking-widest">
                                         <span>Margin Padding</span>
@@ -266,7 +257,6 @@ export default function PageNumbersPDF() {
                                     />
                                 </div>
 
-                                {/* Start Number Input */}
                                 <div className="space-y-2">
                                     <label className="text-xs font-bold text-slate-600 uppercase tracking-widest">Start numbering from</label>
                                     <input
@@ -279,10 +269,8 @@ export default function PageNumbersPDF() {
                                 </div>
                             </div>
 
-                            {/* Preview Box */}
                             <div className="lg:col-span-2 workspace-preview-panel flex items-center justify-center min-h-[450px] relative overflow-hidden">
                                 <div className="workspace-card-preview bg-white aspect-[3/4] w-full max-w-[300px] relative flex flex-col p-8 border border-slate-200/50 justify-between">
-                                    {/* Top Bar for header style */}
                                     <div className="w-full flex justify-between items-center select-none pointer-events-none">
                                         <span
                                             className="font-mono text-slate-600 font-bold transition-all"
@@ -298,7 +286,6 @@ export default function PageNumbersPDF() {
                                         </span>
                                     </div>
 
-                                    {/* Body text mockup */}
                                     <div className="w-full space-y-4 opacity-10 select-none pointer-events-none flex-grow mt-8">
                                         <div className="h-4 w-3/4 bg-slate-400 rounded"></div>
                                         <div className="h-3 w-full bg-slate-200 rounded"></div>
@@ -309,7 +296,6 @@ export default function PageNumbersPDF() {
                                         <div className="h-3 w-4/5 bg-slate-200 rounded"></div>
                                     </div>
 
-                                    {/* Bottom Bar for footer style */}
                                     <div className="w-full flex justify-between items-center select-none pointer-events-none mt-4">
                                         <span
                                             className="font-mono text-slate-600 font-bold transition-all"
@@ -334,7 +320,6 @@ export default function PageNumbersPDF() {
                     </div>
                 )}
 
-                {/* Result Area */}
                 <AnimatePresence>
                     {numberedPdfUrl && (
                         <motion.div

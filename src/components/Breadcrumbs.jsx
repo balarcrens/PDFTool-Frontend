@@ -12,7 +12,6 @@ const routeNameMap = {
     "compress": "Compress PDF",
     "pdf-to-text": "PDF to Text",
     "word-to-pdf": "Word to PDF",
-    "pdf-to-word": "PDF to Word",
     "protect": "Protect PDF",
     "unlock": "Unlock PDF",
     "blog": "Insights & Guides",
@@ -28,7 +27,6 @@ export default function Breadcrumbs() {
     const location = useLocation();
     const pathnames = location.pathname.split("/").filter((x) => x);
 
-    // Auto-inject dynamic Breadcrumb JSON-LD schema into the head
     useEffect(() => {
         if (pathnames.length === 0) return;
 
@@ -85,7 +83,6 @@ export default function Breadcrumbs() {
         };
     }, [location.pathname, pathnames]);
 
-    // Hide breadcrumbs on Home page
     if (pathnames.length === 0) return null;
 
     return (
@@ -106,7 +103,6 @@ export default function Breadcrumbs() {
                     const last = index === pathnames.length - 1;
                     const to = `/${pathnames.slice(0, index + 1).join("/")}`;
 
-                    // Resolve display name
                     let name = routeNameMap[value] || value;
                     if (pathnames[index - 1] === "blog") {
                         const article = blogArticles.find(art => art.slug === value);

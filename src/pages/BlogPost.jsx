@@ -45,15 +45,12 @@ export default function BlogPost() {
         }
     };
 
-    // Determine relevant tool CTA based on categories/tags
     const getToolCTA = () => {
         const titleLower = article.title.toLowerCase();
         if (titleLower.includes("compress") || titleLower.includes("size")) {
             return { name: "Compress PDF", path: "/compress", desc: "Shrink your document securely now." };
         } else if (titleLower.includes("merge") || titleLower.includes("combine")) {
             return { name: "Merge PDF", path: "/merge", desc: "Combine multiple documents in seconds." };
-        } else if (titleLower.includes("word") || titleLower.includes("docx")) {
-            return { name: "PDF to Word", path: "/pdf-to-word", desc: "Extract PDF structure into an editable Word document." };
         } else if (titleLower.includes("student") || titleLower.includes("grades")) {
             return { name: "Explore All Tools", path: "/", desc: "Open our complete browser-local suite." };
         }
@@ -89,8 +86,6 @@ export default function BlogPost() {
             />
 
             <div className="container-professional py-16 md:py-24">
-
-                {/* Back and Share Panel */}
                 <div className="max-w-3xl mx-auto flex items-center justify-between mb-12">
                     <button
                         onClick={() => navigate("/blog")}
@@ -109,10 +104,7 @@ export default function BlogPost() {
                     </button>
                 </div>
 
-                {/* Semantic Article */}
                 <article className="max-w-3xl mx-auto space-y-12">
-
-                    {/* Header Block */}
                     <header className="space-y-6 border-b border-slate-100 pb-10">
                         <div className="flex flex-wrap items-center gap-3">
                             <span className="px-3.5 py-1 bg-indigo-50 border border-indigo-100 text-indigo-600 rounded-full font-bold text-xs uppercase tracking-wider">
@@ -133,7 +125,6 @@ export default function BlogPost() {
                             {article.subtitle}
                         </p>
 
-                        {/* Author details */}
                         <div className="flex items-center gap-3 pt-2">
                             <div className="w-10 h-10 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-500 text-sm font-black">
                                 {article.author.charAt(0)}
@@ -145,7 +136,6 @@ export default function BlogPost() {
                         </div>
                     </header>
 
-                    {/* Body Content */}
                     <div className="prose prose-slate max-w-none space-y-8 text-slate-600 text-base md:text-[17px] leading-relaxed font-medium">
                         {article.content.flatMap((block, idx) => {
                             const elements = [];
@@ -181,7 +171,6 @@ export default function BlogPost() {
                                     </ul>
                                 );
                             }
-                            // Inject AdSense Slot F dynamically after the second block (idx === 1)
                             if (idx === 1) {
                                 elements.push(
                                     <div className="my-8 select-none" key={`ad-${idx}`}>
@@ -193,7 +182,6 @@ export default function BlogPost() {
                         })}
                     </div>
 
-                    {/* Dynamic Action Banner (Internal Linking conversion helper) */}
                     <div className="bg-indigo-950 text-white rounded-[2rem] p-8 md:p-12 relative overflow-hidden shadow-xl mt-12 flex flex-col md:flex-row items-center justify-between gap-8">
                         <div className="absolute top-0 right-0 w-80 h-80 bg-indigo-500/10 blur-[90px] rounded-full pointer-events-none"></div>
                         <div className="space-y-4 relative z-10 text-center md:text-left max-w-lg">
@@ -219,12 +207,10 @@ export default function BlogPost() {
                         </div>
                     </div>
 
-                    {/* AdSense Slot G - Post Footer Banner */}
                     <div className="max-w-[970px] mx-auto w-full select-none my-8">
                         <AdSense adSlot="2948105829" adFormat="horizontal" />
                     </div>
 
-                    {/* Article Footer (Tags and Disclaimer) */}
                     <footer className="pt-10 border-t border-slate-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
                         <div className="flex flex-wrap gap-2">
                             {article.tags.map(tag => (

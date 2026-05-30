@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { AlertTriangle, Mail, ShieldAlert, CheckCircle2, Printer, ArrowRight } from "lucide-react";
@@ -34,7 +35,6 @@ export default function Disclaimer() {
 			/>
 			
 			<div className="container-professional py-12 md:py-20 max-w-6xl mx-auto">
-				{/* Top Header Row with Print Utility */}
 				<div className="flex flex-col sm:flex-row items-center justify-between border-b border-slate-100 pb-8 mb-12 gap-4 select-none">
 					<div className="flex items-center gap-3">
 						<div className="w-10 h-10 bg-blue-50 border border-blue-100 rounded-xl flex items-center justify-center text-blue-600">
@@ -54,7 +54,6 @@ export default function Disclaimer() {
 					</button>
 				</div>
 
-				{/* Page Header */}
 				<div className="text-center space-y-6 mb-16 max-w-3xl mx-auto">
 					<h1 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight">
 						Disclaimer & <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-650">DMCA Policy</span>
@@ -64,9 +63,7 @@ export default function Disclaimer() {
 					</p>
 				</div>
 
-				{/* 2-Column Responsive Layout */}
 				<div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
-					{/* Left Sticky Sidebar Index */}
 					<aside className="md:col-span-4 sticky top-24 hidden md:block select-none">
 						<div className="border-r border-slate-100 pr-6 mr-6 space-y-1">
 							<h3 className="text-slate-400 font-bold uppercase tracking-wider text-[10px] mb-4 pl-3">Sections</h3>
@@ -94,9 +91,7 @@ export default function Disclaimer() {
 						</div>
 					</aside>
 
-					{/* Right Content Panel */}
 					<div className="md:col-span-8 space-y-16">
-						{/* Section 1 */}
 						<section id="general-disclaimer" className="space-y-6 scroll-mt-24">
 							<div className="flex items-center gap-4">
 								<div className="w-10 h-10 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center text-amber-600 shrink-0">
@@ -115,7 +110,6 @@ export default function Disclaimer() {
 							</div>
 						</section>
 
-						{/* Section 2 */}
 						<section id="dmca-policy" className="space-y-6 scroll-mt-24">
 							<div className="flex items-center gap-4">
 								<div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 shrink-0">
@@ -138,7 +132,6 @@ export default function Disclaimer() {
 							</div>
 						</section>
 
-						{/* Section 3 */}
 						<section id="legal-desk" className="space-y-6 scroll-mt-24">
 							<div className="flex items-center gap-4">
 								<div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 shrink-0">
@@ -168,7 +161,6 @@ export default function Disclaimer() {
 							</div>
 						</section>
 
-						{/* Bottom Copyright Notice */}
 						<div className="pt-8 border-t border-slate-100 text-xs font-bold text-slate-400 uppercase tracking-widest text-center select-none">
 							iFlexPDF Legal Disclaimers Updated: May 2026
 						</div>

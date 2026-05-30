@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
@@ -22,7 +23,7 @@ export default function FAQPage() {
 	const [openIndex, setOpenIndex] = useState(null);
 	const [searchQuery, setSearchQuery] = useState("");
 	const [activeCategory, setActiveCategory] = useState("all");
-	const [feedbackState, setFeedbackState] = useState({}); // Stores 'yes' or 'no' per FAQ index
+	const [feedbackState, setFeedbackState] = useState({});
 
 	const faqs = [
 		{
@@ -82,7 +83,6 @@ export default function FAQPage() {
 		{ id: "tech", label: "Technology & Offline" }
 	];
 
-	// Filter FAQs based on category and search query
 	const filteredFaqs = useMemo(() => {
 		return faqs.filter(faq => {
 			const matchesCategory = activeCategory === "all" || faq.category === activeCategory;
@@ -93,7 +93,6 @@ export default function FAQPage() {
 		});
 	}, [activeCategory, searchQuery]);
 
-	// Schema data for SEO compliance
 	const faqSchema = {
 		"@context": "https://schema.org",
 		"@type": "FAQPage",
@@ -124,7 +123,6 @@ export default function FAQPage() {
 			/>
 			
 			<div className="container-professional space-y-16 py-16 md:py-24 max-w-4xl mx-auto">
-				{/* Page Header */}
 				<div className="text-center space-y-6">
 					<motion.div
 						initial={{ opacity: 0, y: 10 }}
@@ -144,7 +142,6 @@ export default function FAQPage() {
 					</p>
 				</div>
 
-				{/* Search Bar */}
 				<div className="max-w-xl mx-auto relative select-none">
 					<div className="relative rounded-xl border border-slate-200 bg-white hover:border-slate-300 transition-all duration-200 shadow-sm focus-within:border-blue-600 focus-within:ring-2 focus-within:ring-blue-600/10">
 						<div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400">
@@ -169,7 +166,6 @@ export default function FAQPage() {
 					</div>
 				</div>
 
-				{/* Category Tabs */}
 				<div className="flex flex-wrap justify-center gap-2 select-none">
 					{categories.map((cat) => {
 						const isActive = activeCategory === cat.id;
@@ -178,7 +174,7 @@ export default function FAQPage() {
 								key={cat.id}
 								onClick={() => {
 									setActiveCategory(cat.id);
-									setOpenIndex(null); // Reset open states on category change
+									setOpenIndex(null);
 								}}
 								className={cn(
 									"px-5 py-2 rounded-xl text-xs sm:text-sm font-bold border transition-all duration-200 active:scale-[0.98]",
@@ -193,7 +189,6 @@ export default function FAQPage() {
 					})}
 				</div>
 
-				{/* FAQs List */}
 				<div className="space-y-4">
 					<AnimatePresence mode="wait">
 						{filteredFaqs.length > 0 ? (
@@ -238,7 +233,6 @@ export default function FAQPage() {
 												/>
 											</button>
 
-											{/* High-performance CSS Grid auto-rows collapse */}
 											<div
 												className={cn(
 													"grid transition-all duration-300 ease-in-out",
@@ -250,7 +244,6 @@ export default function FAQPage() {
 														<div className="pl-0 sm:pl-14">
 															<p>{faq.answer}</p>
 															
-															{/* Feedback System */}
 															<div className="border-t border-slate-100/80 mt-6 pt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-slate-400 text-xs select-none">
 																<span>Was this helpful?</span>
 																<div className="flex items-center gap-2">
@@ -317,7 +310,6 @@ export default function FAQPage() {
 					</AnimatePresence>
 				</div>
 
-				{/* bottom Help CTA Card */}
 				<div className="bg-gradient-to-br from-slate-900 to-slate-950 rounded-2xl p-8 sm:p-12 relative overflow-hidden shadow-xl border border-slate-800 text-center mt-16 max-w-3xl mx-auto select-none">
 					<div className="relative z-10 space-y-4">
 						<div className="w-12 h-12 rounded-full bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mx-auto text-blue-400">
@@ -337,7 +329,6 @@ export default function FAQPage() {
 						</div>
 					</div>
 					
-					{/* Glowing backgrounds */}
 					<div className="absolute top-0 right-0 w-[300px] h-[300px] bg-blue-500/5 rounded-full blur-3xl -mr-20 -mt-20 pointer-events-none" />
 					<div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-indigo-500/5 rounded-full blur-3xl -ml-20 -mb-20 pointer-events-none" />
 				</div>

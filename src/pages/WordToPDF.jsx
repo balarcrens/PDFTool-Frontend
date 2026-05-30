@@ -40,7 +40,6 @@ export default function WordToPDF() {
         try {
             const arrayBuffer = await file.arrayBuffer();
 
-            // Convert .docx to HTML with better options
             const result = await mammoth.convertToHtml({
                 arrayBuffer: arrayBuffer,
                 includeDefaultStyleMap: true,
@@ -48,11 +47,9 @@ export default function WordToPDF() {
 
             const html = result.value;
 
-            // Inject HTML into a hidden div for rendering
             if (hiddenContentRef.current) {
                 hiddenContentRef.current.innerHTML = html;
 
-                // Use html2pdf for high-fidelity conversion
                 const opt = {
                     margin: [15, 15, 15, 15],
                     filename: file.name.replace(".docx", ".pdf"),
@@ -88,7 +85,6 @@ export default function WordToPDF() {
                 keywords="word to pdf, convert docx to pdf, secure word to pdf, client-side docx to pdf, free word converter"
             />
             <div className="container-professional space-y-16 py-16 md:py-24">
-                {/* Tool Header */}
                 <div className="text-center space-y-6">
                     <motion.div
                         initial={{ opacity: 0, y: 10 }}
@@ -114,7 +110,6 @@ export default function WordToPDF() {
                     />
                 ) : (
                     <div className="max-w-4xl mx-auto space-y-12">
-                        {/* Action Bar */}
                         <div className="action-bar-classic sticky top-24 z-30">
                             <div className="flex items-center gap-4 w-full md:w-auto">
                                 <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center text-slate-600">
@@ -238,7 +233,6 @@ export default function WordToPDF() {
                         { question: "Does it support tables, fonts, and inline media?", answer: "Yes. Our local parser parses complex styles, inline images, custom margins, and nested bullet arrays into standard A4 sheets." }
                     ]}
                     relatedTools={[
-                        { name: "PDF to Word", path: "/pdf-to-word", description: "Convert PDF documents back to editable Microsoft Word files locally." },
                         { name: "Merge PDF", path: "/merge", description: "Combine multiple PDF files into one clean document." },
                         { name: "Compress PDF", path: "/compress", description: "Reduce your PDF file size without losing quality." }
                     ]}
@@ -249,12 +243,11 @@ export default function WordToPDF() {
                 />
             </div>
 
-            {/* Hidden container for PDF rendering - Styled to mimic Word */}
             <div style={{ position: "absolute", left: "-9999px", top: 0, zIndex: -100 }}>
                 <div
                     ref={hiddenContentRef}
                     style={{
-                        width: "794px", // A4 width in pixels at 96dpi
+                        width: "794px",
                         padding: "40px",
                         background: "white",
                         color: "black",

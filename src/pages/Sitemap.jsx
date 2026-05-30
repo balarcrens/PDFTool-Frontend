@@ -12,7 +12,6 @@ export default function Sitemap() {
         { name: "Image to PDF", path: "/image-to-pdf" },
         { name: "PDF to Image", path: "/pdf-to-image" },
         { name: "Word to PDF", path: "/word-to-pdf" },
-        { name: "PDF to Word", path: "/pdf-to-word" },
         { name: "Organize PDF", path: "/organize" },
         { name: "PDF to Text", path: "/pdf-to-text" },
         { name: "Protect PDF", path: "/protect" },
@@ -45,7 +44,6 @@ export default function Sitemap() {
                 keywords="sitemap, site index, pdf tools directory, privacy links, support desk"
             />
             <div className="container-professional space-y-24 py-16 md:py-24 max-w-7xl mx-auto px-4 md:px-8">
-                {/* Page Header */}
                 <div className="text-center space-y-8">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.8 }}
@@ -63,16 +61,13 @@ export default function Sitemap() {
                     </p>
                 </div>
 
-                {/* Directory Columns */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    {/* Column 1: PDF Utilities */}
                     <SitemapColumn icon={FileText} title="PDF Tools Suite">
                         {tools.map((item, idx) => (
                             <SitemapLink key={idx} to={item.path} label={item.name} />
                         ))}
                     </SitemapColumn>
 
-                    {/* Column 2: Resources & Help */}
                     <SitemapColumn icon={BookOpen} title="Resources & Help">
                         <SitemapLink to="/" label="Home Toolkit" />
                         <SitemapLink to="/blog" label="Blog Index & Guides" />
@@ -81,14 +76,12 @@ export default function Sitemap() {
                         ))}
                     </SitemapColumn>
 
-                    {/* Column 3: Legal & Compliance */}
                     <SitemapColumn icon={ShieldAlert} title="Legal & Compliance">
                         {legalPages.map((item, idx) => (
                             <SitemapLink key={idx} to={item.path} label={item.name} />
                         ))}
                     </SitemapColumn>
 
-                    {/* Column 4: Blog Articles & Guides */}
                     <SitemapColumn icon={BookOpen} title="Guides & Articles">
                         {blogArticles.map((article, idx) => (
                             <SitemapLink key={idx} to={`/blog/${article.slug}`} label={article.title.replace(/: The Ultimate Guide|: A Complete Security Guide|: A Client-Side Conversion Manual|: A Security Auditing Review|: Promoting Your Copyrights Online|: Protecting Your Copyrights Online|: Fixing Misaligned Scan Documents|: Clean Document Redundancy Removal|: Removing Owner Restrictions and Password Protection|: Fixing Orientation and Layout Coordinates|: Numbering PDF Pages with Professional Formats|: Professional-grade, local-first browser PDF utilities|: A complete manual/, '')} />

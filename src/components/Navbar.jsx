@@ -1,5 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
-import { FileText, Menu, X, ChevronDown, Combine, Scissors, FileDown, Layout, ClipboardList, ImageIcon, FileCode, Lock, Unlock, RotateCw, Type, Hash, Trash2 } from "lucide-react";
+import { 
+    Menu, X, ChevronDown, Combine, Scissors, FileDown, Layout, ClipboardList, ImageIcon, FileCode, Lock, Unlock, RotateCw, Type, Hash, Trash2 } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { cn } from "../lib/utils";
@@ -11,7 +12,6 @@ const toolsLinks = [
     { name: "Image to PDF", path: "/image-to-pdf", icon: ImageIcon },
     { name: "PDF to Image", path: "/pdf-to-image", icon: Layout },
     { name: "Word to PDF", path: "/word-to-pdf", icon: FileCode },
-    { name: "PDF to Word", path: "/pdf-to-word", icon: FileText },
     { name: "Organize PDF", path: "/organize", icon: Layout },
     { name: "PDF to Text", path: "/pdf-to-text", icon: ClipboardList },
     { name: "Protect PDF", path: "/protect", icon: Lock },
@@ -29,7 +29,6 @@ export default function Navbar() {
     const dropdownRef = useRef(null);
     const triggerRef = useRef(null);
 
-    // Close tools dropdown when clicking outside
     useEffect(() => {
         function handleClickOutside(event) {
             if (
@@ -45,7 +44,6 @@ export default function Navbar() {
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
 
-    // Close mobile menu on Escape key down
     useEffect(() => {
         function handleKeyDown(e) {
             if (e.key === "Escape") {
@@ -58,7 +56,6 @@ export default function Navbar() {
         return () => document.removeEventListener("keydown", handleKeyDown);
     }, [isMenuOpen]);
 
-    // Lock body scroll when mobile menu is open
     useEffect(() => {
         if (isMenuOpen) {
             document.body.style.overflow = "hidden";
@@ -77,7 +74,6 @@ export default function Navbar() {
                 aria-label="Main Directory"
             >
                 <div className="container-professional flex items-center justify-between w-full">
-                    {/* Logo */}
                     <Link
                         to="/"
                         className="flex justify-center items-center gap-2.5 group focus-visible:ring-2 focus-visible:ring-indigo-600 focus-visible:ring-offset-2 rounded-xl px-1 py-1"
@@ -96,7 +92,6 @@ export default function Navbar() {
                         </span>
                     </Link>
 
-                    {/* Desktop Navigation */}
                     <div className="hidden lg:flex items-center gap-8">
                         <div className="relative">
                             <button
@@ -146,7 +141,6 @@ export default function Navbar() {
                         <NavLink to="/about" active={location.pathname === "/about"}>About</NavLink>
                     </div>
 
-                    {/* Action Status Indicator */}
                     <div className="hidden lg:flex items-center gap-3">
                         <span className="verified-badge px-4 py-2 flex items-center gap-2 shadow-sm bg-slate-50 border border-slate-200 select-none">
                             <span className="relative flex h-2 w-2">
@@ -157,7 +151,6 @@ export default function Navbar() {
                         </span>
                     </div>
 
-                    {/* Mobile Hamburguer trigger */}
                     <button
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
                         aria-expanded={isMenuOpen}
@@ -170,10 +163,8 @@ export default function Navbar() {
                 </div>
             </nav>
 
-            {/* Mobile Drawer Menu (Rendered at Body root to bypass layout/sticky restrictions) */}
             {typeof document !== "undefined" && createPortal(
                 <>
-                    {/* Backdrop Blur Overlay */}
                     <div
                         onClick={() => setIsMenuOpen(false)}
                         className={cn(
@@ -183,7 +174,6 @@ export default function Navbar() {
                         aria-hidden="true"
                     />
 
-                    {/* Sidebar Slide-out Panel */}
                     <div
                         id="mobile-drawer"
                         role="dialog"
@@ -194,7 +184,6 @@ export default function Navbar() {
                             isMenuOpen ? "translate-x-0" : "translate-x-full"
                         )}
                     >
-                        {/* Drawer Header */}
                         <div className="flex items-center justify-between mb-6 pb-4 border-b border-slate-100">
                             <Link to="/" onClick={() => setIsMenuOpen(false)} className="flex items-center gap-2.5 outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded-lg py-0.5 px-0.5">
                                 <img src="/icon.png" alt="iFlexPDF" className="w-7 h-7 object-contain select-none" width="28" height="28" loading="lazy" decoding="async" />
@@ -211,7 +200,6 @@ export default function Navbar() {
                             </button>
                         </div>
 
-                        {/* Scrollable Navigation Area */}
                         <div className="flex-grow overflow-y-auto pr-1 flex flex-col gap-1 custom-scrollbar">
                             <MobileNavLink to="/" onClick={() => setIsMenuOpen(false)}>Home</MobileNavLink>
                             <MobileNavLink to="/blog" onClick={() => setIsMenuOpen(false)}>Blog Guides</MobileNavLink>
@@ -251,7 +239,6 @@ export default function Navbar() {
                             </div>
                         </div>
 
-                        {/* Footer status in mobile */}
                         <div className="pt-4 mt-4 border-t border-slate-100 bg-white">
                             <div className="p-3 bg-slate-50 border border-slate-200 rounded-2xl flex items-center gap-2.5 select-none">
                                 <div className="relative flex h-2 w-2 shrink-0">

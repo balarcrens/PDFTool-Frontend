@@ -40,13 +40,11 @@ export default function UnlockPDF() {
         try {
             const fileArrayBuffer = await file.arrayBuffer();
 
-            // Load the PDF with the provided password
             const pdfDoc = await PDFDocument.load(fileArrayBuffer, {
                 password: password,
                 ignoreEncryption: false
             });
 
-            // Saving it without a password effectively unlocks it
             const unlockedBytes = await pdfDoc.save();
             const blob = new Blob([unlockedBytes], { type: "application/pdf" });
             const url = URL.createObjectURL(blob);
@@ -90,7 +88,6 @@ export default function UnlockPDF() {
             />
 
             <div className="container-professional space-y-16 py-16 md:py-24">
-                {/* Tool Header */}
                 <div className="text-center space-y-6">
                     <motion.div
                         initial={{ opacity: 0, y: 10 }}
@@ -111,7 +108,6 @@ export default function UnlockPDF() {
                     <FileUploader onFilesSelected={handleFileSelected} multiple={false} />
                 ) : (
                     <div className="max-w-3xl mx-auto space-y-12">
-                        {/* Action Bar */}
                         <div className="action-bar-classic sticky top-24 z-30 px-8 py-6">
                             <div className="flex items-center gap-6">
                                 <div className="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center text-slate-600">

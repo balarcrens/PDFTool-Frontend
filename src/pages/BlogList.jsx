@@ -42,8 +42,6 @@ export default function BlogList() {
             />
 
             <div className="container-professional py-16 md:py-24 space-y-16">
-
-                {/* Blog Hero section */}
                 <div className="text-center max-w-3xl mx-auto space-y-6">
                     <motion.div
                         initial={{ opacity: 0, y: 10 }}
@@ -61,9 +59,7 @@ export default function BlogList() {
                     </p>
                 </div>
 
-                {/* Filters and Search Bar */}
                 <div className="flex flex-col md:flex-row items-center justify-between gap-6 bg-slate-50/50 p-4 border border-slate-100 rounded-3xl max-w-4xl mx-auto">
-                    {/* Categories */}
                     <div className="flex flex-wrap items-center gap-2 w-full md:w-auto justify-center">
                         {categories.map(cat => (
                             <button
@@ -81,7 +77,6 @@ export default function BlogList() {
                         ))}
                     </div>
 
-                    {/* Search Input */}
                     <div className="relative w-full md:w-80">
                         <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-slate-600" />
                         <input
@@ -94,12 +89,10 @@ export default function BlogList() {
                     </div>
                 </div>
 
-                {/* AdSense Slot E - Blog Header Banner */}
                 <div className="max-w-[970px] mx-auto w-full select-none">
                     <AdSense adSlot="7294829384" adFormat="horizontal" />
                 </div>
 
-                {/* Grid of Articles */}
                 {filteredArticles.length > 0 ? (
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {filteredArticles.map((art, idx) => (
@@ -112,7 +105,6 @@ export default function BlogList() {
                                     className="card-ref flex-grow flex flex-col justify-between hover:scale-[1.01] hover:border-slate-300 transition-all duration-300 h-full"
                                 >
                                     <div className="space-y-6">
-                                        {/* Category and Tags */}
                                         <div className="flex flex-wrap items-center gap-2">
                                             <span className="px-3 py-1 bg-indigo-50 border border-indigo-100/50 text-indigo-600 rounded-full font-bold text-xs uppercase tracking-wider">
                                                 {art.category}
@@ -123,7 +115,6 @@ export default function BlogList() {
                                             </span>
                                         </div>
 
-                                        {/* Title and Excerpt */}
                                         <div className="space-y-3">
                                             <h2 className="text-xl font-bold text-slate-900 leading-snug group-hover:text-indigo-600 transition-colors">
                                                 {art.title}
@@ -135,7 +126,6 @@ export default function BlogList() {
                                     </div>
 
                                     <div className="mt-8 pt-6 border-t border-slate-100 flex items-center justify-between">
-                                        {/* Author block */}
                                         <div className="flex items-center gap-2.5">
                                             <div className="w-8 h-8 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-500 text-xs font-black">
                                                 {art.author.charAt(0)}
@@ -146,7 +136,6 @@ export default function BlogList() {
                                             </div>
                                         </div>
 
-                                        {/* Arrow CTA */}
                                         <div className="w-9 h-9 rounded-full bg-slate-50 group-hover:bg-[#0047AB] group-hover:text-white transition-all flex items-center justify-center text-slate-600">
                                             <ArrowRight className="w-4 h-4" />
                                         </div>

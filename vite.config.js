@@ -13,7 +13,6 @@ export default defineConfig({
       output: {
         manualChunks(id) {
           if (id.includes('node_modules')) {
-            // Group and isolate PDF manipulation engines
             if (id.includes('pdf-lib')) {
               return 'pdf-lib';
             }
@@ -26,15 +25,13 @@ export default defineConfig({
             if (id.includes('mammoth')) {
               return 'mammoth';
             }
-            // Isolate framer-motion so it loads only when needed
             if (id.includes('framer-motion')) {
               return 'framer-motion';
             }
-            // Dedicated bundle for framework core routines
             if (id.includes('react') || id.includes('react-dom') || id.includes('react-router-dom') || id.includes('react-helmet-async')) {
               return 'react-core';
             }
-            return 'vendor'; // standard node_modules generic fallback
+            return 'vendor';
           }
         }
       }

@@ -31,8 +31,6 @@ export default function Contact() {
 
             <div className="container-professional py-16 md:py-24 max-w-6xl mx-auto">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-
-                    {/* Information Column */}
                     <div className="lg:col-span-6 space-y-10">
                         <div className="space-y-6 text-left">
                             <motion.div
@@ -54,7 +52,6 @@ export default function Contact() {
                             </p>
                         </div>
 
-                        {/* Info Cards */}
                         <div className="space-y-4">
                             <ContactInfo
                                 icon={<Mail className="w-5 h-5" />}
@@ -77,7 +74,6 @@ export default function Contact() {
                         </div>
                     </div>
 
-                    {/* Form Column */}
                     <div className="lg:col-span-6">
                         <div className="card-ref !p-6 sm:!p-10 border border-slate-200 bg-white shadow-sm relative overflow-hidden">
                             <div className="absolute top-0 left-0 right-0 h-[4px] bg-gradient-to-r from-blue-600 to-indigo-650"></div>
