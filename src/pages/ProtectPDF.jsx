@@ -14,15 +14,15 @@ import {
 } from "lucide-react";
 import confetti from "canvas-confetti";
 import { useState } from "react";
-import { PDFWorker } from "pdfjs-dist";
 import * as pdfjsLib from "pdfjs-dist";
+import pdfWorker from "pdfjs-dist/build/pdf.worker.mjs?url";
 import jsPDF from "jspdf";
 import { AnimatePresence, motion } from "framer-motion";
 import FileUploader from "../components/FileUploader";
 import ToolContentLayout from "../components/ToolContentLayout";
 import SEO from "../components/SEO";
 
-pdfjsLib.GlobalWorkerOptions.workerSrc = PDFWorker;
+pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker;
 
 export default function ProtectPDF() {
     const [file, setFile] = useState(null);
